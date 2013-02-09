@@ -1,7 +1,14 @@
 ---
 layout: page
-title: Hello World!
-tagline: Supporting tagline
+#title: Steve Jackson
+#tagline: Supporting tagline
 ---
 {% include JB/setup %}
-
+<ul id="posts" class="twelve columns offset-by-four">
+  {% for post in site.posts %}
+    <li>
+      <a class="nine columns" href="{{ post.url }}">{{ post.title }}</a>
+      <span class="two columns">{{ post.date | date: "%b %Y" }}</span>
+    </li>
+  {% endfor %}
+</ul>
