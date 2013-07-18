@@ -515,6 +515,50 @@ noscript {display:none;} /* Fixes a feature in Firefox 1.5.0.2 where print previ
 </div></div>
 <!--POST-SHADOWAREA-->
 <div id="storeArea">
+<div title="Akka Actors" creator="Steve" modifier="Steve" created="201306011922" modified="201306012022" tags="pghtechfest scala" changecount="2">
+<pre>Josh Sureth - Typesafe
+
+Add more actors - fragment - to specialize information (scatter phase)
+Gather phase - re-aggregate back up the heirarchical tree
+
+It's cheap to make an actor - create a new actor to handle results (gatherer actor)
+
+Scala - Akka - create lots of layers of actors to handle recovery and keep the core functional
+
+Akka clustering - works a lot like Riak
+ - Supports automatic cluster membership
+
+Weird code
+{{{
+context.actorFor(rootactorpath(a) / &quot;user&quot; / &quot;singleton&quot; /&quot;search-tree&quot; )
+}}}
+
+Clustered routing options
+Metrics based routing
+
+Recap:
+- Partition state of the system into small pieces - improve concurrency
+- Communicate with immutable messages
+- Spawn new actors to track temporary state or do dangerous things - keeps the parent safe
+- Design app as a topology
+- Partition threads on the topoology
+ ** Can do the same thing with roles - these 10 nodes are for incoming requests, these 20 nodes are for data processing, etc
+ * Bubble errors on the topoloyg
+* Keep singleton actors on the leader
+* Avoid excessive inter-node messaging
+ ** Use statistics based routing
+ ** Fragment in 'large pieces'
+* Allow time for cluster convergence and fault detection
+ ** new nodes think they're the leader until they find out otherwise
+
+Key Point - Design a system that can recover from failure (and be concurrent)
+ * auto healing, auto 
+
+'' Links ''
+github.com/jsuereth/intro-to-actors
+Example code (clusters branch)
+akka.io</pre>
+</div>
 <div title="AngularJS" creator="Steve" modifier="Steve" created="201301170226" modified="201302270257" tags="AngularJS" changecount="4">
 <pre>John Lindquite jetbrains http://egghead.io/
 
@@ -586,7 +630,7 @@ http://localhost:8000/app/index.html#/phones
 http://localhost:8000/test/e2e/runner.html
 http://jsfiddle.net/vojtajina/js64b/14/</pre>
 </div>
-<div title="AngularJSLunchAndLearn" creator="Steve" modifier="Steve" created="201302101501" modified="201302270257" tags="AngularJS" changecount="3">
+<div title="AngularJSLunchAndLearn" creator="Steve" modifier="Steve" created="201302101501" modified="201306280314" tags="AngularJS" changecount="4">
 <pre>To show:
 
 repeater
@@ -596,7 +640,147 @@ e2e runner
 
 Scenario:
 List of devs with skills.  Skills are rated by aptitude and enthusiasm.  
-How to handle currently booked?  What-if scenarios?</pre>
+How to handle currently booked?  What-if scenarios?
+
+http://localhost:8000/test/e2e/runner.html
+http://jsfiddle.net/e9DXU/
+http://jsfiddle.net/VX5LE/224/
+http://jsfiddle.net/9PHdf/1/</pre>
+</div>
+<div title="Anitfragile" creator="Steve" modifier="Steve" created="201306301425" modified="201306301429" changecount="5">
+<pre>Testing clustring and DR software
+If it hurts - do it HARDER
+exercise, nutrition, healthcare
+science vs engineers
+
+Failure as a non-event
+ - Risk + consequences
+
+GameDays - google and amazon
+Chaos Monkey, Chaos Gorilla, Latency Monkey
+
+Evolve - discover weaknesses and adapt
+
+Failure as an opportunity to learn
+Blameless culture - Fear to innovate - if we're constantly changing and improving, we should fail alot, or we're not doing interesting experiments.</pre>
+</div>
+<div title="Backlog grooming" creator="Steve" modifier="Steve" created="201306011751" modified="201306011921" tags="pghtechfest" changecount="2">
+<pre>Backlog stages
+ - Freezer, Fridge, Ready to Cook
+
+Backlog metrics
+ - Group by types:  Features, Bugs, Technical
+
+Account for all work - technical &quot;stories&quot; should be first class citizens
+Backlog grooming is a three amigos type stuff:  Group of people pick apart a story
+ - Starts with prioritized, well-defined work
+
+Story:  Along with token for future conversation - A check for understanding
+
+No predetermined roles in grooming meeting</pre>
+</div>
+<div title="Better Product Definition with Lean UX and Design Thinking" creator="Steve" modifier="Steve" created="201307092046" modified="201307092113" tags="ux" changecount="19">
+<pre>* LeanStartup
+
+!! Cornerstones
+* How do we measure success?
+* Learning over short-term value
+* Customer feedback is king
+* Experimentation/Feedback drives from the outside
+* Experimentation/Collaboration drives from the inside
+
+!! Customer Facing
+* Reduce Requirements and Assumptions to Experiments
+* Experiment _with_ customers to discover what they want
+* Learning is more valuable than customers/revenue/growth - e.g. A/B pricing tests
+** Testing/Action/Risk vs Analysis Paralysis/Arguing/Inaction
+*Design Thinking = empathy + creativity + rationality
+*User Stories as Market Validation Stories (Hypotheses)
+** Reqt to Conversation:  Move from &quot;system shall&quot; to &quot;we believe&quot; to &quot;as a, I want, so that&quot;
+
+{{{
+  We believe that
+        [building this feature]
+        [for these people]
+        will achieve [this outcome].
+
+   We will know we are successful when we see
+        [this signal from the market].
+}}}
+
+!! Team Focus
+*Emphasis on Shared Understanding vs Deliverables
+*Move from delivery of features (output) to business value (outcome)
+** Focus teams on outcomes over impact
+** Outcomes are less binary (not done/done vs &quot;close enough&quot;)
+* Work together / ignore roles
+* Test Ideas Ruthlessly
+
+!! Look out for
+* Quality is defined by the  ''customer'' not the dev/engineer
+** ComplexityInTheServiceOfQuality
+*Vanity metrics vs actual use
+** Does signing up for a service count as success?  Are they using it?  Will they spend money on it?
+
+!! Product definition assumptions
+* Who is our customer?
+* What pain points do they have related to our product/service?
+* What features are important?
+* What is our differentiation?
+* What is our business model?</pre>
+</div>
+<div title="CAS Links" creator="Steve" modifier="Steve" created="201306291657" modified="201306291700" tags="cas" changecount="3">
+<pre>java audit framework - Google Search
+https://www.google.com/search?q=java+audit+framework&amp;oq=java+audit+&amp;aqs=chrome.1.57j0l3j62l2.4830j0&amp;sourceid=chrome&amp;ie=UTF-8
+
+Eclipse BIRT and JasperReports | My Tech Tip
+http://www.mytechtip.com/2011/04/eclipse-birt-and-jasperreports_6325.html
+
+Experience is might!: BIRT vs JasperReports comparison
+http://xmight.blogspot.com/2012/03/birt-vs-jasperreports-comparison.html
+
+Birt Queries: Birt vs Jasper
+http://birtgrip.blogspot.com/2012/10/birt-vs-jasper.html
+
+CFR - Code of Federal Regulations Title 21
+http://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfCFR/CFRSearch.cfm?CFRPart=11&amp;showFR=1
+
+URL List from Saturday, Jun. 29 2013 12:57 PM
+
+To copy this list, type [Ctrl] A, then type [Ctrl] C. 
+
+airblade/paper_trail · GitHub
+https://github.com/airblade/paper_trail
+
+Overview (Spring Data JPA 1.3.2.RELEASE API)
+http://static.springsource.org/spring-data/data-jpa/docs/1.3.2.RELEASE/api/
+
+Inspektr Auditing · dima767/inspektr Wiki
+https://github.com/dima767/inspektr/wiki/Inspektr-Auditing
+
+java - Business Audit log - recommended library or approach? - Stack Overflow
+http://stackoverflow.com/questions/3778281/business-audit-log-recommended-library-or-approach
+
+License
+http://logback.qos.ch/license.html
+
+Logback-Audit Manual
+http://audit.qos.ch/manual/index.html
+
+Chapter 1: Introduction
+http://audit.qos.ch/manual/introduction.html
+
+Chapter 2: Server
+http://audit.qos.ch/manual/Running_the_Server.html
+
+Chapter 3: The Contents of Audit Messages
+http://audit.qos.ch/manual/Invoking_lba.html
+
+LOGBACK-AUDIT FAQ
+http://audit.qos.ch/faq.html</pre>
+</div>
+<div title="CAS spike" creator="Steve" modifier="Steve" created="201306291700" modified="201306291700" tags="cas" changecount="2">
+<pre>Use appfuse to set up spring/hibernate app and try to plug in audit framework</pre>
 </div>
 <div title="CodeMash" creator="Steve" modifier="Steve" created="201301170215" modified="201301170302" changecount="16">
 <pre>http://icodemash.com/
@@ -633,6 +817,11 @@ Combinatory Logic is a building block for good functional programming.  Reginald
 
 https://leanpub.com/combinators
 https://github.com/raganwald/homoiconic/blob/master/2008-10-31/songs_of_the_cardinal.markdown#readme</pre>
+</div>
+<div title="ComplexityInTheServiceOfQuality" creator="Steve" modifier="Steve" created="201307092053" modified="201307092053" tags="Antifragile" changecount="2">
+<pre>* Architecture is dependent on a world view for a customer use case.  Change the use case and all that architecture becomes debt.
+* Do root cause analysis (5 Why's) on every &quot;mistake&quot;.  Learn about your system and how customers ''actually'' use it.  Optimize __that__ quality.
+*Go fast with discipline</pre>
 </div>
 <div title="Corey Haines BAWCH #1" creator="Steve" modifier="Steve" created="201301170257" changecount="1">
 <pre>Determining business value vs Dispelling ignorance
@@ -689,6 +878,57 @@ Psychology of dealing with customers that don't want granular small stories - It
 
 </pre>
 </div>
+<div title="Influencing Teams with Psychology" creator="Steve" modifier="Steve" created="201306011824" modified="201306011922" tags="pghtechfest" changecount="4">
+<pre>Robert Cialdine Influence - The Psychology of Persuasion
+Switch
+
+'' Giving ''
+Give gift
+Give time
+Set a rule - give a pass
+
+
+''Commitment Consistency ''
+
+After making a commitment you'll work very hard to keep it
+ - Get people to make concessions and keep twisting - Chinese army did this to make soldiers look like they were against the US
+
+Standups create commitment consistency by getting people to publicly declare what they will do today
+
+Commitment consistency will cause people to follow through on a commitment even when conditions change and make it a bad idea or impractical or violates the original spirit on the commitment.
+
+Scrum changed from team commitment to team forcasting to allow for teams to change with conditions rather than sticking with bad commitments.
+
+'' Authority ''
+ - Can use second hand - &quot;Kent Beck says..&quot;
+
+'' Scarcity ''
+Let's do this for a short amount of time
+Quantity scarcity, knowledge scarcity
+
+'' Social Proof ''
+- If nobody's doing nothing then it must already be taken care of
+Vague blanket statements - everyone assumes someone else will do it
+Pick someone!  Force action.
+
+'' Liking''
+Body language mirroring - miror inflection, speed, temper of the voice - helps make connections.  People like themselves and like people like them.
+
+&quot;I'm one of you, I want to work with you, make it easier for you&quot;
+
+</pre>
+</div>
+<div title="Interview Questions" creator="Steve" modifier="Steve" created="201307180027" changecount="1">
+<pre>Tell me about a problem you solved recently.
+
+Tell me about your most recent project: what was your role?
+What kinds of challenges did you have?
+Tell me about the problem you solved that you have the most pride in. When was it and what happened?
+
+Tell me what you are learning about these days.
+-Books
+-Side projects</pre>
+</div>
 <div title="IntroToAndroid" creator="Steve" modifier="Steve" created="201301170217" modified="201301170233" changecount="2">
 <pre>!!Intro to Android
 developer.android.com /-- Start here, most popular google hits are out of date :)
@@ -731,12 +971,32 @@ Hand off loading to Loader (vital if doing network, probably good idea regardles
 Use AndroidHttpClient to execute web requests
 Open templates for requests using a resource from the context</pre>
 </div>
+<div title="LeanStartup" creator="Steve" modifier="Steve" created="201307092047" tags="ux" changecount="1">
+<pre>Lean
+* Improve Cycle Time
+* Smaller Batches
+* High Quality
+
+Startup
+* Major disruption environment
+* Customer uncertainty
+* What do people want?
+= __Lean Startup__
+* Avoid Building the Wrong thing efficiently
+* Find the Right Thing</pre>
+</div>
 <div title="LegacyCodeRetreat" creator="Steve" modifier="Steve" created="201303311231" changecount="1">
 <pre>http://legacycoderetreat.typepad.com/blog/2011/11/how-i-run-legacy-code-retreat.html
 http://www.github.com/jbrains/trivia</pre>
 </div>
 <div title="MainMenu" creator="Steve" modifier="Steve" created="201301261658" changecount="1">
 <pre>[[TabTimeline]]</pre>
+</div>
+<div title="New Laptop" creator="Steve" modifier="Steve" created="201306292327" changecount="1">
+<pre>Steve Klabnik  &quot;I happened to get an X1 Carbon. I was coming from a 13&quot; MacBook Air 13&quot;, and the Carbon is very similar. It’s 14&quot; though, which is a really nice size; it still fits in the same pocket in my bag as the MBA did, but I get a little more screen real estate. A note for those who give presentations: the X1 Carbon uses a MiniDisplay port, so save your Apple connectors!'
+
+Avdi:
+</pre>
 </div>
 <div title="ParseApp" creator="Steve" modifier="Steve" created="201301170218" modified="201301170236" changecount="2">
 <pre>Will Dages - https://github.com/willdages
@@ -868,6 +1128,13 @@ AWS is your weak spot - all systems seem to run on AWS
 Cloud developers don't need to know a lot of &quot;cloud&quot; stuff, it's more important to know all the systems and how to put them together (systems engineering)
 Use simulators
 </pre>
+</div>
+<div title="Remote pairing" creator="Steve" modifier="Steve" created="201306292332" changecount="1">
+<pre>Zander on setting up a VPS:  http://www.civet.ws/2013/06/dont-fear-pair-programming-a-guide-to-starting/
+
+Stuff from Zee:
+
+Stuff from Levi:</pre>
 </div>
 <div title="Ruby vs Scala" creator="Steve" modifier="Steve" created="201301261415" modified="201301261453" tags="Scala" changecount="2">
 <pre>Scala scales - It's performant, supports actors and parallelization.  Has interesting pattern matching feature.
@@ -1016,6 +1283,12 @@ Habit 2:  Design a pairing schedule
 Habit 3:  All code reviewed via pull requests - make sure to find positive feedback
 Habit 4:  Set dedicated learning time with self-chosen objectives
 </pre>
+</div>
+<div title="Vagrant talk" creator="Steve" modifier="Steve" created="201306301817" modified="201307041222" changecount="2">
+<pre>Immutable deployments
+
+Tips:
+http://ashedryden.com/blog/what-you-need-to-know-about-speaking-at-conferences</pre>
 </div>
 </div>
 <!--POST-STOREAREA-->
