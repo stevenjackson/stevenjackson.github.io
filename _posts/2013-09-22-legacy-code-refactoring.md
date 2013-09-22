@@ -15,8 +15,8 @@ So we did our due diligence and got most it under test coverage.  At least to th
 
 It's hard to describe test-driving a change where the "wrong" solution is already in place.  Here we have 6 years of tweaks and pokes of fairly complicated code all dumped in the middle of an even larger class (this logic is probably 5% of the total class size).  It's a big, awful, mess.  I had two goals in mind:
 
-1)  Make the temporal coupling explicit
-2)  Put a fence around this minefield
+1.  Make the temporal coupling explicit
+1.  Put a fence around this minefield
 
 So here's where I have trouble explaining what happens.  Here I have a chunk of code.  I want to change it safely with small refactorings.  So I make a small change.  Run my tests.  Repeat for hours/days/whatever.  Unfortunately, unlike "normal" TDD - I'm not getting feedback on design direction.  I'm running my tests constantly and staying green, but I have no idea that this idea for trying to pull out a class is a good one.  Or that changing the return value on this method helps in any way.  
 
@@ -36,6 +36,6 @@ I've tried to detect places where you can split the big ball of mud and test-dri
 
 Every other time, I've tried what seems like the safe route.  Get it under test.  Refactor the obvious stuff.  Hem, haw, and pontificate.  Get burned out and move on to something else.
 
-There has to be a way to handle this problem.  If not, we're screwed, because code like this isn't going to be wished away.  These stopgap temporary projects that always seem to last for decades.
+There has to be a way to handle this problem.  If not, we're screwed, because code like this isn't going to be wished away.  These stopgap temporary projects always seem to last for decades.
 
 Any ideas?
