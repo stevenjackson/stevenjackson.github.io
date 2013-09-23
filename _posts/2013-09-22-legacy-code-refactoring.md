@@ -20,9 +20,9 @@ It's hard to describe test-driving a change where the "wrong" solution is alread
 1.  Make the temporal coupling explicit
 1.  Put a fence around this minefield
 
-So here's where I have trouble explaining what happens.  Here I have a chunk of code.  I want to change it safely with small refactorings.  So I make a small change.  Run my tests.  Repeat for hours/days/whatever.  Unfortunately, unlike "normal" TDD - I'm not getting feedback on design direction.  I'm running my tests constantly and staying green, but I have no idea that this idea for trying to pull out a class is a good one.  Or that changing the return value on this method helps in any way.  
+So this is where I have trouble explaining what happens.  Here I have a chunk of code.  I want to change it safely with small refactorings.  So I make a small change.  Run my tests.  Repeat for hours/days/whatever.  Unfortunately, unlike "normal" TDD - I'm not getting feedback on design direction.  I'm running my tests constantly and staying green, but I have no idea that this idea for trying to pull out a class is a good one.  Or that changing the return value on this method helps in any way.
 
-I think part of the problem in my explanation is that I'm saying "refactor" but I'm really talking about "re-design" in a significant way.  Refactoring a class is easier to think about; hopefully I can wrap my mind around all the relevant parts and keep seeing the simple steps forward.  This is still refactoring in the application sense, I don't want to change it's behavior.  However I do often want to change how several classes work together to simplify the design.  With TDD that's easy (for me), I just listen to the tests.
+I think part of the problem in my explanation is that I'm saying "refactor" but I'm really talking about "re-design" in a significant way.  Refactoring a class is easier to think about; hopefully, I can wrap my mind around all the relevant parts and keep seeing the simple steps forward.  This is still refactoring in the application sense, I don't want to change its behavior.  However, I do often want to change how several classes work together to simplify the design.  With TDD that's easy, I just listen to the tests.
 
 Normally in TDD I can listen to my tests.  If the setup is excruciating for a test case I can see where it needs to change.  If the assertion is complicated, I can see that I'm probably testing via the wrong method.  If I'm copy/paste/hacking chunks of code around, that's an alarm that I'm making this too hard to understand.  Tests provide great FAST feedback on design decisions.  I detect obvious seams and can see where my classes are taking on too much responsibility.  I can make little experiments very quickly and get that fast feedback where a first class collection worked well here, but introducing this value object didn't clear much up.
 
@@ -38,6 +38,6 @@ I've tried to detect places where you can split the big ball of mud and test-dri
 
 Every other time, I've tried what seems like the safe route.  Get it under test.  Refactor the obvious stuff.  Hem, haw, and pontificate.  Get burned out and move on to something else.
 
-There has to be a way to handle this problem.  If not, we're screwed, because code like this isn't going to be wished away.  These stopgap temporary projects always seem to last for decades.
+There has to be a better way to handle this problem.  If not, we're screwed, because code like this isn't going to be wished away.  These stopgap temporary projects always seem to last for decades.
 
 Any ideas?
