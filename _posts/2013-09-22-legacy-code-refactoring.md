@@ -7,6 +7,8 @@ tags: []
 ---
 {% include JB/setup %}
 
+#### Summary:  I'm disatisfied with my feedback loop while refactoring larger pieces of legacy code.  What can I do differently?
+
 So I've tried to explain a phenomena to a few people lately and I keep falling flat.  I can only conclude I'm explaining it badly, or it's a solved problem that I haven't seen the solution for.
 
 So imagine some legacy code.  My most recent example was a chunk of a few thousands of lines in a class spread across a handful of methods.  Pretty much status quo for this app, but this was particularly painful because it was a huge chunk of the business rules for various validations.  There was temporal coupling, where half the code was basically ignored under some conditions.  This caused some issues when we'd go to add new checks - it wasn't apparent that this 1200 line chunk was effectively dead code under normal operations, because the coupling was enforced three layers up.
