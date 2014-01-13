@@ -650,6 +650,55 @@ Coding analogy
 
 Eggs, steel blocks / rocket precision machinery, legos, new</pre>
 </div>
+<div title="AdvancedRubyConcurrency" creator="Steve" modifier="Steve" created="201401101942" tags="#codemash 2014" changecount="1">
+<pre>Jerry D'Antonio
+@jerrydantonio
+github.com/jdantonio
+
+!! From Clojure
+* Future
+* Agent
+** Queues up operations against a value
+
+* hamster gem
+** high-perf data structure - immutable
+
+*thread_safe library
+** threadsafe agent and hash.  Not immutable.
+
+!! From javascript
+* Promise
+
+!! From java
+** ScheduledExecutorService
+** TimerTask
+
+!! From erlang/scala
+** Actor
+
+!! From F#
+** Functional actor style
+
+!! From Erlang
+** Supervisor
+
+!! Concurrent gem
+** has future
+*** takes observer
+** has agent
+*** takes observer
+** has promise
+** has ScheduledTask
+*** Written like a future / same API
+** TimerTask
+*** takes observer
+** Actor
+***Actor pools sharing a mailbox
+** Channel
+*** Functional actor
+** Supervisor
+*** Can add actors and timer tasks</pre>
+</div>
 <div title="AgileApprentice" creator="Steve" modifier="Steve" created="201310012153" changecount="1">
 <pre>!!! Issues
 * Expert Beginner trap?
@@ -712,6 +761,385 @@ Key Point - Design a system that can recover from failure (and be concurrent)
 github.com/jsuereth/intro-to-actors
 Example code (clusters branch)
 akka.io</pre>
+</div>
+<div title="AngularDirectives:Demystified" creator="Steve" modifier="Steve" created="201401101546" modified="201401101641" tags="#codemash 2014" changecount="4">
+<pre>http://directivesdemystified.herokuapp.com/#/slides/0
+@BrianGenisio
+github.com/BrianGenisio/directives
+Another directives presentation:  https://www.youtube.com/watch?v=WqmeI5fZcho
+
+* Supporting IE7 in production!
+
+Types of directives
+* Behavioral
+* Component
+
+!! Component (templates)
+ui-codemirror - angular directive to show code snippet in text area
+
+{{{
+ App.directive('hello', function() {
+  return {
+    template: 'hello!'
+  };
+});
+}}}
+
+* Element based directives need a hack in IE8 earlier
+
+* Use templateURL property instead of template to point to an html file
+* Angular has a templateCache - used to avoid fetching templates.  Could also override the options.
+* Uses grunt task that stringifies/minifies templates and puts it in the templateCache
+* App.run runs before compile time
+
+!! Behavior
+
+* The directives are using the same scope as the view
+** You usually don't want this
+
+!!! Isolate your scope
+{{{
+    App.directive('hampsterDanceIsolate', function() {
+  return {
+    restrict: 'EA',
+	  
+    scope: {},
+    
+    controller: function($scope) {
+      $scope.toggle = function() {
+        $scope.animated = !$scope.animated;
+      };
+    },
+    
+    templateUrl: '/app/directives/hampster-dance.html'
+  };
+});
+}}}
+
+* You can pass parameters to the isolated scopes
+** This is object binding (two-way)
+** use '='
+{{{
+App.directive('hampsterDanceIsolate2', function() {
+  return {
+    restrict: 'EA',
+	  
+    scope: {
+      animated: '='
+    },
+
+    controller: function($scope) {
+      $scope.toggle = function() {
+        $scope.animated = !$scope.animated;
+      }
+    },
+
+    templateUrl: '/app/directives/hampster-dance.html'
+  };
+});
+}}}
+{{{
+&lt;input type=&quot;checkbox&quot; ng-model=&quot;dance&quot; /&gt;
+
+&lt;hampster-dance-isolate2 animated=&quot;dance&quot;&gt;&lt;/hampster-dance-isolate2&gt;
+}}}
+
+* Isolate scope string binding
+** One way
+** Use '@'
+{{{
+App.directive('interesting', function() {
+  return {
+    restrict: 'AE',
+    
+    scope: {
+      'header': '@',
+      'footer': '@'
+    },
+    
+    templateUrl: '/app/directives/interesting.html'
+  };
+});
+}}}
+
+{{{
+&lt;div class=&quot;interesting-man&quot;&gt;         
+  &lt;img src=&quot;/img/man.jpg&quot;&gt;            
+  &lt;div class=&quot;header&quot;&gt;{{header}}&lt;/div&gt;
+  &lt;div class=&quot;footer&quot;&gt;{{footer}}&lt;/div&gt;
+&lt;/div&gt;
+}}}
+
+{{{
+&lt;interesting 
+  header=&quot;I don't always write directives&quot; 
+  footer=&quot;But when I do, I isolate my scope&quot;&gt;
+&lt;/interesting&gt;
+}}}
+
+* Isolate Scope Function Binding
+** Directive callsback
+** Use '&amp;'
+
+* You can do optional and aliased bindings
+
+!! Lifecycle
+* ng-app triggers a &quot;compile&quot;  Go through the DOM and look for interesting directives
+* You can override compile and link behavior in directives
+* Compiling a directive happens once (and has a link function)
+** Run-time modifications to a template
+* Linking happens every time the directive is used
+** On-load - modify elements and attributes
+
+* This knowledge is important in testing
+{{{
+describe(&quot;hello directive&quot;, function() {
+  var element, scope;
+  
+  function bootstrap($rootScope, $compile) {
+    var html = &quot;&lt;div hello&gt;&lt;/div&gt;&quot;;
+    element = angular.element(html);
+    
+    var compositeLink = $compile(element);
+    
+    scope = $rootScope.$new();
+    
+    compositeLink(scope);
+    
+    scope.$digest();
+  }
+  
+  beforeEach(module('SlidePlayer'));
+  beforeEach(inject(function($rootScope, $compile) {
+    bootstrap($rootScope, $compile);
+  }));
+  
+  it(&quot;says hello&quot;, function() {
+    expect(element.text()).toBe(&quot;hello!&quot;);
+  });
+});
+}}}
+
+* This is essentially what ng-app does
+
+* $digest
+** Processes all of the watchers of the current scope (and it's children)
+*** Has this expression changed?
+
+* Angular knows that there's only 4-ish ways to change a page
+** After a click for instance, angular calls apply
+
+* $apply
+$apply() pseudocode: 
+{{{
+function $apply(expr) {
+  try {
+    return $eval(expr);
+  } catch (e) {
+    $exceptionHandler(e);
+  } finally {
+    $root.$digest();
+  }
+}
+}}}
+
+** You use apply when you know something has changed (outside of angular) and angular needs to figure itself out
+*** Say we get/cause an event?
+{{{
+App.directive('whatDoesTheFoxSay', function() {
+  return {
+    restrict: 'AE',
+    
+    link: function(scope, element, attrs) {
+      scope.message = &quot;What does the fox say?&quot;;
+
+      element.click(function() {
+        
+        scope.$apply(function() {
+          scope.message = &quot;Wa-pa-pa-pa-pa-pa-pow!&quot;;
+        });
+        
+      });
+    },
+
+    template: '&lt;span&gt;{{message}}&lt;/span&gt;'
+  };
+});
+}}}
+
+scope.$apply tells the watcher on the template to update
+
+!! Recursion
+* By default you can use recursive tags in a directive - stack overflow!
+{{{
+App.directive('tree', function(recursionHelper) {
+  return {
+    restrict: 'AE',
+    scope: {
+      nodes: '='
+    },
+    
+    compile: function(tElement) {
+      return recursionHelper.compile(tElement);
+    },
+    
+    templateUrl: '/app/directives/tree.html'
+  };
+});
+}}}
+{{{
+&lt;ul&gt;
+  &lt;li ng-repeat=&quot;(key, value) in nodes&quot;&gt;
+    &lt;a ng-click=&quot;hide = !hide&quot;&gt;{{key}}&lt;/a&gt;
+    &lt;tree nodes=&quot;value&quot; ng-hide=&quot;hide&quot;&gt;&lt;/tree&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+}}}
+{{{
+// Mark Lagendijk
+// http://stackoverflow.com/questions/14430655/recursion-in-angular-directives
+App.factory('recursionHelper', function($compile){
+  return {
+    compile: function(templateElement){
+      
+      var contents = templateElement.contents().remove();
+      var compiledContents;
+      
+      return function(scope, element){
+        if(!compiledContents){
+          compiledContents = $compile(contents);
+        }
+        
+        compiledContents(scope, function(clone){
+          element.append(clone);
+        });
+      };
+    }
+  };
+});
+}}}
+
+!! Transclusion
+* Put my content in the directive
+{{{
+App.directive('panel', function() {
+  return {
+    restrict: 'AE',
+    transclude: true,
+    scope: {
+      heading: '@'
+    },
+    templateUrl: '/app/directives/panel.html'
+  };
+});
+}}}
+{{{
+&lt;div class=&quot;panel panel-primary&quot;&gt;
+  
+  &lt;div class=&quot;panel-heading&quot; ng-if=&quot;heading&quot;&gt;
+    &lt;h3 class=&quot;panel-title&quot;&gt;{{heading}}&lt;/h3&gt;
+  &lt;/div&gt;
+  
+  &lt;div class=&quot;panel-body&quot;&gt;
+    &lt;div ng-transclude&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  
+&lt;/div&gt;
+}}}
+{{{
+&lt;panel heading=&quot;Chuck Norris Facts&quot;&gt;
+
+  &lt;ul&gt;
+  	&lt;li&gt;First program was `kill -9`&lt;/li&gt;
+  	&lt;li&gt;Throws exceptions across the room&lt;/li&gt;
+  	&lt;li&gt;Can divide by zero&lt;/li&gt;
+  	&lt;li&gt;Writes self-optimizing code&lt;/li&gt;
+  &lt;/ul&gt;
+  
+&lt;/panel&gt;
+
+}}}
+
+!! Dependncies
+!!! Dependent Directives
+{{{
+&lt;tabs&gt;
+  &lt;tab title=&quot;Double Rainbow&quot;&gt;
+    &lt;img src=&quot;/img/double-rainbow.jpg&quot; /&gt;
+  &lt;/tab&gt;
+  &lt;tab title=&quot;Star Wars Kid&quot;&gt;
+    &lt;img src=&quot;/img/starwars-kid.jpg&quot; /&gt;
+  &lt;/tab&gt;
+  &lt;tab title=&quot;Chocolate Rain&quot;&gt;
+  	&lt;img src=&quot;/img/chocolate-rain.gif&quot; /&gt;
+  &lt;/tab&gt;
+&lt;/tabs&gt;
+}}}
+
+*Tabs need to tell a tab it's selected
+* Tab needs to register itself with Tabs
+
+!!!! Tabs
+{{{
+App.directive('tabs', function() {
+  return {
+    restrict: 'AE',
+    transclude: true,
+    scope: {},
+    controller: function($scope) {
+      $scope.tabs = [];
+
+      $scope.select = function(selected) {
+        angular.forEach($scope.tabs, function(tab) {
+          tab.selected = tab === selected;
+        });
+      }
+
+      this.register = function(tab) {
+      	$scope.tabs.push(tab);
+      	$scope.select($scope.tabs[0]);
+      }
+    },
+    templateUrl: 
+      '/app/directives/tabs.html'
+  };
+});
+}}}
+{{{
+&lt;div class=&quot;tab-list&quot;&gt;
+  &lt;ul class=&quot;nav nav-tabs&quot;&gt;
+    &lt;li ng-repeat=&quot;tab in tabs&quot; ng-class=&quot;{active:tab.selected}&quot;&gt;
+      &lt;a href=&quot;&quot; ng-click=&quot;select(tab);&quot;&gt;
+        {{tab.title}}
+      &lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;div class=&quot;tab-content&quot; ng-transclude&gt;&lt;/div&gt;
+&lt;/div&gt;
+}}}
+{{{
+App.directive('tab', function() {
+  return {
+    require: '^tabs',
+    restrict: 'AE',
+    transclude: true,
+    scope: {
+      title: '@'
+    },
+    link: function(scope, el, attr, tabsCtrl) {
+      tabsCtrl.register(scope);
+    },
+    replace: true,
+    templateUrl: '/app/directives/tab.html' 
+  };
+});
+}}}
+{{{
+&lt;div class=&quot;tab-pane&quot;
+     ng-class=&quot;{active:selected}&quot;
+     ng-transclude&gt;
+&lt;/div&gt;
+}}}</pre>
 </div>
 <div title="AngularJS" creator="Steve" modifier="Steve" created="201301170226" modified="201310012326" tags="AngularJS javascript" changecount="5">
 <pre>John Lindquite jetbrains http://egghead.io/
@@ -1161,6 +1589,15 @@ Q:  Can you run erlang in elixr?  Port cucubmerl to elixr - run every scenario i
 <div title="DefaultTiddlers" creator="Steve" modifier="Steve" created="201301170300" changecount="1">
 <pre>[[TabTimeline]]</pre>
 </div>
+<div title="Developer Outlier" creator="Steve" modifier="Steve" created="201401102138" modified="201401102138" tags="#codemash 2014" changecount="3">
+<pre>Cory House
+@housecor
+
+* Luck Surface Area
+* Find what scares you and run at it
+* &quot;You are the average of the five people you spend the most time with&quot;
+* Consistently do things that people want</pre>
+</div>
 <div title="Drones" creator="Steve" modifier="Steve" created="201308171457" modified="201308171502" tags="scrc13" changecount="3">
 <pre>AR Parrot Drone
 argus - gem
@@ -1177,6 +1614,41 @@ There should be a point where we notice that we've spent half the money and gott
 ROI - Sooner?
 How does this approach compare to the all or nothing comparision?</pre>
 </div>
+<div title="Elixir" creator="Steve" modifier="Steve" created="201401081916" modified="201401092043" tags="#codemash 2014" changecount="3">
+<pre>https://github.com/cromwellryan/sweetelixir
+
+Ryan Cromwell
+Chris Mccord
+
+IRC: elixir-lang on freenode
+http://elixir-lang.org
+----
+
+What do you do when there's no match? - Throws error, let it die?
+
+Uses guard to load exs files into iex to help with playing (don't have to re-write whole modules in iex)
+
+quote shows the AST for any expression
+
+cond do
+  conditions...
+end
+
+// would you assign this to something?
+
+#iex:break
+
+Elixr is tail call optimized
+
+Processes are used like Objects in the sense that you give them work and wait for a result - thousands per machine is normal
+
+* Messages are non-durable - so we assume messages are not delivered by default?
+* Servers are OTP naming convention for a process that stays alive
+
+* ''Tests are falining for genserver_stack
+
+* iex pry</pre>
+</div>
 <div title="Embrace Chaos" creator="Steve" modifier="Steve" created="201308171500" modified="201308171503" tags="scrc13" changecount="3">
 <pre>- Build an architecture to scale first, be efficient second
 
@@ -1190,6 +1662,160 @@ github.com/rkh</pre>
 * Look at database.yml
 * tools - simplecov, turbulence, etc
 * Installed DB from heroku (db:pull)
+</pre>
+</div>
+<div title="Failing Abstract" creator="Steve" modifier="Steve" created="201401131809" modified="201401131810" changecount="2">
+<pre>Do you like failure?  
+
+In this session we'll talk about why your mind reacts to failure the way it does and what you can do about it.  Using concrete examples, like TDD and Lean Startup, we'll work through some cognitive biases that might hold you back.  We'll talk about failing safely and building environments where failure is encouraged.  Then we'll move on to anti-fragile systems and how focusing on failure pushes a system to thrive on randomness.  We'll close with a discussion on failure-focused strategies that allow us to  build to an ultimate success.</pre>
+</div>
+<div title="Failing Your Way To Success" creator="Steve" modifier="Steve" created="201401081400" modified="201401131753" tags="#codemash 2014" changecount="9">
+<pre>Agile distilled
+
+-Feedback!
+ - Why do we care about feedback - learn, grow, etc
+-Failing and Learning
+ - What lessons are you most likely to learn from?
+ - What stories do you remember?
+-Regret avoidance
+-Practice failure
+-ATDD
+-Lean startup
+-Scientific method applied to ATDD
+-Write it down
+-Start with a hypothesis
+-Try to fail!  Embrace failure
+
+! Post Codemash
+* Afraid to show unfinished app to a customer?
+* Afraid to let customer drive
+* Show and Tell with nothing to show?
+
+* View failure as permanent and success as temporary
+** Do your friends let you forget your mistakes?
+** Can we create spaces where it's ok to mess up?
+
+* Perfectionism
+** Story about my dad
+** Very limiting, afraid to try new things
+
+* Distinguish between valid and invalid criticism
+** Trusted Advisors / Mentors
+
+* After failing
+** Ignore or dismiss the data
+*** Ego protection
+** Attribute to a personal defeciency
+*** Ego protection
+*** Afraid to try again
+** Attribute to strategy
+*** Creates new ideas
+
+Helen Keller, “Character cannot be developed in ease and quiet. Only through experience of trial and suffering can the soul be strengthened, ambition inspired, and success achieved.”
+
+* Prefer local evidence to theory
+** Design patterns, etc
+
+
+!! Antifragile
+* Tie-in - the capability to embrace failure and react to mistakes is useful in random, uncertain environments
+*** Avoid Analysis Paralysis
+*** Disorder Paralysis
+** The ability to quickly reverse small errors makes a person/system antifragile
+** Maximize Luck Surface Area
+** Innovation depends on tinkering
+** If we get good at reversing expected failure we can get good at reversing random failure
+*** It's all about reducing fear of a negative effect
+
+** Randomness and Disorder
+*** vs attempts to stabiliize the environment (PROCESS) vs stability by embracing change and randomness
+** Stress up to a point
+** Barbelling (90% cash, 10% high risk, vs 100% medium)
+
+** Things that are antifragile
+* Bones and muscle
+
+* Antifragile things are complex and random
+** And need complexity (zoo animals)
+* Robust things are simple
+
+* Complex systems resist top-down design - emergence
+* Instead use minor tweaks (like evolution does)
+
+* Local failure vs Global failure
+** Tech safety
+
+&quot;Good systems are set up to have small errors, independent from each other, or negatively correlated to each other, since mistakes lower the odds of future mistakes&quot;
+
+* Debt makes you fragile - vulnerable
+* You have to feel the consequences of your actions
+
+* Don't waste time trying to get better at predicting the world or making it more predictable.
+
+&quot;Antifragility is beyond resilience or robustness.  The resilient resists shock and stays the same; the antifragile gets better.  The antifragile loves randomness and uncertainty, which also means - crucially - a love of errors, a certain class of errors.&quot;
+
+* Understand that freedom and accountability are the same thing.
+** What does this mean to me?
+
+* Antifragile systems are redundant
+** They expect failure of one part
+
+* Redundancy vs Waste
+** Antifragile systems are redundant, which looks like waste.  Until the unusual happens.
+
+* CI/Delivery - Antifragile
+** Again this comes back to the idea that we try more often, even if that means failing.  Let's keep the failures small and local.
+
+
+** Balancing act?
+*** Antifragile - TechSafety 
+
+!! Closing?
+In the end there's nothing significant about success or failure.  What we're looking for is fast feedback for fast improvement.  If you can succeed fast, great!  Please teach me how.  The magic about focusing on failures is that you can still build to a larger success.  With a focus on success, it takes me longer to get that feedback.  I'm also less open to changing tack while I'm succeeding.  All of us take on endeavors that in hindsight, we should have quit very early on.  And in hindsight, the warning signs were there.  But it's  going &quot;well enough&quot;, it doesn't hurt that bad, let's keep going and hope it works out.  </pre>
+</div>
+<div title="FixingTheJavaScriptMess" creator="Steve" modifier="Steve" created="201401071436" modified="201401071654" tags="#codemash 2014" changecount="6">
+<pre>Steps:
+1.  Move all the script in a page to a single block (jquery can help)
+1.  Create a namespace for js
+1.  Move all script on a page to a js file with the same name.  Use the new namespace
+1.  DRY it up
+1.  Isolate components
+1.  Inject dependencies
+1.  Use templates
+
+
+!!! mockajax library
+- Used with spiking out a design with a designer - can build widgets without a server
+
+!!! Wrapping functions
+Wrapping function calls in anonymous functions instead of just passing the function (like to jquery) allows you to call functions that you haven't defined on the page yet (because the page loads top to bottom)
+
+{{{
+  $('#stuff).on('click' doStuff);
+
+  doStuff = function() {
+  }
+}}}
+
+'' Undefined ''
+
+!!! Namespaces
+
+* Use namespace as interim step to organize code
+* Not a good solution long term if you have collisions with another library - last write wins
+
+----
+
+Why on earth would you add functions to an object that require it to know things outside the function definition?    (Step 6ish)
+
+!!! Templates
+
+Templates allow you to stop sending markup across the wire.  Add rows to a table asynchronously, for instance.
+
+!!! amplify
+amplify - allows you to publish events to topics.  You can further decouple components from each other.  Also components from server:
+
+amplify.publish(&quot;needData&quot;)
 </pre>
 </div>
 <div title="GettingYourCustomerToWriteAcceptanceTests" creator="Steve" modifier="Steve" created="201301170224" modified="201301170247" changecount="2">
@@ -1226,6 +1852,165 @@ Psychology of dealing with customers that don't want granular small stories - It
 * Joe Fiorini uses it  like guard to run tests
 
  * chain tasks together for a workflow:  requirejs, copy, qunit, watch</pre>
+</div>
+<div title="HowNetflixArchitectsForSurvival" creator="Steve" modifier="Steve" created="201401091459" modified="201401092041" tags="#codemash 2014" changecount="9">
+<pre>@jedberg
+
+!! Netflix Way
+* Built for three - three of everything
+* Automated
+* Fully automate machine image bakery (no chef or puppet)
+* Automated deployment
+* Every Independent teams responsible for DEV and OPS
+* Redundancy through mult-regiion deployment
+
+!! Freedom and Responsibility
+* Hire responsible adults and give them the freedom to do what they think is right
+* Things usually don't break
+* Manage capacity and autoscaling
+* Fix anything that breaks at 4am!
+
+Shared state should be sotred in a shared service - replicate data everywhere
+
+Engr boot camp to teach them how to build in a highy distributed (highly redundant) environment
+
+2B requests per day into the Netflix API
+Netflix has all the content stored on a local CDN, rest is on amazon
+
+!! Highly aligned, oosely coupled
+* Teams are good at communicating
+* Auto-scaling (SOA)
+* Effects are narrow
+
+!! All systems choices assume failure is inevitable
+* Reliability vs $$
+* Chaos Monkey
+
+!! Asgard 
+Cloud orchestration tool - modifies Amazon - open source
+# Push code,
+# Launches new cluster with the new software (as an image).
+# Load balancer 
+# Use new cluster
+# Delete the old cluster after a day
+#  If something goes wrong the balancer can shift some of the traffic back to the old code, or all of it if the new code is SNAFU
+* ''Moves granularity from the instance to the cluster''
+
+!! Why Bake?
+
+* Take Base Image
+* RPMs
+* Jenkins / Yum / Artifactory
+
+* Own your service, own your machine, pick your platform, language, etc, doesn't matter
+
+!! The simian army
+* Chaos, Latency
+* Everyone knows chaos monkey is coming and builds for it
+
+!! Data
+* Cache (memcache)
+* Cassandra
+* little bit of MySql (fringe)
+
+!! EVCache
+* open source
+* Wrapper around memcache
+* Replicates writes to multiple zones
+* Pulls cache data from local zone first (affinity)
+
+!! Cassandra
+* Distributes data around the ring
+* Horizontal scaling is easy - just add more nodes
+* Uses quorum among distributed nodes to determine what will be returned - caller configured
+* Prefer availablity over consistency
+* Prefer Writes over reads
+* Jave-based
+* Open-sourced and with commercial support
+* Fast negative lookups
+
+!! Going multi-zone
+* Loosely connected
+* Low latency between zones
+
+!! Leveraging Multi-region
+* Claim: 100% uptime is theoretically possible - IF you replicate all your data
+
+!! Acitve/Active
+* Data replication challenges
+* Cache invalidation
+* Misdirected user
+* Sudden load increase during failover
+* When do you fail over?
+* How do you replicate cache?
+
+!! Cache Replication
+* Three strategies
+** No replication - recommended.  Can you write your software to work without data replication?
+** Invalidation only - default mode.  Just re-grab data from the database again when you fail over.
+** Full copy - For the teams using memcache as a DB
+
+!! Failover
+* Need to scale up
+* Need to route misrouted users back &quot;home&quot;
+** Mismatch between actual IP and resolver location
+* Blog post on netflix (active/active failover)
+
+!! Chronos
+* Logging/Event tool
+
+!! Best Practices
+* Incident Reviews
+** No blame
+** What went wrong?
+** Detect it sooner?
+** Prevent it?
+** Prevent this class of problem?
+** Improve our reaction to this kind of problem?
+
+!! Circuit Breakers (Hystrix)
+* If your dependencies are failing, return a default response
+* Gives dependency a chance to recover, rather than hammering it
+
+!! Autoscaling
+* Obviously good for peaks
+* Good for scaling down too.  Reduces complexity, deployment times, etc
+* Leads to renewal of machines as well
+
+!! DDOS
+* Believes Amazon has some DDOS protection
+* Autoscaling covers peak problems
+
+!! 
+* No teams share data, all access is through the service
+</pre>
+</div>
+<div title="HowToBeAFunctionalProgrammerWithoutBeingAJerkAboutIt" creator="Steve" modifier="Steve" created="201401101503" modified="201401101533" tags="#codemash 2014" changecount="2">
+<pre>@NathanDotz
+https://github.com/sleepynate
+
+!! Intro
+* Command pattern is same as passing functions
+
+!! Definitions
+* A monad is and object that lets you use the object inside it
+** Lists are monads
+
+* Functors are stuff you can map over
+** Lists are functors
+
+* Applicative functors are stuff you can map over and get a stuff of functions back
+
+* Currying is a function that takes and argument and gives you a function that does the same thing with one less argument
+** Special case of applicative functors
+
+!! Crib sheet
+* Declare, don't assign
+* Calculate, don't mutate
+* Pattern match, don't if-else
+* recur, don't loop
+* pass functions, not structs
+* map, filter, reduce</pre>
 </div>
 <div title="Hypothesis Driven Development" creator="Steve" modifier="Steve" created="201311101900" changecount="1">
 <pre>http://barryoreilly.com/2013/10/21/how-to-implement-hypothesis-driven-development/</pre>
@@ -1269,6 +2054,14 @@ Body language mirroring - miror inflection, speed, temper of the voice - helps m
 &quot;I'm one of you, I want to work with you, make it easier for you&quot;
 
 </pre>
+</div>
+<div title="InterestingQuestions" creator="Steve" modifier="Steve" created="201401120315" changecount="1">
+<pre>* Who do you most admire and why?
+* In your last employee review, what areas for improvement were identified? 
+* Why are you here?
+* What is your passion? 
+* Describe an environment in which you would not thrive.
+* If you could do anything, what would be your ideal job? </pre>
 </div>
 <div title="Interview Questions" creator="Steve" modifier="Steve" created="201307180027" changecount="1">
 <pre>Tell me about a problem you solved recently.
@@ -1322,6 +2115,16 @@ An activity can launch another activity by creating an intent.
 Hand off loading to Loader (vital if doing network, probably good idea regardless)
 Use AndroidHttpClient to execute web requests
 Open templates for requests using a resource from the context</pre>
+</div>
+<div title="Java8" creator="Steve" modifier="Steve" created="201401092210" changecount="1">
+<pre>* Closures
+* Interface enhancements
+* Bulk collection
+
+shapes.forEach(s -&gt; {
+  if(s.get Color() == RED)
+    s.setColor(BLUE)
+}</pre>
 </div>
 <div title="LeanStartup" creator="Steve" modifier="Steve" created="201307092047" tags="ux" changecount="1">
 <pre>Lean
@@ -1398,6 +2201,39 @@ http://www.github.com/jbrains/trivia</pre>
 </div>
 <div title="MainMenu" creator="Steve" modifier="Steve" created="201301261658" changecount="1">
 <pre>[[TabTimeline]]</pre>
+</div>
+<div title="ManagingHumans" creator="Steve" modifier="Steve" created="201401111544" modified="201401111753" changecount="4">
+<pre>!! Six questions you should know the answer to about your manager
+* Where does your manager come from?
+* How does your manager compensate for their blind spots?
+* How does your manager communicate to the rest of the org?
+* How does your manager talk to you?
+* Do they do what they say they'll do?
+* Do they make things happen?
+* What happens when they lose their cool?
+
+!! Freakouts
+* Don't pile on
+** Listen, nod
+* Give the benefit of the doubt
+** They've obviously given this a lot of thought and it concerns them
+* Ask questions - try to move towards a rational conversation
+* Listen for solutions
+
+!! Agenda detection
+* Identify Pros
+* Identify Cons
+* Identify Issue
+
+!! Make a rolodex
+* People you respect and would go to war with again
+
+!! Teams
+* Incrementalists need Vision
+* Completionists need Action
+* Pair Incrementalists with Completionists
+
+</pre>
 </div>
 <div title="Mentally strong" creator="Steve" modifier="Steve" created="201312142217" modified="201401011856" tags="journal" changecount="2">
 <pre>http://www.amymorinlcsw.com/mentally-strong-people/
@@ -1785,6 +2621,12 @@ In the TDD cycle, this means that we first write a portion of a test; and before
 
 The red-green-refactor cycle becomes Red -&gt; Clean Test -&gt; Green -&gt; Refactor.</pre>
 </div>
+<div title="SOLID Javascript" creator="Steve" modifier="Steve" created="201401092040" modified="201401092140" tags="#codemash 2014" changecount="3">
+<pre>DIP - Caller owns the protocol that the dependency implements.  Ripples only go in one direction - down to the details.
+* TDD - Caller wins!
+
+Human beings think in abstractions - not details.  Named abstractions allow us to group details into larger concepts.  This allows us to keep building higher and higher abstractions that can solve bigger problems.</pre>
+</div>
 <div title="ScalaAsABetterJava" creator="Steve" modifier="Steve" created="201301170222" modified="201301261454" tags="Scala" changecount="4">
 <pre>Bruce Eckel
 http://www.atomicscala.com/
@@ -1864,6 +2706,47 @@ http://stackoverflow.com/questions/2096876/use-cases-for-streams-in-scala
 http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.Stream
 http://blog.danielwellman.com/2008/03/streams-in-scal.html
 
+
+</pre>
+</div>
+<div title="SecretsOfClojureWebDevelopment" creator="Steve" modifier="Steve" created="201401091640" modified="201401092042" tags="#codemash 2014" changecount="5">
+<pre>Clinton N. Dreisbach
+github.com/cndreisbach
+
+Mind Blown.  @cndreisbach enthusiasm for clojure is contagious.
+
+https://github.com/cndreisbach/clojure-web-dev-workshop/
+http://clojurewebdev.com/
+
+
+!! Tools
+Ring is Rack for clojure
+ Middleware is manipulating requests (auth, mime-type, routing, etc)
+
+Routing - Compojure
+Templating - Hiccup or Selmer
+Asset pipeline - Stefon
+-Luminus wraps up these libraries as Leiningen tasks.  Get started here
+
+!! Hoplon
+* HTML as clojurescript 
+* Compiles to static files, drop in anywhere
+
+!! Liberator
+* Provides resources
+* Resources are decision trees
+* Every result in liberator is added to ctx (fold back it into the context, call the next one in-line)
+* Override the decisions (allowed? authorized? exists?) to inject handlers in the code for that kind of request (200, 404, etc)
+* Provides default responses in the representation that the mime-type is asking for - want json?  want csv?, want html?, want xml?  \\This sounds awesome for testing\\
+
+!! HTTP Kit
+* Supports web sockets and long polling
+* Supports streaming
+* SO fast!
+
+!! Resources
+* clojure-doc.org
+* http://clojurewebdev.com
 
 </pre>
 </div>
