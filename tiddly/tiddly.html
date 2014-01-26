@@ -1411,6 +1411,21 @@ GettingYourCustomerToWriteAcceptanceTests
 
 AngularJS</pre>
 </div>
+<div title="CodeMash 2.0.1.4" creator="Steve" modifier="Steve" created="201401151742" modified="201401181701" tags="#codemash 2014" changecount="3">
+<pre>https://github.com/TechConf/CodeMash2014
+
+Leon Gersing's Speaking pre-compiler was a great experience.  This was a hands-on session with opportunities to practice speaking and get immediate coaching on things like diction, energy, and projection.  It was structured as a master class, where the attendee presents material and Leon repeatedly stopped the presentation to make suggestions for dramatic and subtle improvements.  Leon guided presenters through identifying their narrative structure and building a better talk.
+
+The Elixir pre-compiler was an interesting look at a newer functional language that's rapidly gaining interest.  Elixir is a dynamic language built on-top of the Erlang Virtual Machine and is designed to build distributed fault-tolerant applications.  Ryan Cromwell and Chris McCord spent the morning leading the class through the syntax and structure of an elixir program.  In the afternoon, the focus shifted to making a distributed application, using all the attendees, to perform a DDoS/build a tweet aggregator.  Here the power of Erlang and OTP mixed with the simplicity of Elixir to make a compelling case for the language.  Nodes were brought on-line and integrated into the mesh with very little ceremony.  The Erlang/Elixir philosophy of error handling blew some minds: just let it die and configure your program to start a new process.  With the ability to create several thousand processes per application, one can quickly grasp how distributed, concurrent and fault-tolerant a system built in this way could become. 
+
+Jeremy Edberg of Netflix gave an interesting talk about how Netflix is architected.  This talk went deeper than just talking about pieces and parts; Jeremy made a compelling argument for the culture of Netflix and how they value responsibility and independence over carefully gated processes and unified architecture.  Their culture assumes everything is automated, redundant and repeatable.  They recognize that blame is pointless and have built the famous Netflix Simian Army to take down nodes and services - in production - and actively find problems to resolve.  Jeremy also talked about some of the challenges Netflix has had scaling with Amazon and a number of cool tools they've built.  Many are open-sourced and will continue to be.  [link: https://github.com/Netflix].  Their build process was particularly interesting as they've taken continuous delivery to an interesting end - every commit spins up a new amazon cluster with the latest image and directs traffic to it.
+
+The Secrets of Clojure Web Development was a fast-paced ride through the bleeding edge of web development in clojure.  Clinton Dreisbach's enthusiasm for this language and its ecosystem was infectious.  He compared a number of tools to rails equivalents and made it easy to understand how the tools are used and why they might be attractive.  Liberator was very interesting, Clinton managed to build a fully compliant REST API in a handful of lines of clojure.  The demonstration of HTTP Kit was also impressive.  The combination of a functional language and streaming over web sockets seemed very attractive for those scenarios where there is a lot of data to move and HTTP is the least painful way to get it there.
+
+There were also some more advanced sessions that were attended.  Brian Genisio gave an in-depth overview of AngularJS directives that was well done.  Directives are a difficult concept to grasp and Brian did a nice job of working through all the options and presenting some entertaining examples that kept the audience engaged.  With directives a developer can essentially extend html and create semantic or domain-specific tags that can be re-used through the application.  An intuitively functional &lt;tab&gt; html element in a &lt;tabs&gt; container is a common example that most web developers would love to have.  Jerry D'Antonio gave an interesting talk on ruby concurrency and explained examples of concurrency constructs from other languages like clojure, javascript, erlang, scala, and F#.  He &quot;concurrently&quot; presented the same abstraction re-written in ruby using the ruby-concurrency gem.  This provides an interesting alternative for building those applications that would benefit from concurrent constructs.
+
+A possible highlight of the conference was the lightning talks.  Corey Haines did a magnificent job hosting in what appeared to be a crushed velvet dinner jacket.  Most of the talks were good to great, but Gary Bernhardt stole the show with &quot;Useing You're Type's Good&quot; [link: https://www.destroyallsoftware.com/talks/useing-youre-types-good]</pre>
+</div>
 <div title="CodeRules" creator="Steve" modifier="Steve" created="201309221804" changecount="1">
 <pre>http://www.bennadel.com/resources/uploads/2012/ObjectCalisthenics.pdf
 
@@ -1669,7 +1684,7 @@ github.com/rkh</pre>
 
 In this session we'll talk about why your mind reacts to failure the way it does and what you can do about it.  Using concrete examples, like TDD and Lean Startup, we'll work through some cognitive biases that might hold you back.  We'll talk about failing safely and building environments where failure is encouraged.  Then we'll move on to anti-fragile systems and how focusing on failure pushes a system to thrive on randomness.  We'll close with a discussion on failure-focused strategies that allow us to  build to an ultimate success.</pre>
 </div>
-<div title="Failing Your Way To Success" creator="Steve" modifier="Steve" created="201401081400" modified="201401131753" tags="#codemash 2014" changecount="9">
+<div title="Failing Your Way To Success" creator="Steve" modifier="Steve" created="201401081400" modified="201401231458" tags="#codemash 2014" changecount="12">
 <pre>Agile distilled
 
 -Feedback!
@@ -1705,6 +1720,7 @@ In this session we'll talk about why your mind reacts to failure the way it does
 * After failing
 ** Ignore or dismiss the data
 *** Ego protection
+**** The lifeblood of the ego is fear. Its primary function is to preserve your identity, but it fears your unworthiness. As a result, ego pushes you harder in order to achieve more. Ego communicates to you through &quot;oughts,&quot; &quot;musts,&quot; and &quot;shoulds,&quot; persuading you to believe that by achieving more and more, you must be worthy, right?
 ** Attribute to a personal defeciency
 *** Ego protection
 *** Afraid to try again
@@ -1715,6 +1731,9 @@ Helen Keller, “Character cannot be developed in ease and quiet. Only through e
 
 * Prefer local evidence to theory
 ** Design patterns, etc
+
+!! Killing your darlings
+* Stuff - How does this fit?
 
 
 !! Antifragile
@@ -1769,6 +1788,9 @@ Helen Keller, “Character cannot be developed in ease and quiet. Only through e
 
 ** Balancing act?
 *** Antifragile - TechSafety 
+
+** Github
+*** Jan8 postmortem - one small failure takes down the whole system
 
 !! Closing?
 In the end there's nothing significant about success or failure.  What we're looking for is fast feedback for fast improvement.  If you can succeed fast, great!  Please teach me how.  The magic about focusing on failures is that you can still build to a larger success.  With a focus on success, it takes me longer to get that feedback.  I'm also less open to changing tack while I'm succeeding.  All of us take on endeavors that in hindsight, we should have quit very early on.  And in hindsight, the warning signs were there.  But it's  going &quot;well enough&quot;, it doesn't hurt that bad, let's keep going and hope it works out.  </pre>
@@ -2317,10 +2339,14 @@ Avdi:
 
 Hanselman:  http://www.hanselman.com/blog/ReviewTheLenovoX1CarbonTouchIsMyNewLaptop.aspx</pre>
 </div>
-<div title="NoEstimates" creator="Steve" modifier="Steve" created="201309210115" tags="estimates" changecount="1">
+<div title="NoEstimates" creator="Steve" modifier="Steve" created="201309210115" modified="201401191259" tags="estimates" changecount="2">
 <pre>http://lkuk.uservoice.com/forums/205869-lkuk13-call-for-papers/suggestions/4242723-the-guessing-game-alternatives-to-agile-estimati?utm_campaign=shorturls&amp;utm_source=lkuk.uservoice.com
 
-http://www.infoq.com/news/2008/08/estimates-wasteful</pre>
+http://www.infoq.com/news/2008/08/estimates-wasteful
+
+http://dannorth.net/2013/08/08/blink-estimation/?relatedposts_exclude=1018
+
+http://dannorth.net/2013/01/15/accelerating-agile/?relatedposts_exclude=1097</pre>
 </div>
 <div title="Packer" creator="Steve" modifier="Steve" created="201309210238" changecount="1">
 <pre>Creates images for multiple providers (VM softwares) from a single template.
@@ -2525,7 +2551,7 @@ If I discover the program is not on track, when would you like to know? As soon 
 Software is about delivering value.  Getting value sooner is better.  Large things are a waste of time, the value is always hidden inside there.  Do the small stuff.  Do the most valuable stuff first.  Everything that is valuable today may not be tomorrow.  These valuable things have to work.  They have to continue to work.
 </pre>
 </div>
-<div title="Remote pairing" creator="Steve" modifier="Steve" created="201306292332" modified="201311101334" changecount="6">
+<div title="Remote pairing" creator="Steve" modifier="Steve" created="201306292332" modified="201401231500" changecount="7">
 <pre>Zander on setting up a VPS:  http://www.civet.ws/2013/06/dont-fear-pair-programming-a-guide-to-starting/
 
 Stuff from Zee:
@@ -2539,7 +2565,9 @@ SSH+Tmux pairing on a mac:  http://jjasonclark.com/Remote-Pairing-with-SSH-and-T
 
 Madeye.io - google hangout:  http://t.co/wunrtbmeoC
 
-Equipment:  https://speakerdeck.com/rietta/why-and-how-we-remote-pair-program</pre>
+Equipment:  https://speakerdeck.com/rietta/why-and-how-we-remote-pair-program
+
+Zander is using https://www.sococo.com/ for a virtual office where everyone has an office and you can move your avatar to go talk to people.   Pretty awesome idea.</pre>
 </div>
 <div title="RemoteTeams" creator="Steve" modifier="Steve" created="201307201434" modified="201307201448" changecount="2">
 <pre>https://zapier.com/blog/how-manage-remote-team/
