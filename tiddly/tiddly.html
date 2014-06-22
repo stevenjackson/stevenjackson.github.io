@@ -650,6 +650,25 @@ Coding analogy
 
 Eggs, steel blocks / rocket precision machinery, legos, new</pre>
 </div>
+<div title="A Critical Step towards #NoEstimates" creator="Steve" modifier="Steve" created="201405141635" tags="estimates" changecount="1">
+<pre>http://www.jbrains.ca/permalink/a-critical-step-towards-noestimates
+
+Change language to one of budgets:  //I can afford to spend 2-3 days on this task//
+
+* Parkinson's Law
+** work expands so as to fill the time allotted
+** &quot;we need something in 2 days&quot; leads to conversations about options
+
+* Task -&gt; Outcome
+** Tasks in a plan usually lose sight of the desired outcome
+** If we can't get done with this task in 3 days, &quot;what can I give you instead?&quot;
+** Lets not argue over the fact that we're lousy at estimating
+
+* Cost -&gt; Value
+* Estimates focus on cost and when they turn out to be wrong we focus on &quot;broken commitments&quot; rather than the value of doing this in the first place
+* &quot;If you always knew that this task would cost 2 weeks (revised estimate), would you have invested in it anyway?
+</pre>
+</div>
 <div title="AdvancedRubyConcurrency" creator="Steve" modifier="Steve" created="201401101942" tags="#codemash 2014" changecount="1">
 <pre>Jerry D'Antonio
 @jerrydantonio
@@ -1385,6 +1404,15 @@ http://audit.qos.ch/faq.html</pre>
 <div title="CAS spike" creator="Steve" modifier="Steve" created="201306291700" modified="201306291700" tags="cas" changecount="2">
 <pre>Use appfuse to set up spring/hibernate app and try to plug in audit framework</pre>
 </div>
+<div title="Code Change Complexity" creator="Steve" modifier="Steve" created="201404091640" tags="TechDebt" changecount="1">
+<pre>https://michaelfeathers.silvrback.com/code-change-complexity
+
+Algorithmic complexity as a metaphor for code change.  
+O(1) - only one file has to change
+O(n)  - changing from SQL to NoSql in a badly encapuslated code base
+
+Label code changes between O(1) and O(n)</pre>
+</div>
 <div title="CodeMash" creator="Steve" modifier="Steve" created="201301170215" modified="201301170302" changecount="16">
 <pre>http://icodemash.com/
 Jan 10-11 2013
@@ -1601,6 +1629,12 @@ Might be a good solution if you have more than one default dataset
 Q:  Can you run erlang in elixr?  Port cucubmerl to elixr - run every scenario in a process - massive multithreading
 </pre>
 </div>
+<div title="Death By Specification" creator="Steve" modifier="Steve" created="201405071715" changecount="1">
+<pre>Overspecifying cards during estimation sessions
+Avoiding dev/product interaction
+
+Solution:  3 amigos during kickoff</pre>
+</div>
 <div title="DefaultTiddlers" creator="Steve" modifier="Steve" created="201301170300" changecount="1">
 <pre>[[TabTimeline]]</pre>
 </div>
@@ -1684,7 +1718,7 @@ github.com/rkh</pre>
 
 In this session we'll talk about why your mind reacts to failure the way it does and what you can do about it.  Using concrete examples, like TDD and Lean Startup, we'll work through some cognitive biases that might hold you back.  We'll talk about failing safely and building environments where failure is encouraged.  Then we'll move on to anti-fragile systems and how focusing on failure pushes a system to thrive on randomness.  We'll close with a discussion on failure-focused strategies that allow us to  build to an ultimate success.</pre>
 </div>
-<div title="Failing Your Way To Success" creator="Steve" modifier="Steve" created="201401081400" modified="201401231458" tags="#codemash 2014" changecount="12">
+<div title="Failing Your Way To Success" creator="Steve" modifier="Steve" created="201401081400" modified="201403221245" tags="#codemash 2014" changecount="13">
 <pre>Agile distilled
 
 -Feedback!
@@ -1734,6 +1768,8 @@ Helen Keller, “Character cannot be developed in ease and quiet. Only through e
 
 !! Killing your darlings
 * Stuff - How does this fit?
+
+!! Practice &quot;when things go wrong&quot;
 
 
 !! Antifragile
@@ -2293,6 +2329,35 @@ How to be sociable?
 * How to get an inexperienced mentee engaged with solo experimentation and discovery?
 </pre>
 </div>
+<div title="Mobile Content Delivery" creator="Steve" modifier="Steve" created="201403121833" modified="201403121840" changecount="3">
+<pre>* LTE network latency is ~50 ms
+
+!! Big steps
+# Distribute Delivery (CDN)
+# Store objects closer to the end user (Advanced CDN (pre-cache)), user cache
+# Decrease end-to-end time
+
+!!! Dynamic Content Accelerator
+* Essentially a private backbone to conquer a geographic constraint (edge-to-edge)
+
+!! Optimize for Mobile
+* Deliver mobile content first - Make desktops throw it away
+* Mobile browsers have small caches (32M)
+* Send the right images (use headers)
+* Pre cache based on user's guided experience (interaction diagrams?)
+
+!! Embrace mobile constraints
+* Imagine no cache.  How do you conserve power (avoid requests)?
+* Assume user will not stay connected.  How will they use the app?
+* Avoid Polls
+* Group requests and pushes
+
+!! Ideas
+* Monitor state of radio and piggyback when its active
+* Decouple UI from network calls
+* Burst and idle
+* Optimize network for bursty traffic like that (TCP window adjustments)</pre>
+</div>
 <div title="MovingBeyondEstimates" creator="Steve" modifier="Steve" created="201309291430" modified="201309291433" tags="estimates" changecount="3">
 <pre>http://www.cio.com/article/739333/How_to_Move_Beyond_Project_Estimates_and_Provide_Better_Value
 
@@ -2347,6 +2412,66 @@ http://www.infoq.com/news/2008/08/estimates-wasteful
 http://dannorth.net/2013/08/08/blink-estimation/?relatedposts_exclude=1018
 
 http://dannorth.net/2013/01/15/accelerating-agile/?relatedposts_exclude=1097</pre>
+</div>
+<div title="Nobody will train you but you" creator="Steve" modifier="Steve" created="201404271822" modified="201404271829" changecount="2">
+<pre>http://www.confreaks.com/videos/2427-railsconf2013-nobody-will-train-you-but-you - Zach Briggs
+
+* Everytime you do a google search - make it your own
+** Create an index card - search on one side, answer on the other
+** Review those cards
+
+* Memorize a good tutorial.  Treat it like a kata
+** Spent 40 hrs on Gary Bernhardt's Suck Rocks screenscasts
+
+* Sentinel Object
+** Don't return nil!  They're useless in stacktraces.
+** You don't need to go overboard with errors either.  Just do something simple:
+
+{{{
+class Scoreboard
+  NoScore = Class.new
+
+  def score player
+    calculate_score player || NoScore
+  end
+end
+}}}
+
+Leads to stack trace like:
+{{{
+  NoMethodError: undefined method 'each' for Scoreboard::NoScore
+}}}</pre>
+</div>
+<div title="One Practical Alternative to Estimates" creator="Steve" modifier="Steve" created="201405121004" modified="201405121020" tags="estimates" changecount="7">
+<pre>http://www.jbrains.ca/permalink/one-practical-alternative-to-estimates
+
+&lt;&lt;&lt;
+Whenever I find myself expressing “anti-” thoughts I think back to a wonderful trick that I learned from Arlo Belshee and James Shore. They ran a workshop about integrated tests where they asked what benefits they give us, rather than focusing on all the problems that they cause. When they did this, the discussions in the room became so much more constructive than the ones I’d seen online. Not only that, but we (mostly) stopped dwelling on the problems we faced, and instead shared numerous ways that we get those same benefits by other means. It can also help find essential benefits that we don’t get by other means, and encourage us to look for alternatives.
+&lt;&lt;&lt;
+
+What is beneficial about estimates? ''They reveal assumptions''
+
+!!! How do we avoid the trust breakdown?
+* PO upset about conservative estimates
+* Programmers pulling rank to pick an estimate
+* PO pressure when estimates are higher than expected
+* Work is already committed so estimate is worthless
+
+When the trust is broken, I'll tell you what I think you want to hear so I can get away from you.
+
+!!! Expiring estimates
+* Encourage revisiting estimates - say every 2 weeks
+** If we're going to assume estimates go bad quickly, why put any real time into them?
+
+''It seems clear that talking about the estimate is more valuable than the estimate itself''
+//Obviously true (to me) shared understanding is the thing//
+
+!! A practical alternative to estimating = BDD
+* Task/story-level estimates routinely cause more problems than they solve.
+* The act of estimating with people that we trust helps us reveal significant risks in the assumptions we make about the work.
+* The act of estimating with people that we don’t trust leads eventually to ritual, Cargo Cult, whatever you prefer to call it.
+
+</pre>
 </div>
 <div title="Packer" creator="Steve" modifier="Steve" created="201309210238" changecount="1">
 <pre>Creates images for multiple providers (VM softwares) from a single template.
@@ -2507,23 +2632,28 @@ Let them answer. Allow for some silence. Let them answer further. Let them notic
 
 *What other things can we do to get all these benefits?</pre>
 </div>
-<div title="Project list" creator="Steve" modifier="Steve" created="201309181931" modified="201310121651" changecount="13">
-<pre>* Stack overflow
-** Sign in, add one thing
+<div title="Project list" creator="Steve" modifier="Steve" created="201309181931" modified="201402171309" changecount="15">
+<pre>* Pinch hitter
+** Verify posts
+
+* Clojure
+** re-build hot or not
+** Something with hobbitses
+
+* Scala
+** Rewrite play tutorial test-driven
+
+* Python
+** Leandog dashboard
+
+* Stack overflow
 ** Mind map
 
 * Finances
-** Start project
-** Test run on home machine
-** Update dependencies
-** Berkshelf
+** Next steps
 
 * Gametel
-** Add List View accessor
-
-
-
-</pre>
+** Add List View accessor</pre>
 </div>
 <div title="ProjectEstimates" creator="Steve" modifier="Steve" created="201309191119" tags="teams estimates" changecount="1">
 <pre>http://www.jrothman.com/blog/mpd/2013/08/trust-agile-program-management-being-effective.html
@@ -2612,6 +2742,16 @@ Elephant is emotional mind
 Put both in a room - who's going to win?
 
 Provide a path to adopting something new - don't just say it's cool - provide a compelling argument of why and HOW to move from x to y (business case).</pre>
+</div>
+<div title="Ripeness for Refactoring" creator="Steve" modifier="Steve" created="201404091652" modified="201404091653" tags="TechDebt" changecount="2">
+<pre>https://michaelfeathers.silvrback.com/ripeness-for-refactoring
+
+Sometimes we shouldn't dive in and refactor.  
+* What if you can identify lots of potential ways to fix it?
+* What if none of them is compelling?
+* What if you can't think of a name for an extracted responsibility?
+
+This is sorta similar to Beck's DRY rule.  If you copy it once, cringe a little but do it.  If you copy it twice, start looking really hard to eliminate.  If you do it a third time, it's worth a lot of effort to DRY it up.</pre>
 </div>
 <div title="Ruby vs Scala" creator="Steve" modifier="Steve" created="201301261415" modified="201301261453" tags="Scala" changecount="2">
 <pre>Scala scales - It's performant, supports actors and parallelization.  Has interesting pattern matching feature.
@@ -2903,6 +3043,13 @@ Habit 3:  All code reviewed via pull requests - make sure to find positive feedb
 Habit 4:  Set dedicated learning time with self-chosen objectives
 </pre>
 </div>
+<div title="Things I think are true" creator="Steve" modifier="Steve" created="201404241029" modified="201404241031" changecount="2">
+<pre>* Hard to test = badly designed
+* Done is in production - stop screwing with this to make everyone look good in reports.
+* Trying to &quot;smooth&quot; the path for developers up front is less efficient than figuring it out as the code is written
+** With the caveat that devs hate being jerked around
+</pre>
+</div>
 <div title="ThinkingFastAndSlow" creator="Steve" modifier="Steve" created="201401050233" modified="201401052149" changecount="8">
 <pre>Daniel Kahneman
 
@@ -3006,6 +3153,16 @@ Toaster Heuristic:  Imagine a software team as a toaster oven.
 Moral of the story:  Use empirical data to inform the amount of work we slice off, rather than guessing at adjustments.  This enables predictabiity and and leads towards a stable work system where the baseline is known.
 
 </pre>
+</div>
+<div title="Using Google Spreadsheet as a simple TDD/BDD environment" creator="Steve" modifier="Steve" created="201404091615" modified="201404091631" changecount="2">
+<pre>http://vimeo.com/89909482
+
+Fizzbuzz 
+
+Number | Expected | Actual        | Pass/Fail |
+&lt;typed&gt; | &lt;typed&gt;   | &lt;function&gt; | expected == actual |
+
+Actual ties to a spreadsheet function</pre>
 </div>
 <div title="Vagrant talk" creator="Steve" modifier="Steve" created="201306301817" modified="201309150153" changecount="21">
 <pre>! TODO
@@ -3187,6 +3344,14 @@ css - compass
 *What's a css property?
 *What's hoisting in javascript?
 </pre>
+</div>
+<div title="WorkplaceInterview" creator="Steve" modifier="Steve" created="201403051558" changecount="1">
+<pre>What's your favorite worktime conversation?
+What would you like someone else make happen?
+What would you change if you were allowed to?
+What decision has upset you the most in the last six months?
+What incentive would make you change the way you work?
+What's holding you back?</pre>
 </div>
 <div title="scrc13" creator="Steve" modifier="Steve" created="201308171455" modified="201308171503" tags="scrc13" changecount="2">
 <pre>''Find links''
