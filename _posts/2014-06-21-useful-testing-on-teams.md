@@ -7,7 +7,7 @@ tags: []
 ---
 {% include JB/setup %}
 
-I was reading [Uncle Bob's article about TDD and teams] and like so much Uncle Bob writes, I find myself nodding furiously in agreement at one sentence and shaking my head at the next.  This quote caught my eye: "If each member of the team does what is right in their own eyes, without considering the values of the team; then they don't actually comprise a team. Instead they will behave chaotically, and work at cross purposes to each other."  While I can guess what he intends by that, what I hear is "the team must conform".
+I was reading Uncle Bob's [article about TDD and teams] and like so much Uncle Bob writes, I find myself nodding furiously in agreement at one sentence and shaking my head at the next.  This quote caught my eye: "If each member of the team does what is right in their own eyes, without considering the values of the team; then they don't actually comprise a team. Instead they will behave chaotically, and work at cross purposes to each other."  While I can guess what he intends by that, what I hear is "the team must conform".
 
 It seems obvious to me that rules and guidelines that work well in one situation can be misused in another.  I can easily create an extravagant example of greenfield code, completely TDD'd from the first second.  I could spend days demonstrating "proper" TDD technique and mostly write good tests that I'm solidly ok with.
 
@@ -33,4 +33,4 @@ Then that fear strikes again.  Delete a test?  Reduce my test coverage?  Shrink 
 
 I wish I had a good answer for all these conflicts.  It always comes back to "it depends".  And this is why I have such a hard time with the notion that a team should conform to a certain style of testing.  People grow, teams evolve, and code gets messy.  What worked for us last year may not work anymore - we need to be able to grow without being shamed for writing/skipping this test.  Unfortunately I rarely take this stance on a team.  I conform.  I do it because it's the easy thing to do.  I do it because I'm so often wrong when I'm sure that I'm right.  I'll suck it up.  I'll copy/paste/hack the terrible test that originally came from someone who wasn't sure how to test this thing and came up with `it { should respond_to }`  And I'll wonder, what sort of example I am leaving behind?
 
-[Uncle Bob's article about TDD and teams]: http://blog.cleancoder.com/uncle-bob/2014/06/17/IsTddDeadFinalThoughts.html
+[article about TDD and teams]: http://blog.cleancoder.com/uncle-bob/2014/06/17/IsTddDeadFinalThoughts.html
