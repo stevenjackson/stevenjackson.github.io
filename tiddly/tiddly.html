@@ -641,6 +641,63 @@ Better lightning talk.
 !! What if? 
 What if I could  work effectively from anywhere?</pre>
 </div>
+<div title="3 BDD Case Studies" creator="Steve" modifier="Steve" created="201410011649" tags="#cukeup" changecount="1">
+<pre>Mary Thorn
+
+!! Case 1: Greenfield
+Before:
+* New project
+After:
+* Made automation part of done
+* PO wrote gherkin
+* Dev/QA pair to get cuke ready before work started
+* PO wanted to see cuke go green before accepting
+
+!! Case 2: Backward Implementation
+Before:
+* Team was not building the correct thing
+* Lots of rework
+* No idea what QA was testing
+After:
+* QA wrote gherkin
+* QA sent feature files to DEV/PO to verify assumptions (probably not read)
+* Developers write unit tests from feature files
+* Manual testing of feature files
+* Eventually got PO involved upfront (lots of begging)
+
+!! Case 3:  Hybrid
+Before:
+* Waterfall project
+* No colaboration
+* Ineffective communication
+* Crazy requirement specs
+* No test automation
+* Lots of issues
+After:
+* BA wrote Acceptance Tests
+* Discussion with Dev + QA
+* Estimation based on feature file
+* Devs code and handover
+* Manual testing of cukes
+* Decreased bugs SIGNIFICANTLY</pre>
+</div>
+<div title="5 Things Cucumber is Bad at (&amp; why that's a good thing)" creator="Steve" modifier="Steve" created="201410011417" modified="201410011420" tags="#cukeup" changecount="2">
+<pre>Richard Lawrence
+
+There are 2 kinds of weaknesses - opportunities for improvement, and those that teach us what the thing IS (what it is good for)
+
+!!! Weaknesses
+1.  Gherkin isn't a powerful language (No macros or loops)
+* Good!  These things make for bad expressions (Cukes are meant to be read).
+2.  I have to describe things in two places (Why can't I just put the english with the code - rspec)
+* Separate things to TALK about vs implementation details
+3. Step defs are global
+* Forces you to use ubiquitous language
+4. Regular expressions
+* It's not that hard!
+5. My stakeholders won't write feature files
+* Don't let customers throw things over the wall</pre>
+</div>
 <div title="7 October 2013" creator="Steve" modifier="Steve" created="201310071131" modified="201310081120" tags="journal" changecount="2">
 <pre>Two thoughts:
 
@@ -668,6 +725,21 @@ Change language to one of budgets:  //I can afford to spend 2-3 days on this tas
 * Estimates focus on cost and when they turn out to be wrong we focus on &quot;broken commitments&quot; rather than the value of doing this in the first place
 * &quot;If you always knew that this task would cost 2 weeks (revised estimate), would you have invested in it anyway?
 </pre>
+</div>
+<div title="A Rare Peek Into The Massive Scale of AWS" creator="Steve" modifier="Steve" created="201502101731" changecount="1">
+<pre>http://www.enterprisetech.com/2014/11/14/rare-peek-massive-scale-aws/
+
+&lt;&lt;&lt;
+The above shows the US East region in Ashburn, Virginia. It has five availability zones, and these are protected areas that are isolated from each other by a couple of kilometers and linked by high-speed, low-latency networks where synchronous replication is possible but there is enough geographic isolation that the odds of two availability zones (housing multiple copies of your data and applications) are very small. The AZ units are connected by optical fibers that use dense wavelength division multiplexing (DWDM) to transport packets between the AZs in the region, and in the case of US East, there are 82,864 fiber strands. The AZs are usually under 1 millisecond apart in terms of latency and are always less than 2 milliseconds apart; this speed is what allows for synchronous data replication, since committing data to a solid state drive takes – wait for it – between 1 and 2 milliseconds.
+&lt;&lt;&lt;
+
+&lt;&lt;&lt;
+Now, drill down into one availability zone. The datacenters inside the availability zones in US East are about a quarter of a millisecond apart on the network, and no datacenter spans more than one zone. In fact, as noted above, an AZ can have multiple datacenters, and in fact, US East appears to have ten datacenters even though the chart above says some AZs have as many as six DCs. There are redundant transit centers into the availability zones. So Amazon can lose a transit center and multiple AZs and everything keeps working.
+&lt;&lt;&lt;
+
+&lt;&lt;&lt;
+A single datacenter has up to 102 Tb/sec of bandwidth allocated to come into it – four times the aggregate inter-AZ bandwidth across the US East region, and Hamilton adds that the bandwidth inside the datacenter is “wildly higher” than this 102 Tb/sec.
+&lt;&lt;&lt;</pre>
 </div>
 <div title="AdvancedRubyConcurrency" creator="Steve" modifier="Steve" created="201401101942" tags="#codemash 2014" changecount="1">
 <pre>Jerry D'Antonio
@@ -1280,6 +1352,61 @@ http://www.amazon.com/Antifragile-Things-That-Gain-Disorder/dp/1400067820
 http://www.amazon.com/The-Black-Swan-Improbable-Robustness/dp/081297381X
 http://www.industriallogic.com/blog/why-are-most-agile-adoptions-failing/</pre>
 </div>
+<div title="Apprentice Review 10 December 2014" creator="Steve" modifier="Steve" created="201412111512" tags="apprentice_review" changecount="1">
+<pre>Past:  speakerdeck.smetz
+
+''Mentor TODOs''
+* New blog posts
+* Nitpick exercism
+* Kata Roman Numeral
+* Sit down on website
+
+''Think about''
+* How do we build confidence in our tools?
+
+''Accomplishments''
+* Pull request
+* Nitpicks
+* Building frontend
+
+''Questions''
+* Masonry vs other grid systems - Will took this one
+
+''Feeling''
+* Unsure about tool selection</pre>
+</div>
+<div title="Apprentice Review 19 December 2014" creator="Steve" modifier="Steve" created="201412191915" modified="201412191917" changecount="5">
+<pre>'' Mentor TODOs
+
+'' Accomplishments
+
+* OhioLink Deep Dive
+
+'' Questions
+
+'' Feeling</pre>
+</div>
+<div title="BDD cross-platform" creator="Steve" modifier="Steve" created="201410011423" modified="201410011424" tags="#cukeup" changecount="8">
+<pre>Juan Delgado
+@wadus
+
+Driving mobile apps with BDD
+
+Mocked Backend
+* Sinatra on a hook
+* Data in tag
+* Assert against the app
+
+{{{
+               Gherkin
+Ruby Steps                 Java steps
+        |                        |
+Calabash            Instrumentation/Robotium
+        |                        |
+      iOS                   Android
+}}}
+</pre>
+</div>
 <div title="Backlog grooming" creator="Steve" modifier="Steve" created="201306011751" modified="201306011921" tags="pghtechfest" changecount="2">
 <pre>Backlog stages
  - Freezer, Fridge, Ready to Cook
@@ -1345,11 +1472,157 @@ No predetermined roles in grooming meeting</pre>
 * What is our differentiation?
 * What is our business model?</pre>
 </div>
+<div title="Beyond BDD" creator="Steve" modifier="Steve" created="201410011652" modified="201410011701" tags="#cukeup" changecount="4">
+<pre>Matt Wynne @mattwynne
+
+!! Stage 1:  Burned Toast
+# Programmers write bugs
+# Testers find bugs
+# PM prioritize bugs
+# Prog fix bugs
+# Goto 1
+
+!! Stage 2: Auto Burned Toast
+# Programmers write bugs
+# Write automated tests
+# Tests find bugs
+# PM prioritize bugs
+# Prog fix bugs
+# Goto 1
+
+!! Stage 3: 3 Amigos
+# Team defines behavior
+# Programmers write bugs
+# Write automated tests
+# Tests find bugs
+# PM prioritize bugs
+# Prog fix bugs
+# Goto 2
+
+!! Stage 4: Test First
+# Team defines behavior
+# Automated test for behavior
+# Programmers make the tests pass
+# Testers find missing scenarios
+# Goto 2
+
+''Now you're at BDD''
+
+!! Stage 5:  Disillusionment
+# Lots of scenarios
+# Build takes ages
+# Build normally broken
+# Some scenarios flicker
+# Poor/mixed readability
+# I hate cucumber
+
+** Test value peaks at the time the test is written and drops sharply thereafter
+** You don't have to test at the UI - use hexagonal architecture
+** Turn testing pyramid 90 degrees and expose more area to test
+** Acceptance Tests do NOT have to be full-stack tests
+
+!! Stage 6:  Transcendence
+# Problem Domain is well understood by the team
+# Solution models the problem well
+# Clear architectural boundaries
+# Fewer end-to-end tests
+# Scenarios are readable
+# More Fun!</pre>
+</div>
+<div title="Big Data Visualization" creator="Steve" modifier="Steve" created="201501082110" modified="201501082145" tags="#codemash" changecount="2">
+<pre>David Girard (MSFT evangilist)
+
+What does it mean to say &quot;Best way to display data&quot;?
+
+'The visual display of quantitative information' - Tufte
+
+Brain prefers light to dark better than red to green or whatever.
+
+!!! Graphical Integrity
+* Don't lie (Fox news!)
+Lie Factor = Size of effect shown in graph / Size of effect in the data
+14.8 = 783% / 53%
+
+Be careful using 2d or 3d objects to represent 1d of data.  If the data increases 30% and you change the height of a 2D object by 30% you also grow it's width, making it a 900% change.
+
+* Keep things proportion
+* Use real dollars
+* Provide context 
+
+!!! Data-Ink
+* Bar charts tend to use a lot of ink to display very little data
+* Remove metadata, lighten what is left.
+* SHOW THE DATA
+* Iterate, removing things and see if it's &quot;better&quot;
+
+!!! Data Density
+* Don't be afraid of density
+* small multiples
+* spark lines
+</pre>
+</div>
 <div title="Bower" creator="Steve" modifier="Steve" created="201310012325" tags="javascript" changecount="1">
 <pre>* Package manager for the browser
 * Can be anything, not just javascript
 * can be retrieved via git or http (joe fiorini using S3)
 * Semantic versioning via tags</pre>
+</div>
+<div title="Building DSLs in Javascript and Coffeescript" creator="Steve" modifier="Steve" created="201501091959" modified="201501151424" tags="#codemash" changecount="4">
+<pre>Dave Mosher @dmosher
+https://speakerdeck.com/dmosher/building-dsls-with-javascript-and-coffeescript
+https://bitly.com/bundles/dmosher/8
+
+extend.js + Namespacing
+- creates or appends for a namespage/object string
+
+
+{{{
+extend('app.views.config', {})
+}}}
+
+vs 
+{{{
+app.views.config = {}
+}}}
+
+
+
+! Why should I care
+*Meaningful semantics
+*Extend erd party
+*web components
+
+&quot;KendoUI has a wrapper for angular&quot;
+
+ng-directive example:  bitly.com/bundles/dmosher/8</pre>
+</div>
+<div title="Business rails docker" creator="Steve" modifier="Steve" created="201501081558" modified="201501081805" tags="#codemash" changecount="3">
+<pre>Michael Danko
+@mikedanko
+
+registry, containers, images
+
+docker handles deployment, no god, monit, capistrano
+
+fig - links stuff?
+
+very fast
+
+ubuntu core - 100MB, autoupdates
+
+Mesosphere - manage containers
+
+Can replace vagrant - this docker image is the same thing as production
+
+matrix builds
+
+flynn, deis - mini PaaS
+dokku - micro PaaS (single instance)
+
+
+!!! Questions
+compare against packer
+kernel level changes?</pre>
 </div>
 <div title="CAS Links" creator="Steve" modifier="Steve" created="201306291657" modified="201306291700" tags="cas" changecount="3">
 <pre>java audit framework - Google Search
@@ -1403,6 +1676,13 @@ http://audit.qos.ch/faq.html</pre>
 </div>
 <div title="CAS spike" creator="Steve" modifier="Steve" created="201306291700" modified="201306291700" tags="cas" changecount="2">
 <pre>Use appfuse to set up spring/hibernate app and try to plug in audit framework</pre>
+</div>
+<div title="Cheap web hosting" creator="Steve" modifier="Steve" created="201407062028" tags="givecamp" changecount="1">
+<pre>smallorange - starting at $3/month - very limited, lots of tiers
+squarespace - $8/month - comes with e-commerce, reasonable limits
+mediatemple - $20/month shared/grid, $30/month for wordpress specific
+digital ocean - start at $5/month very limited, $10/month reasonable - a Virtual private server, not a web host
+</pre>
 </div>
 <div title="Code Change Complexity" creator="Steve" modifier="Steve" created="201404091640" tags="TechDebt" changecount="1">
 <pre>https://michaelfeathers.silvrback.com/code-change-complexity
@@ -1540,6 +1820,66 @@ https://github.com/raganwald/homoiconic/blob/master/2008-10-31/songs_of_the_card
 * Do root cause analysis (5 Why's) on every &quot;mistake&quot;.  Learn about your system and how customers ''actually'' use it.  Optimize __that__ quality.
 *Go fast with discipline</pre>
 </div>
+<div title="Control Computer With Your Brain" creator="Steve" modifier="Steve" created="201501091442" modified="201501091542" tags="#codemash" changecount="4">
+<pre>Dan Kacenjar @kacenjar
+
+! OpenBCI
+openbci.com
+* Org 
+* $499 for 8 bit board
+* EEG(brain), EMG(muscle), ECG (heart)
+* Based on arduino uno
+
+!! BCI is hard
+* Variable per person
+* small signals in a noisy environment (low SNR)
+* signal theory, cognitive science, neuroscience
+
+!! Board components
+* TI ADS1299 
+** low noise 8 channel, 24bit analog for bio measurements
+** SPI provides i/o to arduino
+* LIS3DH 3 axis accelerometer
+* ATmega328P microcontroller
+** arduino compatible
+*** don't need an arduino
+* RFduino
+** BTLE (4.0)
+
+* OBCI USB dongle
+** RFDuino
+** connects BCI to PC
+** requires FTDI VCP (virtual comm port) driver
+
+board &lt;-- BLE --&gt; dongle &lt;-- serial --&gt; PC
+
+!! Block diagram
+3 bytes of data per channel
+2 bytes for each axis in the accelerometer (xyz)
+
+
+!! Programming
+* Can use Arduino IDE
+* Showed example using Processing (http://playground.arduino.cc/Interfacing/Processing)
+
+!! OpenBCI client software
+* has it's own client
+
+</pre>
+</div>
+<div title="Conversational patterns in BDD" creator="Steve" modifier="Steve" created="201409141250" changecount="1">
+<pre>http://lizkeogh.com/2011/09/22/conversational-patterns-in-bdd/
+
+!! Context Questioning
+* “Is there any other context which, when this event happens, will produce a different outcome?”
+* What do we do when &quot;Given&quot; isn't true
+
+!! Outcome Questioning
+* “Given this context, when this event happens, is there another outcome that’s important? Something we missed, perhaps?”
+* If pixies were doing this instead of software, would it be enough? Or do they need to do something else, too?”
+
+</pre>
+</div>
 <div title="Corey Haines BAWCH #1" creator="Steve" modifier="Steve" created="201301170257" changecount="1">
 <pre>Determining business value vs Dispelling ignorance
  - Determining most valuable feature is usually a hand-waving exercise of varied opinions.  Instead equate &quot;providing value&quot; to &quot;providing knowledge about the system to build&quot;
@@ -1586,6 +1926,31 @@ Costs
 * False sense of security while tests are passing
 </pre>
 </div>
+<div title="Cucumber for embedded" creator="Steve" modifier="Steve" created="201410011721" tags="#cukeup" changecount="1">
+<pre>Itamar Hasin @itababy
+
+Relies entirely on Wire protocol (Cucumber Recipe #15)
+
+!!! Remote control
+Off board cuke -&gt; Wire -&gt; Listener -&gt; Network -&gt; Target
+Pro:  Target untouched
+Con: All APIs must be exposed to the network
+
+
+!!! IN-SITU
+Cucumber -&gt; Network -&gt; Listener -&gt; Target 
+ (Listener is on-board)
+
+Pro:  No APIs exposed
+Con: Server part of codebase
+Con: Need memory for wire listener
+
+!!! Gateway
+Cucumber -&gt; Gateway -&gt; Multiple devices
+Orchestrates/Switchboard to multiple devices
+
+Implements wire protcol and dispatches either to another wire protocol listener (in-situ) or translates wire protocol to network or serial commands against the  target.</pre>
+</div>
 <div title="CucumberFutureAslak" creator="Steve" modifier="Steve" created="201309171428" tags="cukeup" changecount="1">
 <pre>Cucumber2 - rewrite of ruby version
 Gherkin3
@@ -1601,6 +1966,21 @@ cucumber-android - built on cucumber-jvm
 * Free for open source
 
 share.js - used for the real-time piece
+</pre>
+</div>
+<div title="CukeupNYC 2014" creator="Steve" modifier="Steve" created="201410011413" modified="201410011651" tags="#cukeup" changecount="12">
+<pre>Aslak:
+BDD = Let's have a conversation -&gt; Examples
+Important for examples to be concrete
+* Foundation for exploring
+* Concrete examples are easier to automate
+
+----
+Daniel Wellman @wellman
+Alternate step for same gherkin - use ENV variables
+
+----
+ ** Please use cucumber pro - we need feedback **
 </pre>
 </div>
 <div title="CukeupRandom" creator="Steve" modifier="Steve" created="201309181745" modified="201309191441" tags="#cukeup" changecount="4">
@@ -1629,14 +2009,89 @@ Might be a good solution if you have more than one default dataset
 Q:  Can you run erlang in elixr?  Port cucubmerl to elixr - run every scenario in a process - massive multithreading
 </pre>
 </div>
-<div title="Death By Specification" creator="Steve" modifier="Steve" created="201405071715" changecount="1">
+<div title="Data-driven refactoring" creator="Steve" modifier="Steve" created="201501081424" modified="201501081506" tags="#codemash" changecount="2">
+<pre>@coralineada
+
+&quot;combing a wookie&quot;
+
+bugs = holes in our mental model
+
+test-driven refactoring - write tests to throw away - document your assumptions on how the codebase works.
+
+Capture the old method in a lambda and then compare it against the new.
+
+mutant - less about code coverage, more about finding methods that do too much
+approval_tests - reports when ''results'' have changed - useful for apis
+
+!!! Metrics
+time the test suite (should not get slower)
+feature to bug ratio (per iteration)
+code complexity metrics
+code smells (reek)
+ask your developers
+
+!!! Tools
+churn - how many times has this file changed
+rake notes - finds TODOs
+fukuzatsu - reports cyclomatic complexity
+society - reports how tightly coupled different classes are
+pandometer - in progress - can report which commits add complexity, coupling, etc
+
+!!!
+* Store your results in a database so you can see trends
+
+!!! Questions
+Any ideas for testing where the only tests you can think to write are going to constrain your refactoring in a difrection you don't want it to go?
+Do you keep these integration tests?  Test every edge?
+What's the lifetime on these tests you throw away? - as long as needed for assumption checking
+
+
+noun project</pre>
+</div>
+<div title="Death By Specification" creator="Steve" modifier="Steve" created="201405071715" modified="201407031203" changecount="3">
 <pre>Overspecifying cards during estimation sessions
 Avoiding dev/product interaction
 
-Solution:  3 amigos during kickoff</pre>
+Solution:  3 amigos during kickoff
+
+&quot;We talk about people over process and then actively go out of our way to create a repeatable process where people don't have to interact more than a bare minimum.
+
+&quot;I find it much more important to go for that elusive Metaphor, and find a common language that all stakeholders can understand. Whether you automate some of that understanding and how, is less important.&quot;
+&quot; The customers wanted to know the calculations that went in to the acceptance tests. We ended up writing acceptance tests in Clojure, with a small support library to keep the tests clean and readable.&quot;
+&quot;When embarking on something new, try to understand how you are working, where your feedback is coming from. Then understand where the ‘new’ thing is coming from. While trying the new thing out, keep reflecting and check your understanding against your experiences.&quot;
+
+ Willem van den Ende  (http://blog.johanneslink.net/2014/05/22/veterans-of-tdd-willem-van-den-ende/)
+</pre>
 </div>
 <div title="DefaultTiddlers" creator="Steve" modifier="Steve" created="201301170300" changecount="1">
 <pre>[[TabTimeline]]</pre>
+</div>
+<div title="Deriving Gherkin from Real Conversations" creator="Steve" modifier="Steve" created="201409141304" modified="201409141306" changecount="4">
+<pre>http://lizkeogh.com/2014/09/01/deriving-gherkin-from-real-conversations/
+
+* Get examples by asking for them
+** If the answer is tautological - &quot;When I select text and make it italic it should be italic&quot; - drive into specifics
+
+!! Conversational Tricks
+* people use “if” where Gherkin uses “given”
+* or they use “Let’s say this happened…”
+* or say “well, if I’ve already done X…”
+* people use “then” instead of “when”, when they’re talking about an event they’re performing
+* people often skip “then” altogether when they’re talking about an outcome, and occasionally skip “when”.
+
+!! Success vs. failure
+* Don't make success and failure look the same.  Assume success
+&lt;&lt;&lt;
+ Given I’ve submitted my application
+&lt;&lt;&lt;
+vs
+&lt;&lt;&lt;
+Given I tried to submit my application
+But it was audited and rejected
+&lt;&lt;&lt;
+
+!! It's OK to have steps that don't execute code
+Given I lost my dog</pre>
 </div>
 <div title="Developer Outlier" creator="Steve" modifier="Steve" created="201401102138" modified="201401102138" tags="#codemash 2014" changecount="3">
 <pre>Cory House
@@ -1646,6 +2101,29 @@ Solution:  3 amigos during kickoff</pre>
 * Find what scares you and run at it
 * &quot;You are the average of the five people you spend the most time with&quot;
 * Consistently do things that people want</pre>
+</div>
+<div title="Distilling the Essence" creator="Steve" modifier="Steve" created="201410011417" modified="201410011418" tags="#cukeup" changecount="3">
+<pre>George Dunwiddie
+
+&quot;Express all the details that matter and none that don't matter&quot; - Dale Emery
+
+Clue:  Big setup
+Clue:  Big Expectation
+Clue:  Run on scenario (when and then when then when then)
+
+Essence of a cooking timer
+hour glass, wind up, digital
+
+Clue:  Does the cuke change when we change the workflow?
+minute button vs 1-0 keypad for entering minutes
+
+Clue:  Does the cuke change when we change the UI?
+Start button vs Go button
+1, 2, 3, vs -, --, ---
+
+WARNING:  Don't eliminate all the details - stay away from tautological
+
+Is your essence (of this test) domain or workflow?  Depends on the test.  Should we run/group these tests together?  Or maybe accept slower feedback on workflow tests.</pre>
 </div>
 <div title="Drones" creator="Steve" modifier="Steve" created="201308171457" modified="201308171502" tags="scrc13" changecount="3">
 <pre>AR Parrot Drone
@@ -1718,7 +2196,7 @@ github.com/rkh</pre>
 
 In this session we'll talk about why your mind reacts to failure the way it does and what you can do about it.  Using concrete examples, like TDD and Lean Startup, we'll work through some cognitive biases that might hold you back.  We'll talk about failing safely and building environments where failure is encouraged.  Then we'll move on to anti-fragile systems and how focusing on failure pushes a system to thrive on randomness.  We'll close with a discussion on failure-focused strategies that allow us to  build to an ultimate success.</pre>
 </div>
-<div title="Failing Your Way To Success" creator="Steve" modifier="Steve" created="201401081400" modified="201403221245" tags="#codemash 2014" changecount="13">
+<div title="Failing Your Way To Success" creator="Steve" modifier="Steve" created="201401081400" modified="201406231634" tags="#codemash 2014" changecount="14">
 <pre>Agile distilled
 
 -Feedback!
@@ -1770,6 +2248,8 @@ Helen Keller, “Character cannot be developed in ease and quiet. Only through e
 * Stuff - How does this fit?
 
 !! Practice &quot;when things go wrong&quot;
+* http://www.jbrains.ca/permalink/test-driven-development-as-pragmatic-deliberate-practice#fnref:1
+** Work in mentions of the quotes here, all very good about teaching yourself to learn
 
 
 !! Antifragile
@@ -1876,6 +2356,24 @@ amplify - allows you to publish events to topics.  You can further decouple comp
 amplify.publish(&quot;needData&quot;)
 </pre>
 </div>
+<div title="From open to minimum vacation policy" creator="Steve" modifier="Steve" created="201502081837" modified="201502091812" changecount="2">
+<pre>http://www.paperplanes.de/2014/12/10/from-open-to-minimum-vacation-policy.html
+
+Open vacation policy was a failure.
+
+* People were unsure how many days were &quot;ok&quot; and no-one wanted to be the slacker.  Forgetful people would just burn themselves out.
+
+&quot;People take less time off, and it's celebrated as a success of giving people more responsibility.&quot;
+
+* People would stay hooked in during vacation, and avoid recharging.
+
+&quot;When someone starts checking in during their vacation, it lowers the bar for others to do it, and it increases the uncertainty of whether or not you should be checking in. &quot;
+
+&quot;A company has to learn how to function when people are on vacation and unavailable, however important their role is.&quot;
+
+Ended up with 25 MINIMUM vacation days for every employee, including founders
+</pre>
+</div>
 <div title="GettingYourCustomerToWriteAcceptanceTests" creator="Steve" modifier="Steve" created="201301170224" modified="201301170247" changecount="2">
 <pre>''Key Question''  Who is it that cares about what you're building?
 
@@ -1910,6 +2408,54 @@ Psychology of dealing with customers that don't want granular small stories - It
 * Joe Fiorini uses it  like guard to run tests
 
  * chain tasks together for a workflow:  requirejs, copy, qunit, watch</pre>
+</div>
+<div title="HMAC" creator="Steve" modifier="Steve" created="201501151422" tags="#iot" changecount="1">
+<pre>http://en.wikipedia.org/wiki/Hash-based_message_authentication_code
+
+AWS-like security</pre>
+</div>
+<div title="Hack it before you buy it" creator="Steve" modifier="Steve" created="201501061920" modified="201501062032" tags="#codemash" changecount="3">
+<pre>Bill Sempf
+
+* OWASP - has all the tools and stuff
+
+* &quot;Google Hacking&quot; for pentesting
+
+robots.txt - big list of stuff that you don't want people to look at.
+
+Comments should not be revealing, don't hide files, deploy as little as possible.
+Services exposed for mobile are ripe for attack
+Client objects can be decompiled
+
+Failing to handle exceptions allows the pentester to know TOO much about the system and potentially take the app down.
+
+
+Research -&gt; Exception -&gt; Source -&gt; Research
+
+Attackers do not use a web browser (they use proxies and scripts)
+
+!! All data is evil
+* Incoming data
+* Outcoming data
+* 3rd party data
+
+!!! Reflected XSS
+The error you encountered was: &lt;%= Request.QueryString(&quot;error&quot;) %&gt; for blah.com?error=&lt;haxor code&gt;
+
+!!! Stored XSS
+$.post (&quot;insertRecord.php&quot;, { field: &quot;Comment&quot;, data: &quot;&lt;script&gt;haxor code&lt;/script&gt;&quot;})
+
+!!! Preventing XSS
+Get Data -&gt; Encode it -&gt; Transfer it
+
+!!! DOM XSS
+basically anytime user input is directly executed as javascript (like &quot;hi Steve!&quot;)
+</pre>
+</div>
+<div title="Holiday LIght Fight" creator="Steve" modifier="Steve" created="201502181403" changecount="1">
+<pre>https://onedrive.live.com/?cid=59d41466dbc75b47&amp;id=59D41466DBC75B47%2141451&amp;ithint=folder,mp4&amp;authkey=!ANVrmMtni6D5uGk
+
+</pre>
 </div>
 <div title="HowNetflixArchitectsForSurvival" creator="Steve" modifier="Steve" created="201401091459" modified="201401092041" tags="#codemash 2014" changecount="9">
 <pre>@jedberg
@@ -2174,6 +2720,42 @@ Hand off loading to Loader (vital if doing network, probably good idea regardles
 Use AndroidHttpClient to execute web requests
 Open templates for requests using a resource from the context</pre>
 </div>
+<div title="Is Pair Programming for Me?" creator="Steve" modifier="Steve" created="201502081834" changecount="1">
+<pre>http://arlobelshee.com/is-pair-programming-for-me/
+
+* Pairing is a skill you have to learn
+* Mostly communicative norms, like a foreign language
+* Arlo converted 198/200 people to pairing (introverts, skeptics, etc)
+
+* If pairing is not working, then it's because the team has taken for granted how hard it is to learn
+* 3 weeks to break-even productivity if pairing 100% of the time
+
+!! Cronology
+* First two days - this is a good way to collaborate and learn
+* End of first week - this is exhausting, too much noise
+* 2nd week - same
+* End of week 2 - filters are starting to build, still hurts
+* Sometime in week 3 - Huge payoff is discovered:  huge bug fixed easily, fewer meetings, pair-thinking, etc
+* week 4 - lots of wins, lots of converts
+
+!! Arguments
+* What about half-day pairing - probably takes longer.  Approach pairing as an experiment, something the team wants to learn/try.
+
+!! Arlo rules
+* Full team must commit
+* 4 week commitment
+* It's an experiment that can be abandoned
+* Team understands it will learn these skills
+** Speak in half-sentences (allow the pair to pick up)
+** How to talk about unformed ideas safely (accept a low signal-to-noise ratio)
+** Establish subconscious filters
+** Collaborate creatively
+** Collaborative research
+** Collaborative analysis and deep thinking
+
+
+* </pre>
+</div>
 <div title="Java8" creator="Steve" modifier="Steve" created="201401092210" changecount="1">
 <pre>* Closures
 * Interface enhancements
@@ -2219,6 +2801,15 @@ Actionable:
 * No tutorials
 </pre>
 </div>
+<div title="Leandog ideas" creator="Steve" modifier="Steve" created="201501091443" changecount="1">
+<pre>IoT client giveaway - neat lamp that lights up when mentioned on twitter
+
+Hackathon every 2 months?
+
+How do we build slack?
+
+</pre>
+</div>
 <div title="LegacyCodeRefactoringBlogPost" creator="Steve" modifier="Steve" created="201309221436" changecount="1">
 <pre>So I've tried to explain a phenomena to a few people lately and I keep falling flat.  I can only conclude I'm explaining it badly, or it's a solved problem that I haven't seen the solution for.
 
@@ -2256,6 +2847,94 @@ Any ideas?</pre>
 <div title="LegacyCodeRetreat" creator="Steve" modifier="Steve" created="201303311231" changecount="1">
 <pre>http://legacycoderetreat.typepad.com/blog/2011/11/how-i-run-legacy-code-retreat.html
 http://www.github.com/jbrains/trivia</pre>
+</div>
+<div title="Lessons Learned from a Long Lived Codebase" creator="Steve" modifier="Steve" created="201501091737" modified="201501091814" tags="#codemash" changecount="2">
+<pre>Jeremy Miller @jeremydmiller
+shadetreedeveloper@gmail.com
+
+First used in production in 2004
+Nothing remains but the name.
+
+!! Long lived codebases
+* language has evolved
+* use cases become obsolete
+* new cases become very important
+* architecture is obsolete (no xml)
+* Tooling evolves
+* performance and threading issues due to adoption outside the original case
+
+Need feedback mechanism to evolve
+
+&quot;Crimes against computer science&quot; =  Instead of re-architecting  just bolt it on.  
+** Used chain of responsibilty to fix a deep copy
+
+!! Architecture cannot be Set in Stone
+* Should have done a rearchitecture
+** Key question:  Why is this thing I'm trying to do so hard?  Don't get locked into a bad idea.  
+
+!! Re-write or Improve in Place?
+** Started a re-write, got distracted, bombed.
+
+!! Automated Testing
+* You have to do both acceptance and unit level
+* Self contained acceptance tests - test inputs should be defined with the setup (no fixtures for acceptance tests!)
+** Follow same rule with unit tests - duplication is A-OK
+
+!! The great refactoring
+&quot;When we say big refactoring we're lying...It's fine I'm just rewriting the whole data layer&quot;
+* Introduce an alternative programmatic configuraiton
+* New, better ways to do it
+* Tried to shove a bunch of wouldn't it be cool features
+
+!! Don't couple runtime code to configuration
+* Aerosmith doesn't setup the stage
+* Roadies do configuration
+
+!! Build features for real needs
+
+!! 2004 vs 2015
+* 2004 Everything explicit &quot;never surprise me&quot;
+* 2015 Try to figure it out &quot;just let it work&quot;
+
+!! API
+* Don't let the impl bleed through the API - hard to change
+* Be the client first
+* Be consistent
+
+!! Diagnostics and Errors
+&quot;Here's your error.  And here's what you might do to fix it.&quot;
+If you have any magic - provide diagnostics that explain the magic for a given input
+
+!! Documentation
+&quot;Do as I say, not as I did....&quot;
+&quot;Living&quot; documentaiton - part of your build process. - save yourself the future headache - bad documentation is a constant pain point.
+*** DocTest
+
+!! The cost of backward compatibility
+* You cannot win
+* Take the trash to the curb
+* &quot;Python 3000&quot;
+* Semantic Versioning</pre>
+</div>
+<div title="Magic Mirror" creator="Steve" modifier="Steve" created="201502191344" changecount="1">
+<pre>Build a mirror with live data (weather, calendar, notes)
+
+15&quot; LCD with 12&quot;x12&quot; mirror seems the cheapest, materials in the $150 range.
+
+http://www.raspberrypi.org/magic-mirror/
+http://michaelteeuw.nl/post/82565319113/magic-mirror-part-iv-install-the-hardware
+http://www.eetimes.com/document.asp?doc_id=1278280
+http://www.hiddentelevision.com/sample.htm
+http://www.hiddentelevision.com/samsungledmirrortv.htm
+http://www.hiddentelevision.com/diyframelessmirrortv.htm
+http://www.hiddentelevision.com/mirrorpricequote.htm
+
+Or a LCD controller
+http://www.ebay.com/usr/e-qstore
+http://www.element14.com/community/people/knight_rider1977/blog/2013/11/26/hp-lcd-screen-comes-back-to-life
+
+Or a LCD controller + screen
+http://www.sainsmart.com/7-inch-tft-lcd-monitor-for-raspberry-pi-touch-screen-driver-board-hdmi-vga-2av.html</pre>
 </div>
 <div title="MainMenu" creator="Steve" modifier="Steve" created="201301261658" changecount="1">
 <pre>[[TabTimeline]]</pre>
@@ -2328,6 +3007,91 @@ How to be sociable?
 * Being Geek - Michael Lopp
 * How to get an inexperienced mentee engaged with solo experimentation and discovery?
 </pre>
+</div>
+<div title="Minimizing Design Risk wit the Minimum Viable Product" creator="Steve" modifier="Steve" created="201408141851" modified="201408141857" changecount="2">
+<pre>Will Evans
+@semanticwill
+
+6 Keys to Lean Startup
+* Uncover your customer's pain points through research
+* Invalidate your assumptions
+* Formulate hypotheses
+* Experiments, Not Features
+* Learning isn't failure
+* Amplify what works
+
+Think -&gt; Make -&gt; Check -&gt; Think -&gt; ....
+As quickly as possible - start with what you're trying to learn.  What's the smallest thing you can do to get feedback?  1 hour sprints, 1 day sprints.
+
+Lean Startup: Customer Development Process
+1)  Problem Solution Fit
+Focus:  Validated Learning
+Experiments: Pivot
+2) Product/Market Fit
+Focus:  Validated Learning
+Experiments: Pivot
+3) Scale
+Focus: Growth
+Experiments:  Optimizations
+
+
+!!!Meta-Rules:
+1) Clearly articulate &amp; test your assumptions about the customer - &quot;The customer is the person that gives you money&quot;
+2)  Get out of the building
+3) Fast Think &gt; Make &gt; Check
+4) Think in terms of experiements (not features)
+5) Iterate
+6) Don't sink time into something that hasn't been validated
+
+!!! Minimal viable Product
+* Means something different to everyone
+
+In Lean UX - It's the minimal amount of effort you have to do to make one turn of the feedback loop.
+
+&quot;Features based on user stories without customer validation are called guesses&quot;
+
+Maximize:
+Solving Customer Problems
+Learning
+
+Minimize:
+Cycle Time
+Waste
+
+The delta between a prediction and the observed outcome is the &quot;amount&quot; you've learned
+
+!!! 4 Kinds of MVPs
+* Exploration - investigation with a customer's problems
+* Pitch - attempt to sell
+* Concierge - Provide the proposed product as a manual service (no software product)
+* Wizard of Oz - Small testable model that exists to generate feedback
+
+!!! Vanity Metrics
+* Don't lead to action
+* Always go up (and to the right)
+** hits, followers, etc
+
+!!! Good Metrics
+* Actionable
+* Accessible
+* Auditable
+
+!!! One Metric That Matters
+* Capture everything, but focus on the most important team
+* Success == THIS ONE THING
+* Forces a line in the sand
+* Must be a ratio
+* Must be actionable
+* Must be understandable and auditable
+
+!!! The LeanUX Kata
+* Who is the customer?
+* What is their problem?
+* What do you know and how do you know it?
+* What are your assumptions? How will you test them?
+* What have you learned and what should you learn next?
+* What is your very next experiment?
+* How will you measure it?</pre>
 </div>
 <div title="Mobile Content Delivery" creator="Steve" modifier="Steve" created="201403121833" modified="201403121840" changecount="3">
 <pre>* LTE network latency is ~50 ms
@@ -2442,6 +3206,28 @@ Leads to stack trace like:
   NoMethodError: undefined method 'each' for Scoreboard::NoScore
 }}}</pre>
 </div>
+<div title="OO vs FP" creator="Steve" modifier="Steve" created="201502081836" modified="201502101801" changecount="3">
+<pre>http://blog.cleancoder.com/uncle-bob/2014/11/24/FPvsOO.html
+
+!! Strawmen refuted
+** OO is not state
+** All programs are functions bound to data
+** FP imposes discipline on assignment
+** OO imposes discipline on pointers
+** Design patterns are useful regardless of the constructs of your programming language
+
+----
+&lt;&lt;&lt;
+What benefit does polymorphism have that normal Functional Programs don't have? By the same token, what benefit would OO programmers gain from imposing discipline on assignment?
+&lt;&lt;&lt;
+
+!! OO provides polymorphism.  What does that get you?
+Polymorphism inverts the source-code vs runtime dependency.  This provides interfaces and makes plugin systems possible.
+
+!! FP provides immutablity.  What does that get you?
+Concurrency!
+</pre>
+</div>
 <div title="One Practical Alternative to Estimates" creator="Steve" modifier="Steve" created="201405121004" modified="201405121020" tags="estimates" changecount="7">
 <pre>http://www.jbrains.ca/permalink/one-practical-alternative-to-estimates
 
@@ -2470,6 +3256,40 @@ When the trust is broken, I'll tell you what I think you want to hear so I can g
 * Task/story-level estimates routinely cause more problems than they solve.
 * The act of estimating with people that we trust helps us reveal significant risks in the assumptions we make about the work.
 * The act of estimating with people that we don’t trust leads eventually to ritual, Cargo Cult, whatever you prefer to call it.
+
+</pre>
+</div>
+<div title="Open source gardener" creator="Steve" modifier="Steve" created="201410011729" modified="201502081410" changecount="2">
+<pre>http://words.steveklabnik.com/how-to-be-an-open-source-gardener
+
+Figure out:
+
+* What are issues for? (on this project)
+* How to tackle?
+** Read all of them (find your bearings, what sort of things are common?)
+** Do it again.  Now you can triage.  
+* What's our triage algorithm?
+** Is it a feature request?  Do X
+** It is a request for help? Do Y
+** Is it potentially stale?  Ask if anyone knows if affects the current version.
+** Not enough information to even try reproducting?  Ask for more information - ideally the specific things it needs.
+** Enough info to repro?  Try against HEAD.  Leave a comment indicating how that went.
+** If reproducable, assign it according to the bugfix policy.
+* How will you tend the garden?
+** Need a scheduled time to stay current on all the issues. 
+*** Klabnik used github notify and read the emails every morning - small repeatable chunks
+
+!! Results
+* 200 issues were closed during the initial run-through (out of 800)
+* After two weeks of no comments, the rails team decided that meant the issue was stale. - Close
+** Closing is not permanent.  If someone really cares they can reopen.  Guilty until proven innocent.
+* 150 more issues closed this way after 2 months.
+
+!! Side affects
+* After 2 months of this, knew enough about Rails to know about every open bug and enough to submit patches or at the least leave dead-simple reproduction instructions for someone else to pick up.
+&quot;The only thing better than reproduction instructions are when those instructions say git clone.&quot;
+
+* After stopping the constant tending the issues blew up again.
 
 </pre>
 </div>
@@ -2632,7 +3452,7 @@ Let them answer. Allow for some silence. Let them answer further. Let them notic
 
 *What other things can we do to get all these benefits?</pre>
 </div>
-<div title="Project list" creator="Steve" modifier="Steve" created="201309181931" modified="201402171309" changecount="15">
+<div title="Project list" creator="Steve" modifier="Steve" created="201309181931" modified="201407301641" changecount="16">
 <pre>* Pinch hitter
 ** Verify posts
 
@@ -2653,7 +3473,10 @@ Let them answer. Allow for some silence. Let them answer further. Let them notic
 ** Next steps
 
 * Gametel
-** Add List View accessor</pre>
+** Add List View accessor
+
+* Blog
+Re-read TDD and live blog it</pre>
 </div>
 <div title="ProjectEstimates" creator="Steve" modifier="Steve" created="201309191119" tags="teams estimates" changecount="1">
 <pre>http://www.jrothman.com/blog/mpd/2013/08/trust-agile-program-management-being-effective.html
@@ -2679,6 +3502,76 @@ Run to a milestone.  Once we hit this place, what does the situation look like?
 If I discover the program is not on track, when would you like to know? As soon as I know; after I’ve done some remediation work; when I’ve done everything I can and it’s a disaster?
 
 Software is about delivering value.  Getting value sooner is better.  Large things are a waste of time, the value is always hidden inside there.  Do the small stuff.  Do the most valuable stuff first.  Everything that is valuable today may not be tomorrow.  These valuable things have to work.  They have to continue to work.
+</pre>
+</div>
+<div title="Reactive Hypermedia" creator="Steve" modifier="Steve" created="201501081817" modified="201501082029" tags="#codemash" changecount="4">
+<pre>Kevin Swiber @kevinswiber
+http://www.slideshare.net/kswiber/reactive-hypermedia-apis
+
+Works on Zetta
+
+Zetta hubs connect to devices and local clients.  The zetta hubs have APIs.  Another zetta hub/serer can exist somewhere in a data center and proxy calls between the internet and the other hubs.
+
+!!! Desired Architectural Problems
+* Decouple implementations (devices in differnet locations/zones should be able to evolve indepentdently)
+* Independent evolution
+* Scale
+* Load balancing
+* Centralize complexity, distribute simplicity (taken from xmpp)
+* Reduce latency
+* Support event streams
+= '' Good fit for REST ''
+
+!!! Hypermedia spec
+* http://sirenspec.org
+
+!!! How HTTP streams are done
+* Webhooks
+** Requires registration
+** params can get stale
+
+* Chunked Transfer-Encoding
+** Not well supported
+
+* HTTP Pipeling
+** Not really used by anyone (keeps socket open - kinda slow)
+
+* Long Polling
+** kinda slow, awkward
+
+* Server Sent Events
+** Not supported by IE
+
+!!! Other protocols
+websocket
+mqtt
+amqp  (rabbit mq uses this)
+wamp
+stomp
+rss
+
+
+!!! How it works
+* Model responses (future request) based on current state
+* Model resources as finite state machine
+* Zetta built on nodejs
+
+!!! Reactive clients
+
+Load a url, parse the response, subscribe to a resource.
+
+!!! Producer-Consumer problem
+** Consumer can't keep up with producer
+*** App crash
+*** network throttling
+*** server resources
+
+!!! Reactive Stream Control Protocol
+*** Consumer controlled streams
+*** Runs over websockets
+*** Multiplex streams
+*** uri scheme definition
+
 </pre>
 </div>
 <div title="Remote pairing" creator="Steve" modifier="Steve" created="201306292332" modified="201401231500" changecount="7">
@@ -2789,11 +3682,45 @@ In the TDD cycle, this means that we first write a portion of a test; and before
 
 The red-green-refactor cycle becomes Red -&gt; Clean Test -&gt; Green -&gt; Refactor.</pre>
 </div>
+<div title="Rust" creator="Steve" modifier="Steve" created="201501081304" tags="#codemash" changecount="1">
+<pre>Klabnik
+
+cargo is both a package manager and a build system
+
+
+crate is a module, binary or library.  They are compiled in parallel, though each crate is compiled serially.  So a common pattern is to break a binary into libraries to get a faster compile.
+
+semicolon on each line unless it's the return value for a function (expression-based langauge)
+
+Borrowing vs taking the value (pass by reference).  
+
+
+</pre>
+</div>
 <div title="SOLID Javascript" creator="Steve" modifier="Steve" created="201401092040" modified="201401092140" tags="#codemash 2014" changecount="3">
 <pre>DIP - Caller owns the protocol that the dependency implements.  Ripples only go in one direction - down to the details.
 * TDD - Caller wins!
 
 Human beings think in abstractions - not details.  Named abstractions allow us to group details into larger concepts.  This allows us to keep building higher and higher abstractions that can solve bigger problems.</pre>
+</div>
+<div title="Saff Squeeze" creator="Steve" modifier="Steve" created="201410011728" modified="201502081356" changecount="2">
+<pre>http://www.threeriversinstitute.org/HitEmHighHitEmLow.html
+
+&quot;works by taking a failing test and progressively inlining parts of it until you can't inline further without losing sight of the defect.&quot; \
+
+1.    Inline a non-working method in the test.
+1.   Place a (failing) assertion earlier in the test than the existing assertions.
+1.    Prune away parts of the test that are no longer relevant.
+1.    Repeat.
+
+OR: 
+1.  Literally replace the method call with the source code IN the test.
+1.  Move the assertion into the source code section.
+1.  If that fails, you can delete all the code after that.
+1.  Move your assertion up another level and keep trying, inling additional methods as you go.
+
+
+</pre>
 </div>
 <div title="ScalaAsABetterJava" creator="Steve" modifier="Steve" created="201301170222" modified="201301261454" tags="Scala" changecount="4">
 <pre>Bruce Eckel
@@ -2918,6 +3845,46 @@ Asset pipeline - Stefon
 
 </pre>
 </div>
+<div title="Sequential Design" creator="Steve" modifier="Steve" created="201501091440" tags="#codemash" changecount="1">
+<pre>Brad Colbow
+bradcolbow.com/codemash.pdf
+
+!! The asthetic
+CRAP
+!!! Contrast
+
+' I will never make it as a designer because my brain does not work like the common'
+What's important, 2nd important
+What goes together (subtler)
+
+
+!!! Repetition
+Sets up patterns, used for &quot;scene&quot; changes
+
+!!! Alignment
+Grids can keep a page together when one element might break the normal borders and contrast
+
+!!! Proximity
+These things grouped together 
+
+!!! Hierarchy
+Create levels to the design - important stuff at the top
+
+!!! Intent
+&quot;Design is the rendering of intent&quot; - Jared Spool
+
+Comics often create a confusing panel order - what's the intended way to read this
+Hamburger is not an obvious menu button
+Leave the user a scent (like a bloodhound) - how do I get back where I was?
+
+When everything is exciting, nothing is exciting
+Simple Rule:  Do the expected in an unexpected way
+
+!!! Interaction
+* Wireframes - capture features but don't capture interactions
+
+Found the first few days of the project were the most important</pre>
+</div>
 <div title="SiteSubtitle" creator="Steve" modifier="Steve" created="201301261658" changecount="1">
 <pre>steve's web notebook</pre>
 </div>
@@ -2973,10 +3940,112 @@ Looking for an idol: Realizes code is writing, good at empathy, codes 90% of the
 
 Seceding vs Replacement</pre>
 </div>
-<div title="TechDebt" creator="Steve" modifier="Steve" created="201309261105" tags="TechDebt" changecount="1">
+<div title="Step Away from the Tools" creator="Steve" modifier="Steve" created="201409141252" modified="201409141255" changecount="5">
+<pre>http://lizkeogh.com/2011/03/04/step-away-from-the-tools/
+
+&lt;&lt;&lt;
+Start by having conversations, engaging both testers and business stakeholders or their proxies (analysts are good here). If you can’t have those conversations, stop. You can’t do BDD. You might be able to write some scenarios or some acceptance tests, but they’re likely to be brittle and it’s unlikely that anyone will be interested. Here’s why.
+&lt;&lt;&lt;
+
+* Focus on Discovery - Deliberate Discovery
+* Realize this isn't about testing or tools
+* Write fewer scenarios
+* Assume you got it wrong
+** You never get it right the first time
+</pre>
+</div>
+<div title="TDD Where did it all go wrong" creator="Steve" modifier="Steve" created="201407301649" modified="201409141234" tags="TDD" changecount="5">
+<pre>http://vimeo.com/68375232
+
+!!! Two problems to unlearn in TDD
+1) Changing Impl details breaks tests.  Lots of tests.
+2) More test code than impl code
+
+!!!! ProgrammerAnarchy - Devs work directly with customers and throw the code away after a year.
+
+
+!!! Where did it all go wrong?
+* Not testing behaviors - Dan North
+* Coupling impl details to test because of failure to refactor
+
+!!! When do I write my next test?
+* NOT when you add a method
+* When you add behavior
+
+!!! Test the Surface Area
+* Only test the surface area (public API to the module).  Treat it like a box.
+* Start with the &quot;Best possible application public interface&quot; Program by wishful thinking
+
+
+!!! Kent Beck's definition of unit test:  A test that runs in isolation from other tests
+* This is different than the rest of the industry - OOPS
+* NOT testing a module in isolation
+* NOT only one class under test
+* YES - no side effects
+* Test is isolated, not the system under test
+* NOT - mocks everywhere specifying too much impl detail
+
+!!! Red -&gt; Green -&gt; Refactor
+* Quick green excuses all sins -&gt; BE SINFUL
+** It's difficult to think about both solving the problem and engineering it well
+** Don't do engineering yet - you don't know if you're going to SOLVE anything yet
+* Refactor -&gt; Now you can be clean
+** Refactor to patterns
+** Don't write new unit tests!
+** You need a new class - Do it!  Don't write tests for it.
+
+!!! Ports and Adapters
+* Unit test at the port - Tests are an adapter running the code
+* System Tests are at the boundary
+
+!!! Gears
+* 5th gear is obvious changes - we can't get to green because this obvious refactoring is distracting us.  Just do it - but don't get carried away here.
+* 4th gear - hack your way to green
+* Downshifting - Getting sticky here, not sure how to find my way through.  
+** If I throw away these tests will I miss them - do I still have tests that check the behavior from a port-type level.
+** These tests are coupled to the implementation
+** Maybe I should leave them to help another programmer find his way through
+** Middle ground - maybe comment that these tests are deletable if they get in your way - Feel free to delete these tests.
+
+!!! Mocks
+* Don't mock internals, privates or adapters
+</pre>
+</div>
+<div title="TDD is dead!  Love live TDD!" creator="Steve" modifier="Steve" created="201502081838" modified="201502091119" changecount="5">
+<pre>http://blog.jessitron.com/2014/09/tdd-is-dead-long-live-tdd.html
+
+&quot;Tests don't enable change. Tests prevent change!&quot;
+
+Mostly we want tests at an interface level (API or UI) but that makes for UGLY tests.
+
+!! Generative Tests
+(Or property-based testing)
+
+In generative testing we can't know what the inputs are so we can't specify what the outputs are.  But we can put bounds around them.
+&lt;&lt;&lt;
+ Maybe, it should be between these values. It should go down as this input value goes up. It should never return more items than requested, that kind of thing.
+&lt;&lt;&lt;
+
+!!! What should we end up with?
+&lt;&lt;&lt;
+This doesn't preclude small tests that drive our class design. Use them, and then delete them. This doesn't preclude example tests for documentation. Example-based, expected == actual tests, are stories, and people think in stories. Give them what they want, and give the computer what it wants: lots of juicy tests in one.
+&lt;&lt;&lt;
+
+Points out this is way harder and requires thinking about boundaries that we usually don't worry about.
+//I wonder if this would encourage a more failure-resilient thought process?//
+</pre>
+</div>
+<div title="Talk idea" creator="Steve" modifier="Steve" created="201501081424" changecount="1">
+<pre>Adventures in pair programming</pre>
+</div>
+<div title="TechDebt" creator="Steve" modifier="Steve" created="201309261105" modified="201407011229" tags="TechDebt" changecount="2">
 <pre>http://blog.crisp.se/2013/07/12/henrikkniberg/the-solution-to-technical-debt
 * Set aside time for TD - pay down before adding features
-</pre>
+
+
+The failure to make the program align to the current understood operation of the system - me paraphrasing Ward
+* Each disagreement with reality is interest
+* Bankruptcy is when you don't trust the code.</pre>
 </div>
 <div title="TechSafety" creator="Steve" modifier="Steve" created="201307201414" modified="201309291510" tags="techsafety" changecount="4">
 <pre>http://www.industriallogic.com/blog/techsafety/
@@ -2998,6 +4067,59 @@ Let me explain further. Failure – for most of us – is not an enjoyable exper
 http://arlobelshee.com/post/being-awesome-step-1-stop-making-dumb-choices
 * Making change feel safe = Help people see that others have succeeded + Everyone wants to make the same change + The change is at least as safe as the current approach
 * Second-order safety:  We need to see the people that have threatened us for trying to make things better in the past and see that they agree with this change.  You're not on an island, you're going with the group.  Change is the obvious, safe choice.</pre>
+</div>
+<div title="The Cycles of TDD" creator="Steve" modifier="Steve" created="201502081334" tags="UncleBob" changecount="1">
+<pre>http://blog.cleancoder.com/uncle-bob/2014/12/17/TheCyclesOfTDD.html
+
+This is one of those articles I'm glad I went back and read a bit more carefully.  I glazed over the section headers and said, yup, yup, yup, but kept it around for some reason.  It's got some nuance in the &quot;stuck&quot; sections and in the idea of consciously drawing boundaries for our system.
+
+Basic outline - TDD as a series of cycles
+ - Three Laws of TDD     (several times a minute)
+ - Red, Green, Refactor  (every minute)
+ - Specific/Generic          (every 10 minutes)
+ - Boundaries                  (hourly)
+
+* The Three Laws of TDD are designed to get you the write (and think) about one line of code at a time.
+* Specific/Generic - tests get more specific, code gets more generic
+** Uncle Bob believes that if you don't generalize your code (because the tests don't make you), then you'll end up getting stuck in your TDD cycle.  You'll have to write a ton of code to get the next test to pass.
+* Every hour, stop and look for boundaries we want to control.  We draw the lines and then stick our work for the next cycle in that area.
+
+
+</pre>
+</div>
+<div title="The correct ordering of the 4 Elements of Simple Design" creator="Steve" modifier="Steve" created="201410011732" modified="201502081347" changecount="3">
+<pre>J.B http://blog.thecodewhisperer.com/2013/12/07/putting-an-age-old-battle-to-rest/
+
+!!! Kent Beck's version
+# Passes tests
+# Minimizes duplication
+# Reveals its intent
+# Has fewer classes/modules/packages
+
+!!! Corey Haine's version
+# Passes tests
+# Reveal intent
+# Don't repeat yourself
+# Fewer classes
+
+J.B thinks the difference between 2 and 3 doesn't matter because they form a rapid feedback loop.
+
+&lt;&lt;&lt;
+I have noticed over the years that when I try to focus on removing duplication, new, useful structures emerge. I like to say that if the solution wants to be structured a certain way, then removing duplication helps that structure to emerge.2 I have also noticed that when I try to focus on improving names, Feature Envy and its friends become more apparent, and code makes it clearer that it wants to move somewhere else. Similar concepts scattered throughout the system start calling out to each other, hoping for the programmer to unite them in a single module. Crowded, unrelated concepts struggle to get away from one another. Responsibilities gradually move to a more sensible part of the code base. Both of these contribute to higher cohesion.
+&lt;&lt;&lt;
+
+Remove duplication -&gt; Structure Emerges
+Improve Names -&gt; Redistribute Responsibility
+
+Creating new structures to handle these responsibilities drive these loops.  As we struggle to name this new thing we continually add/remove behavior until it becomes cohesive.  Eventually it settles into an abstraction (the rest of the code treats it as a black box).
+
+So you end up with:
+
+Remove duplication -&gt; structures emerge -&gt; structures need names -&gt; improve names -&gt; abstractions emerge -&gt; higher-level-duplication -&gt; remove duplication
+
+Or you can start with improving names and end up in the same place.
+
+I would probably think about this more as starting with an abstraction (make the change easy) vs removing duplication (make the easy change).</pre>
 </div>
 <div title="TheCaseForNovices" creator="Steve" modifier="Steve" created="201301170220" modified="201301170242" changecount="6">
 <pre>!!! Why novices?
@@ -3049,6 +4171,27 @@ Habit 4:  Set dedicated learning time with self-chosen objectives
 * Trying to &quot;smooth&quot; the path for developers up front is less efficient than figuring it out as the code is written
 ** With the caveat that devs hate being jerked around
 </pre>
+</div>
+<div title="Things with which to measure the universe" creator="Steve" modifier="Steve" created="201501082241" tags="#codemash" changecount="1">
+<pre>John Van Enk - @sw17ch
+
+
+* Low precision - high range
+** Like all the temperatures in the universe
+* High precision - low range
+
+Pull-down resistor - remove noise in analog circuits - default to 0
+
+Circuits:
+Reed switch - detects magnet - 1, no magnet = 0
+Photo cell - detects light - 
+
+analogRead - something between 2.5v and 4.5v with a 10K ohm resistor
+
+temp sensor - transistor
+
+
+diagram tool:  http://fritzing.org</pre>
 </div>
 <div title="ThinkingFastAndSlow" creator="Steve" modifier="Steve" created="201401050233" modified="201401052149" changecount="8">
 <pre>Daniel Kahneman
@@ -3137,6 +4280,15 @@ Habit 4:  Set dedicated learning time with self-chosen objectives
 
 * Our subjects left the choice to their remembering self, preferring to repeat the trial that left the better memory, although it involved more pain...An objective observer making the choice for someone else would undoubtedly choose the short exposure, favoring the sufferer's experiencing self.</pre>
 </div>
+<div title="Three Steps to a Useful Minimal Feature" creator="Steve" modifier="Steve" created="201409141242" modified="201409141246" tags="agile story-splitting" changecount="3">
+<pre>http://www.jbrains.ca/permalink/three-steps-to-a-useful-minimal-feature
+
+# Write out any, and I mean any, meaningful end-to-end scenario in detail with concrete values at every step.
+# Now that you’ve chosen one real scenario, go to each step in that scenario and ask the question, “What would I need to assume to eliminate this step?” If you find those assumptions make for a reasonable scenario, then use that assumption to simplify the scenario.
+# Repeat step 2 until exhausted or unable to come up with a simplifying assumption with five minutes’ thought.
+
+Part of this process is discovering other requirements and external systems.  We're exposing risk and complexity when we think we're in a &quot;simple&quot; reduction exercise.  Neat!</pre>
+</div>
 <div title="Toaster Heuristic" creator="Steve" modifier="Steve" created="201311101401" tags="estimates" changecount="1">
 <pre>http://derailleurconsulting.com/blog/the-toaster-heuristic
 
@@ -3153,6 +4305,86 @@ Toaster Heuristic:  Imagine a software team as a toaster oven.
 Moral of the story:  Use empirical data to inform the amount of work we slice off, rather than guessing at adjustments.  This enables predictabiity and and leads towards a stable work system where the baseline is known.
 
 </pre>
+</div>
+<div title="UX for devs" creator="Steve" modifier="Steve" created="201501081357" tags="#codemash" changecount="1">
+<pre>sadukie
+
+* UX is before, during, and after.  Expectations, beliefs, preferences, emotion.
+* Dan Willis - UX umbrella
+* Convenience + Design - Cost = UX
+
+* Mind Maps and Site Maps
+** Freemind - mind mapping tool - sadukie uses for brainstorming
+
+* Personas
+** Crisis persona
+* Gherkin
+* Wireframes
+** Balsalmiq, Pencil
+* Focus groups to test
+* Heatmaps &amp; analytics
+</pre>
+</div>
+<div title="Ubiquitous Language in Domain Driven Design" creator="Steve" modifier="Steve" created="201410011713" modified="201410011715" tags="#cukeup #ddd" changecount="2">
+<pre>Eric Evans @ericevans0
+
+!! Modeling mistakes
+* Looking for the 1 true model
+* DDD says 4 models in 4 separate contexts is fine.
+** Elephant : Tree, Elephant : Wall, Elephant : Snake, Elephant : Rope
+
+!! Translating between models
+Rope context - &gt; Translator -&gt; Snake context
+Rope.tiedown -&gt; Translator -&gt; Snake.location
+Rope.tiedown -&gt; Translator -&gt; GIS Context.address -&gt; GIS Context.geo_loc -&gt; Snake.location
+
+!! What are models for?
+* Identifying risk
+* Exploring other models
+
+!! Modeling breakthrough!
+Parts of a whole:  Elephant : Wall + Tree + Snake + Rope
+Now we have 5 models!
+
+!! DDD Whirlpool
+
+# Tell a story
+# Flesh it out
+# Refocus on hard part
+# Refocus on core domain
+
+Describe Scenario -&gt; Define model -&gt; Probe model
+Story -&gt; Theory -&gt; Experiment
+
+Get in, swirl around, GET OUT
+
+!! New data
+
+Elephant seems to crush people's feet some of the time
+Can we maintain our model with this data?
+So Elephant : Tree must hop  = New Hypothesis to test.
+
+This is just an iteration of our original model.  Still have 5 models.
+
+!! Model breakthrough
+Elephant is-a animal and has-a trunk
+Animal has-a tail and has-a leg (one to many)
+
+Now we have 6 models!
+
+!! Translation is tricky
+In Tree Context:  Tree.Trunk -&gt; Translator -&gt; Animal.Leg  (Not Elephant.Trunk)
+
+!! DDD in a nutshell
+* Bounded context
+* Ubiquitous language (UL is context specific!  So we have 6 languages)
+* Model Exploration
+
+''&quot;We'll never get to perfect, perfect is the enemy of the good&quot;''
+
+!! Where to start?
+* Start with scenarios that worry the domain experts the most.  They'll want to talk about them and help you model them to mitigate that risk.
+* Don't strive for perfect language.  Cut off theorizing at some point and experiment.  Use the language and see where it falls short.</pre>
 </div>
 <div title="Using Google Spreadsheet as a simple TDD/BDD environment" creator="Steve" modifier="Steve" created="201404091615" modified="201404091631" changecount="2">
 <pre>http://vimeo.com/89909482
@@ -3343,6 +4575,25 @@ css - compass
 
 *What's a css property?
 *What's hoisting in javascript?
+</pre>
+</div>
+<div title="Web server tuning" creator="Steve" modifier="Steve" created="201502251727" changecount="1">
+<pre>https://support.cloud.engineyard.com/entries/23852283-Worker-Allocation-on-Engine-Yard-Cloud
+http://engineering.chartbeat.com/2014/01/02/part-1-lessons-learned-tuning-tcp-and-nginx-in-ec2/
+https://rtcamp.com/tutorials/linux/sysctl-conf/
+http://tweaked.io/guide/nginx-proxying/
+http://unicorn.bogomips.org/TUNING.html
+http://engineering.chartbeat.com/2014/02/12/part-2-lessons-learned-tuning-tcp-and-nginx-in-ec2/</pre>
+</div>
+<div title="When Edge Cases Poke Holes in Your Perfect Solution" creator="Steve" modifier="Steve" created="201501151421" modified="201502101116" changecount="3">
+<pre>http://www.justinweiss.com/blog/2015/01/13/when-edge-cases-poke-holes-in-your-perfect-solution/
+
+&lt;&lt;&lt;
+You can’t fight too much cleverness with more cleverness. At least, not directly. Instead, go the other way. Go simple. Go straightforward.
+&lt;&lt;&lt;
+&lt;&lt;&lt;
+Inline the code you were trying to abstract away. Do repeat yourself. Keep your code explicit.
+&lt;&lt;&lt;
 </pre>
 </div>
 <div title="WorkplaceInterview" creator="Steve" modifier="Steve" created="201403051558" changecount="1">
