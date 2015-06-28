@@ -790,6 +790,12 @@ github.com/jdantonio
 ** Supervisor
 *** Can add actors and timer tasks</pre>
 </div>
+<div title="Adventures in Pair Programming" creator="Steve" modifier="Steve" created="201503061740" changecount="1">
+<pre>Even after 15 years, there's a lot of zealotry around pair programming.  Opinions range from &quot;I'd never work on a project that didn't pair&quot; to &quot;Pair programming?  You mean cluster disaster?&quot;.
+
+
+</pre>
+</div>
 <div title="AgileApprentice" creator="Steve" modifier="Steve" created="201310012153" changecount="1">
 <pre>!!! Issues
 * Expert Beginner trap?
@@ -852,6 +858,33 @@ Key Point - Design a system that can recover from failure (and be concurrent)
 github.com/jsuereth/intro-to-actors
 Example code (clusters branch)
 akka.io</pre>
+</div>
+<div title="All the little things" creator="Steve" modifier="Steve" created="201505271639" modified="201505271648" changecount="3">
+<pre>Sandi Metz - Ruby on Ales 2014
+
+!! Squint test
+* change in shape - conditionals
+* change in color - multiple levels of abstraction
+
+!! Making changes
+Novices feel like they're not allowed to make classes
+
+Feel like you can't create a 20 line class if there is already a 5000 line active record model.  Can you break the pattern without feeling bad?
+
+Procedures are hard to change because there are no seams
+- make a seam
+
+!! Duplication is cheaper than the wrong abstraction
+The 43 line if statement exists because someone picked an abstraction and got it wrong.  Don't reach too soon for an abstraction.
+-- Don't DRY it up as soon as you see it
+
+!! When Inheritance
+Shallow and narrow
+child uses all the parts of the parent
+objects are leaves in the graph
+&quot;Duplication is far cheaper than the wrong abstraction&quot;
+
+</pre>
 </div>
 <div title="AngularDirectives:Demystified" creator="Steve" modifier="Steve" created="201401101546" modified="201401101641" tags="#codemash 2014" changecount="4">
 <pre>http://directivesdemystified.herokuapp.com/#/slides/0
@@ -1374,6 +1407,19 @@ http://www.industriallogic.com/blog/why-are-most-agile-adoptions-failing/</pre>
 
 ''Feeling''
 * Unsure about tool selection</pre>
+</div>
+<div title="Apprentice Review 10 March 2015" creator="Steve" modifier="Steve" created="201503111227" changecount="1">
+<pre>Deploying is a great experience
+ * Feelings about going live:  nervous
+ * Forgot things (links to pdfs from the old site) - had to scramble and fix
+
+Dealing with frustration - sink or swim, being overwhelmed
+
+Feelings on pairing more
+ * Don't like working alone
+ * It's hard to externalize thoughts
+
+Preferred &quot;owning&quot; a &quot;real&quot; project to pairing more - wouldn't have changed anything</pre>
 </div>
 <div title="Apprentice Review 19 December 2014" creator="Steve" modifier="Steve" created="201412191915" modified="201412191917" changecount="5">
 <pre>'' Mentor TODOs
@@ -2125,6 +2171,27 @@ WARNING:  Don't eliminate all the details - stay away from tautological
 
 Is your essence (of this test) domain or workflow?  Depends on the test.  Should we run/group these tests together?  Or maybe accept slower feedback on workflow tests.</pre>
 </div>
+<div title="Docker For Fun and Profit" creator="Steve" modifier="Steve" created="201506131723" modified="201506151035" tags="#pghtechfest" changecount="4">
+<pre>Kel Cecil
+@praisechaos
+
+http://github.com/kelcecil/docker-techfest15
+
+!!! docker hub vs quay.io
+* prefers quay
+* better for teams
+* quay has an easier &quot;build image from commit&quot; feature
+
+kubernetes - linux like process application over multiple boxes.  
+deis -  heroku-like abstraction
+containership.io - abstracts away the providers (digital ocean -&gt; aws)
+
+!!! Ideas
+* Pull the CI env to a dev machine to fix/play
+* Take someone's dotfiles for a spin
+
+Takeaway:  simply uses docker the way I use vagrant</pre>
+</div>
 <div title="Drones" creator="Steve" modifier="Steve" created="201308171457" modified="201308171502" tags="scrc13" changecount="3">
 <pre>AR Parrot Drone
 argus - gem
@@ -2175,6 +2242,24 @@ Processes are used like Objects in the sense that you give them work and wait fo
 * ''Tests are falining for genserver_stack
 
 * iex pry</pre>
+</div>
+<div title="EmbeddedLinuxDistro" creator="Steve" modifier="Steve" created="201506101706" modified="201506101708" changecount="4">
+<pre>Eric Hankinson
+
+Deb bootstrap - take major version of debian, ABI (cpu arch) - knows how to copy files to a block (virtual file system) and make a minimal debian
+uboot - point here to launch the OS
+* Tfttp here to get the kernel
+
+Ran qemu-arm-static to compile &quot;AS ARM&quot; in a VM (rather than doing a true cross-compile)
+
+MAKEDEV - makes things in the /dev folder
+
+sfdisk - scriptable fdisk
+
+use {{{pv}}} to record pipe progress
+{{{
+zcat | pv | dd
+}}}</pre>
 </div>
 <div title="Embrace Chaos" creator="Steve" modifier="Steve" created="201308171500" modified="201308171503" tags="scrc13" changecount="3">
 <pre>- Build an architecture to scale first, be efficient second
@@ -2354,6 +2439,12 @@ Templates allow you to stop sending markup across the wire.  Add rows to a table
 amplify - allows you to publish events to topics.  You can further decouple components from each other.  Also components from server:
 
 amplify.publish(&quot;needData&quot;)
+</pre>
+</div>
+<div title="From Backbone to Ember and Back(bone) Again" creator="Steve" modifier="Steve" created="201506131844" tags="#pghtechfest" changecount="1">
+<pre>Jon Knapp
+@Coffeeandcode
+
 </pre>
 </div>
 <div title="From open to minimum vacation policy" creator="Steve" modifier="Steve" created="201502081837" modified="201502091812" changecount="2">
@@ -2658,6 +2749,11 @@ Body language mirroring - miror inflection, speed, temper of the voice - helps m
 &quot;I'm one of you, I want to work with you, make it easier for you&quot;
 
 </pre>
+</div>
+<div title="Innovators" creator="Steve" modifier="Steve" created="201505061637" tags="#bookclub" changecount="1">
+<pre>Key concepts of Industrial Revolution:
+* Break endeavors into small, easy tasks (assembly line)
+* Mechanize some of those steps</pre>
 </div>
 <div title="InterestingQuestions" creator="Steve" modifier="Steve" created="201401120315" changecount="1">
 <pre>* Who do you most admire and why?
@@ -3504,6 +3600,12 @@ If I discover the program is not on track, when would you like to know? As soon 
 Software is about delivering value.  Getting value sooner is better.  Large things are a waste of time, the value is always hidden inside there.  Do the small stuff.  Do the most valuable stuff first.  Everything that is valuable today may not be tomorrow.  These valuable things have to work.  They have to continue to work.
 </pre>
 </div>
+<div title="Prototyping Connected Devices" creator="Steve" modifier="Steve" created="201505161633" changecount="1">
+<pre>webinar
+Bill Horan - Bressler Group
+
+Get pics from phone</pre>
+</div>
 <div title="Reactive Hypermedia" creator="Steve" modifier="Steve" created="201501081817" modified="201501082029" tags="#codemash" changecount="4">
 <pre>Kevin Swiber @kevinswiber
 http://www.slideshare.net/kswiber/reactive-hypermedia-apis
@@ -3682,7 +3784,7 @@ In the TDD cycle, this means that we first write a portion of a test; and before
 
 The red-green-refactor cycle becomes Red -&gt; Clean Test -&gt; Green -&gt; Refactor.</pre>
 </div>
-<div title="Rust" creator="Steve" modifier="Steve" created="201501081304" tags="#codemash" changecount="1">
+<div title="Rust" creator="Steve" modifier="Steve" created="201501081304" modified="201502271331" tags="#codemash" changecount="2">
 <pre>Klabnik
 
 cargo is both a package manager and a build system
@@ -3694,7 +3796,7 @@ semicolon on each line unless it's the return value for a function (expression-b
 
 Borrowing vs taking the value (pass by reference).  
 
-
+CHEAT SHEETS:  https://gist.github.com/carols10cents/1f2066f758be72ecf2ab
 </pre>
 </div>
 <div title="SOLID Javascript" creator="Steve" modifier="Steve" created="201401092040" modified="201401092140" tags="#codemash 2014" changecount="3">
@@ -3954,7 +4056,7 @@ Start by having conversations, engaging both testers and business stakeholders o
 ** You never get it right the first time
 </pre>
 </div>
-<div title="TDD Where did it all go wrong" creator="Steve" modifier="Steve" created="201407301649" modified="201409141234" tags="TDD" changecount="5">
+<div title="TDD Where did it all go wrong" creator="Steve" modifier="Steve" created="201407301649" modified="201505131637" tags="TDD" changecount="6">
 <pre>http://vimeo.com/68375232
 
 !!! Two problems to unlearn in TDD
@@ -3984,6 +4086,7 @@ Start by having conversations, engaging both testers and business stakeholders o
 * YES - no side effects
 * Test is isolated, not the system under test
 * NOT - mocks everywhere specifying too much impl detail
+** Only mock things that keep the test from being isolated, not things that keep the &quot;class under test&quot; isolated.
 
 !!! Red -&gt; Green -&gt; Refactor
 * Quick green excuses all sins -&gt; BE SINFUL
@@ -4086,6 +4189,10 @@ Basic outline - TDD as a series of cycles
 
 
 </pre>
+</div>
+<div title="The Deep Synergy Between Testability and Good Design" creator="Steve" modifier="Steve" created="201503111640" changecount="1">
+<pre>Michael Feathers
+https://vimeo.com/15007792</pre>
 </div>
 <div title="The correct ordering of the 4 Elements of Simple Design" creator="Steve" modifier="Steve" created="201410011732" modified="201502081347" changecount="3">
 <pre>J.B http://blog.thecodewhisperer.com/2013/12/07/putting-an-age-old-battle-to-rest/
@@ -4289,6 +4396,12 @@ diagram tool:  http://fritzing.org</pre>
 
 Part of this process is discovering other requirements and external systems.  We're exposing risk and complexity when we think we're in a &quot;simple&quot; reduction exercise.  Neat!</pre>
 </div>
+<div title="ToNote (June 12, 2015)" creator="Steve" modifier="Steve" created="201506122349" tags="#toread" changecount="1">
+<pre>https://erikreads.files.wordpress.com/2014/04/thinking-fast-and-slow-book-summary.pdf
+http://blog.crisp.se/2014/03/27/henrikkniberg/spotify-engineering-culture-part-1
+http://www.industriallogic.com/blog/are-your-development-defenses-dangerous/
+http://lifehacker.com/become-a-stronger-leader-by-asking-yourself-these-three-1707550666</pre>
+</div>
 <div title="Toaster Heuristic" creator="Steve" modifier="Steve" created="201311101401" tags="estimates" changecount="1">
 <pre>http://derailleurconsulting.com/blog/the-toaster-heuristic
 
@@ -4385,6 +4498,28 @@ In Tree Context:  Tree.Trunk -&gt; Translator -&gt; Animal.Leg  (Not Elephant.Tr
 !! Where to start?
 * Start with scenarios that worry the domain experts the most.  They'll want to talk about them and help you model them to mitigate that risk.
 * Don't strive for perfect language.  Cut off theorizing at some point and experiment.  Use the language and see where it falls short.</pre>
+</div>
+<div title="Upgrading Junior Developers" creator="Steve" modifier="Steve" created="201506131508" modified="201506131718" tags="#pghtechfest" changecount="3">
+<pre>Christopher Houdeshell
+@choudeshell
+
+Had takeaway as early slide - good idea!
+
+Made productive and efficient
+Autonomous
+Instill Confidence
+
+Tolerate mistakes
+Make Time - 8 hours per week
+No grunt work - no maintenance apps
+Help define their goals - must be attainable, can't be lofty
+
+!! Takeaways
+&quot;I am trying to __ so that I can ___ I'm running into ___ .  I've looked at __ and tried ___.&quot;
+Add interviewing day - day 2 - what do you do here?
+
+
+</pre>
 </div>
 <div title="Using Google Spreadsheet as a simple TDD/BDD environment" creator="Steve" modifier="Steve" created="201404091615" modified="201404091631" changecount="2">
 <pre>http://vimeo.com/89909482
@@ -4585,6 +4720,38 @@ http://tweaked.io/guide/nginx-proxying/
 http://unicorn.bogomips.org/TUNING.html
 http://engineering.chartbeat.com/2014/02/12/part-2-lessons-learned-tuning-tcp-and-nginx-in-ec2/</pre>
 </div>
+<div title="WebRTC: Unicorns, Narwhals and The Real- Time Web" creator="Steve" modifier="Steve" created="201506131345" modified="201506131435" tags="#pghtechfest 2015" changecount="7">
+<pre>Tian Davis - Respoke developer advocate
+@tiandavis
+tiandavis.com/talks
+
+WebRTC
+ * Video from rep, customer audio only
+
+DataChannel - secure data xfer - p2p
+Chunking images
+API will converge at 1.1
+
+Firebreadth - &gt; activex and nbap
+
+ICE - framework for browser p2p
+STUN - candidate = (ip and firewall (ports?)) 
+Singaling - websocket server- facilitates the STUN connection
+TURN - provides for situations when p2p fails
+ * (How does that work?)
+ * Why is it more reliable?
+ ** When STUN fails - can't get through firewall - TURN is the mediator
+
+rfc5766-turn-server (stun and turn server from google free)
+
+Not just websockets - p2p - it's free from a server standpoint.
+
+''what's the story on mobile?'' - not ready
+''clojure signaling server''
+
+''lunch and learn - create video to video app''
+</pre>
+</div>
 <div title="When Edge Cases Poke Holes in Your Perfect Solution" creator="Steve" modifier="Steve" created="201501151421" modified="201502101116" changecount="3">
 <pre>http://www.justinweiss.com/blog/2015/01/13/when-edge-cases-poke-holes-in-your-perfect-solution/
 
@@ -4603,6 +4770,40 @@ What would you change if you were allowed to?
 What decision has upset you the most in the last six months?
 What incentive would make you change the way you work?
 What's holding you back?</pre>
+</div>
+<div title="react.js" creator="Steve" modifier="Steve" created="201504081620" modified="201504081651" changecount="7">
+<pre>Nathan
+
+!!! component based
+Focused on components - components take data and spit out html.  
+ * React figures out how to change the DOM
+// Does this mean rendering is atomic?// - ''YES''
+
+!!! jsx
+syntax used by facebook to avoid boilerplate - basically can embed html tags in javascript code
+{{{
+  return &lt;h1&gt; Hello from React &lt;/h1&gt;;
+}}}
+** Should be precompiled in production
+
+!!! Components
+
+{{{
+&lt;TodoItem text=&quot;Code&quot; /&gt;
+
+//elsewhere in TodoItem render() function:
+return &lt;li&gt;{this.props.text}&lt;/li&gt;
+}}}
+
+!!! Flux
+* Events from components are broadcast to a &quot;Dispatcher&quot;
+* Dispatcher has listeners that register for interesting things
+
+!!! Wiriing up updates
+ getInitialState - first time data
+ componentWillMount - called before render (good place to register for listeners)
+ setState - refresh widget
+</pre>
 </div>
 <div title="scrc13" creator="Steve" modifier="Steve" created="201308171455" modified="201308171503" tags="scrc13" changecount="2">
 <pre>''Find links''
