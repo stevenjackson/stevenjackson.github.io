@@ -28,6 +28,7 @@ Another mindset is about discovery.  I crave feedback about this thing I'm build
 Now I don't want to come across as saying test-discovery is "better" than test-safety.  They're both tools and I think either can work based on your mindset.
 
 These sort of things happen when I'm in a Test-safety mindset:
+
  * I keep writing edge case tests that pass (because I've already designed for them)
  * I change one line of production code and 20 tests fail
  * I hack out a solution and then surround it with tests
@@ -36,6 +37,7 @@ These sort of things happen when I'm in a Test-safety mindset:
  * I'm focused on making code that is correct
 
 These sort of things happen when I'm in a Test-discovery mindset:
+
  * I slice the problem into one test at a time
  * I write unit tests during a spike
  * I throw away tests because I don't need that feedback anymore
