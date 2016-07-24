@@ -21,7 +21,7 @@ Corey brought this back for me when I was listening to [Ruby Rogues](https://dev
 His observations was something like:  When you're writing tests and it gets hard, what do you do?  Well, if you're test-driven, you change the production code to make the tests better.  If you're not, you change the tests.
 I've known Corey for awhile, but this felt like the most profound thing he's said and it suddenly put so many awkward conversations in context.
 
-There's a chasm between appreciating the tests and actually putting them at the same level as the production code.  And the conflict rears it's head when the production code design feels pretty good, but the tests just suck.  DHH's "TDD is dead" hammered on this for awhile, with the idea that TDD leads you to bad design.  If the tests "force" you to "compromise" the design, then you're viewing testability as a second-class citizen.
+There's a chasm between appreciating the tests and actually putting them at the same level as the production code.  And the conflict rears it's head when the production code design feels pretty good, but the tests just suck.  DHH's [TDD is dead] hammered on this for awhile, with the idea that TDD leads you to bad design.  If the tests "force" you to "compromise" the design, then you're viewing testability as a second-class citizen.
 
 It now seems obvious when we talk about this and questions like "is TDD a design tool?" that we've conflated test-first with test-driven.
 
@@ -55,3 +55,4 @@ I often say, if we're still focused on TDD in 30 years, we have failed as an ind
 
 [#whyitdd]: https://twitter.com/hashtag/whyitdd
 [Corey Haines on Ruby Rogues]: https://devchat.tv/ruby-rogues/186-rr-the-4-rules-of-simple-design-with-corey-haines
+[TDD is dead]: http://david.heinemeierhansson.com/2014/tdd-is-dead-long-live-testing.html
