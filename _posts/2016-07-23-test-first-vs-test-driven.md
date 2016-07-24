@@ -28,20 +28,20 @@ Another mindset is about discovery.  I crave feedback about this thing I'm build
 Now I don't want to come across as saying test-discovery is "better" than test-safety.  They're both tools and I think either can work based on your mindset.
 
 These sort of things happen when I'm in a Test-safety mindset:
-* I keep writing edge case tests that pass (because I've already designed for them)
-* I change one line of production code and 20 tests fail
-* I hack out a solution and then surround it with tests
-* I avoid libraries because they don't have unit tests
-* I write or move tests because a refactoring puts the code in a different file
-* I'm focused on making code that is correct
+ * I keep writing edge case tests that pass (because I've already designed for them)
+ * I change one line of production code and 20 tests fail
+ * I hack out a solution and then surround it with tests
+ * I avoid libraries because they don't have unit tests
+ * I write or move tests because a refactoring puts the code in a different file
+ * I'm focused on making code that is correct
 
 These sort of things happen when I'm in a Test-discovery mindset:
-* I slice the problem into one test at a time
-* I write unit tests during a spike
-* I throw away tests because I don't need that feedback anymore
-* I write multiple versions of the same test to find a name or abstraction
-* I'm focused on making code that isn't painful to use/maintain
-* I end up some place I didn't expect
+ * I slice the problem into one test at a time
+ * I write unit tests during a spike
+ * I throw away tests because I don't need that feedback anymore
+ * I write multiple versions of the same test to find a name or abstraction
+ * I'm focused on making code that isn't painful to use/maintain
+ * I end up some place I didn't expect
 
 I think it's interesting the way my attitude shifts based on the environment at the time.  When I'm anxious about a solution or a timeframe, I'm working from a place of fear.  I don't necessarily want to discover a better way to do anything, I just want to get it done and have it stay done forever. On the other hand, when I feel like I've written this plumbing logic before, I might be more incline to riff a little bit and see if there's a better way.  When I'm test-discovery, I feel like I can go far and I can go fast.  I'm building a little narrow bridge to a new place.  Maybe everyone can't follow me, but that's ok, I'll figure out if we want to go there first.  When I'm test-safety, I'm building robustness.  Here's a nice concrete highway for a million other people to travel on.  Programming languages matter here too.  When I unit test in java, I find myself writing tests to prevent anything the compiler might allow.  Here's a function that adds a list of ages.  Hmmm...what if these ints are negative?  When I moved to ruby, I threw that mindset away.  You can do anything you want, and testing for negative inputs makes as much sense as testing for pepperoni pizza inputs.  I think something similar might happen with more experienced teams.  I'm not going to test for everything, because you have some responsibility not to go too far outside my intent (which is hopefully captured well in my tests :)  YAGNI starts to apply.  And if you don't need those tests for safety, maybe you start feeling like they're holding back your ability to discover as well.
 
