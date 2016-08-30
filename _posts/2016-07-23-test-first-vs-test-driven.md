@@ -18,8 +18,7 @@ I've long believed there's a difference between test-first and test-driven and t
 But what I've found is that many of the people I pair with really are concerned with that safety and correctness; in their mind there's really no other reason to write tests at all.
 
 Corey brought this back for me when I was listening to [Ruby Rogues](https://devchat.tv/ruby-rogues/186-rr-the-4-rules-of-simple-design-with-corey-haines)  (Yeah I'm 18 months behind on podcasts, isn't everybody?)
-His observations was something like:  When you're writing tests and it gets hard, what do you do?  Well, if you're test-driven, you change the production code to make the tests better.  If you're not, you change the tests.
-I've known Corey for awhile, but this felt like the most profound thing he's said and it suddenly put so many awkward conversations in context.
+His observation was something like:  How do you react to test pain?  When you're writing tests and it gets hard, what do you do?  Well, if you're test-driven, you change the production code to make the tests better.  If you're not, you change the tests. I've known Corey for awhile, but this felt like the most profound thing he's said and it suddenly put so many awkward conversations in context.
 
 There's a chasm between appreciating the tests and actually putting them at the same level as the production code.  And the conflict rears it's head when the production code design feels pretty good, but the tests just suck.  DHH's [TDD is dead] hammered on this for awhile, with the idea that TDD leads you to bad design.  If the tests "force" you to "compromise" the design, then you're viewing testability as a second-class citizen.
 

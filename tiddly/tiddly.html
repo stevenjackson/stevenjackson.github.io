@@ -4579,6 +4579,22 @@ CHEAT SHEETS:  https://gist.github.com/carols10cents/1f2066f758be72ecf2ab
 
 Human beings think in abstractions - not details.  Named abstractions allow us to group details into larger concepts.  This allows us to keep building higher and higher abstractions that can solve bigger problems.</pre>
 </div>
+<div title="SSH reverse tunnel" creator="YourName" modifier="YourName" created="201608131344" changecount="1">
+<pre>Connect to remote machine and tunnel their http access over port 8080 on localhost
+
+!! Cmd line
+ssh -v -L 8080:localhost:80 -p 2298 &lt;username&gt;@&lt;remote_ip&gt;
+
+
+!! .ssh/config
+host remotemachine
+  Hostname &lt;remote_ip&gt;
+  Port 2298
+  ForwardAgent no
+  ForwardX11 no
+  User &lt;username&gt;
+  LocalForward 8080 127.0.0.1:80</pre>
+</div>
 <div title="Saff Squeeze" creator="Steve" modifier="Steve" created="201410011728" modified="201502081356" changecount="2">
 <pre>http://www.threeriversinstitute.org/HitEmHighHitEmLow.html
 
