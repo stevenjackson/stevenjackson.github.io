@@ -1965,6 +1965,22 @@ end
 
 ----</pre>
 </div>
+<div title="Blocked on I/O" creator="Steve" modifier="Steve" created="201703091931" modified="201703091957" tags="#confoo" changecount="4">
+<pre>@gergdotca
+Don't Block the Event Loop!
+
+Not necessarily IO!
+
+
+* CPU - 100MB JSON serialization took seconds, crashed the system.
+* Deadlock - 2 requests tried to grab a DB connection from the pool (Momoko)
+** No stacktrace available
+* Out of connections
+
+Real life advice from @gergdotca - If your boss won't give you time to refactor/upgrade, just arrange for that old software to cause a critical production outage.
+
+Beware the hidden non-functional requirement.  We never built the websocket client that needed all this async I/O. </pre>
+</div>
 <div title="Bower" creator="Steve" modifier="Steve" created="201310012325" tags="javascript" changecount="1">
 <pre>* Package manager for the browser
 * Can be anything, not just javascript
@@ -2161,6 +2177,21 @@ http://audit.qos.ch/faq.html</pre>
 <div title="CAS spike" creator="Steve" modifier="Steve" created="201306291700" modified="201306291700" tags="cas" changecount="2">
 <pre>Use appfuse to set up spring/hibernate app and try to plug in audit framework</pre>
 </div>
+<div title="CSS lunch and learn nexia" creator="Steve" modifier="Steve" created="201709121415" modified="201709121417" changecount="5">
+<pre>Jacob Smith 0025 and Stephen Scott
+
+glitch
+&lt;ul&gt; whenever you have the same thing repeated
+
+so 
+{{{ &lt;ul&gt;&lt;li /&gt;&lt;li /&gt;&lt;li /&gt;&lt;/li /&gt;&lt;/ul&gt; }}} to show 4 side-by-side boxes (instead of floated &lt;div&gt;)
+
+Double underscore or hyphen to show the difference between location and a type
+{{{ panel-block__title }}}
+{{{ panel-block__header }}}
+
+ {{{ overflow: hidden }}} lets you do clearfix on the parent, whereas {{{ clear: both }}} is for a sibling (that you might add just to make the styles work)</pre>
+</div>
 <div title="Can Flat Orgs scale?" creator="Steve" modifier="Steve" created="201601071951" modified="201601081358" tags="#codemash 2016" changecount="2">
 <pre>Careevolution
 - No
@@ -2258,6 +2289,12 @@ DOCTRINES OF THE CHURCH OF STRONG CIVILITY
 
 Interruptors will interrupt to indicated understanding and use physical cues to keep you talking.
 Civility will never interrupt and will use physical cues to indicate you should stop talking.</pre>
+</div>
+<div title="Circuit Breakers" creator="Steve" modifier="Steve" created="201703091608" modified="201703091608" tags="#confoo" changecount="3">
+<pre>@scott_triglia
+https://www.slideshare.net/ScottTriglia/protect-your-users-with-circuit-breakers-72991406
+
+Feature flag are just manual circuit breakers</pre>
 </div>
 <div title="Code Change Complexity" creator="Steve" modifier="Steve" created="201404091640" tags="TechDebt" changecount="1">
 <pre>https://michaelfeathers.silvrback.com/code-change-complexity
@@ -2963,6 +3000,389 @@ Solution:  3 amigos during kickoff
  Willem van den Ende  (http://blog.johanneslink.net/2014/05/22/veterans-of-tdd-willem-van-den-ende/)
 </pre>
 </div>
+<div title="Deep Work" creator="Steve" modifier="Steve" created="201709281159" modified="201709281251" changecount="13">
+<pre>!! Perspective
+This is a good book if you feel like you're not ever getting anything done.  My chief criticism is that the end goal for Newport's Deep Work seems to be create solo-uninterruptable blocks of time.  I don't think software development will improve if we work harder at keeping developers in sensory-deprivation silos.  I do think there's a number of nuggets to glean from here - especially around the psychology of distraction and the power of ritual.  I'd like a take on this topic that was focused on high-performing collaborative teams doing &quot;deep work&quot;.  Newport touches on this idea in a few places (two people in front of the whiteboard caught my interest) - but it's mostly lost with the primary perspective of publishing more papers/books = better work.
+
+!! Takeaways
+1) Distractions are a problem for me, not because of &quot;deep work avoidance&quot; - I don't have trouble focusing or refocusing.  The issue is this idea of residual attention.  Seeing the thing I can't deal with right now starts using part of my processing power.  This is similar to the psych behind GTD.
+
+2)  I should experiment with planning my leisure time.  This is kind of frustrating because I usually have a never-ending TODO list, I just don't always want to refer to it when I plop down brain-dead on the couch at 9pm.  But I definitely see the value in saying - do I really want to spend the next 45 minutes &quot;catching up&quot; on twitter?  As the book quotes in the 4DX section &quot;I know what I need to do. I just don’t know how to do it.&quot;
+
+3) I should experiment with a scoreboard.  The issue is I have trouble identifying value accrued.  I know it's not cards delivered or hours on task - I've measured both of those and they create awful feedback loops.
+
+4) I think I could benefit from a shutdown ritual.  I just don't know how to implement one in my current environment.  My client works 2 hours later than I can realistically work.  As an &quot;async&quot; person on the team, I'm easier to ignore, so it's almost always the case that by the time they're ready to address my concerns it's the end of my day.  That means I'm always trying to cram one more thing in while I have the opportunity to talk to them.  Additionally my work day almost always ends abruptly with my wife running out the door or needing me to start dinner or a child is desperate for attention.  One idea I'm thinking about is shutting my day down pre-emptively and creating the &quot;resume plan&quot; and then immediately resuming?  Like if I got good at doing that, could I be efficient enough to employ it every hour?  I did something very similar when I was working all spare hours of the day trying to keep all my projects afloat.
+
+5) I've started experimenting with schedule blocks.  It feels somewhat nice to have the plan.  I haven't ascertained any other benefits yet.  I'm also not blocking off anything that wasn't already in my work stream.
+
+6) The core problem I have isn't solved by this book.  I have no trouble getting high-quality work done with tons of distractions.  My problems are twofold: 
+
+A) I'm reluctant to throw low-priority tasks away.  Sometimes this is beneficial - my code isn't done until it's repeatedly deployable.  Other times it's I can't start this obviously valuable thing because I'm still bothered we didn't quite cover that one cataclysmic edge-case.
+
+B) I want to figure out how to get more done in my day.  Not do &quot;better&quot; work - more &quot;better&quot; work.  I'm already highly productive, but I want to figure out how to do a 6 month high-quality project in 48 hours.  I want it to be ok to clock in for four highly productive hours of business-value and leave more time for crazy experimentation.
+
+
+
+!! Highlights
+Highlight (Yellow) | Location 148
+To remain valuable in our economy, therefore, you must master the art of quickly learning complicated things.
+-----
+
+Highlight (Yellow) and Note | Location 264
+Once the talent market is made universally accessible, those at the peak of the market thrive while the rest suffer.
+//is this true given the enormous demand for devs?//
+-----
+Highlight (Yellow) | Location 268
+talent is not a commodity you can buy in bulk and combine to reach the needed levels: There’s a premium to
+being the best.
+----
+Highlight (Yellow) | Location 293
+In this new economy, three groups will have a particular advantage: those who can work well and creatively
+with intelligent machines, those who are the best at what they do, and those with access to capital.
+----
+Highlight (Yellow) | Location 305
+Two Core Abilities for Thriving in the New Economy 1. The ability to quickly master hard things. 2. The ability
+to produce at an elite level, in terms of both quality and speed.
+----
+Highlight (Yellow) | Location 327
+this process of mastering hard things never ends: You must be able to do it quickly, again and again.
+----
+Highlight (Yellow) | Location 341
+If you don’t produce, you won’t thrive—no matter how skilled or talented you are.
+----
+Highlight (Yellow) | Location 416
+By batching his teaching in the fall, Grant can then turn his attention fully to research in the spring and summer,
+and tackle this work with less distraction.
+----
+Highlight (Yellow) | Location 422
+it’s important to enforce strict isolation until he completes the task at hand.
+----
+Highlight (Yellow) and Note | Location 423
+My guess is that Adam Grant doesn’t work substantially more hours than the average professor at an elite
+research institution (generally speaking, this is a group prone to workaholism),
+//hmmm//
+----
+Highlight (Yellow) | Location 437
+attention residue.
+''OH YES''
+----
+Highlight (Yellow) | Location 439
+it was more common to find people working on multiple projects sequentially:
+----
+Highlight (Yellow) | Location 452
+minimizes the negative impact of attention residue
+----
+Highlight (Yellow) | Location 460
+by seeing messages that you cannot deal with at the moment (which is almost always the case), you’ll be forced to turn back to the primary task with a secondary task left unfinished. The attention residue left by such unresolved switches dampens your performance.
+----
+Highlight (Yellow) | Location 482
+If deep work is so important, why are there distracted people who do well?
+----
+Highlight (Yellow) | Location 500
+There are, we must continually remember, certain corners of our economy where depth is not valued.
+----
+Highlight (Yellow) | Location 613
+client that each member of her team would be off one day a week.”
+Instead, the consultants found more enjoyment in their work, better communication among themselves, more
+learning (as we might have predicted, given the connection between depth and skill development highlighted in
+the last chapter), and perhaps most important, “a better product delivered to the client.”
+//batch slack time//
+----
+Highlight (Yellow) | Location 622
+cultures of connectivity persist, the answer, according to our principle, is because it’s easier.
+----
+Highlight (Yellow) | Location 623
+If you work in an environment where you can get an answer to a question or a specific piece of information
+immediately when the need arises, this makes your life easier
+----
+Highlight (Yellow) and Note | Location 625
+you’d instead have to do more advance planning for your work, be more organized, and be prepared to put
+things aside for a while and turn your attention elsewhere while waiting for what you requested.
+//isnt this the same as doing multiple projects sequentially? Its somehow ok if you plan for it?//
+----
+Highlight (Yellow) | Location 630
+it becomes acceptable to run your day out of your inbox—responding
+----
+Highlight (Yellow) | Location 674
+The feeling of taking a broken machine, struggling with it, then eventually enjoying a tangible indication that he
+had succeeded (the bike driving out of the shop under its own power) provides a concrete sense of accomplishment he struggled to replicate when his day revolved vaguely around reports and communications
+strategies.
+----
+Highlight (Yellow) | Location 686
+Busyness as Proxy for Productivity: In the absence of clear indicators of what it means to be productive and
+valuable in their jobs, many knowledge workers turn back toward an industrial indicator of productivity: doing
+lots of stuff in a visible manner.
+----
+Highlight (Yellow) and Note | Location 764
+Having just established that there’s nothing fundamentally flawed about deep work and nothing fundamentally
+necessary about the distracting behaviors that displace it, you
+//when did this happen exactly?//
+----
+Highlight (Yellow) | Location 829
+Our brains instead construct our worldview based on what we pay attention to.
+----
+Highlight (Yellow) | Location 901
+“The best moments usually occur when a person’s body or mind is stretched to its limits in a voluntary effort to
+accomplish something difficult and worthwhile.”
+----
+Highlight (Yellow) and Note | Location 905
+Ironically, jobs are actually easier to enjoy than free time, because like flow activities they have built-in goals,
+feedback rules, and challenges, all of which encourage one to become involved in one’s work, to concentrate
+and lose oneself in it. Free time, on the other hand, is unstructured, and requires much greater effort to be shaped into something that can be enjoyed.
+''omg''
+----
+Highlight (Yellow) | Location 910
+Human beings, it seems, are at their best when immersed deeply in something challenging.
+----
+Highlight (Yellow) | Location 919
+flow generates happiness.
+----
+Highlight (Yellow) | Location 950
+“is not to generate meaning, but rather to cultivate in himself the skill of discerning the meanings that are
+already there.”
+----
+Highlight (Yellow) | Location 1276
+waiting for inspiration to strike is a terrible, terrible plan. In fact, perhaps the single best piece of advice I can
+offer to anyone trying to do creative work is to ignore inspiration.
+----
+Highlight (Yellow) | Location 1319
+the grand gesture. The concept is simple: By leveraging a radical change to your normal environment, coupled
+perhaps with a significant investment of effort or money, all dedicated toward supporting a deep work task, you
+increase the perceived importance of the task. This boost in importance reduces your mind’s instinct to
+procrastinate and delivers an injection of motivation and energy.
+----
+Highlight (Yellow) | Location 1370
+“We encourage people to stay out in the open because we believe in serendipity—and people walking by each
+other teaching new things.” For the sake of discussion, let’s call this principle—that when you allow people to
+bump into each other smart collaborations and new ideas emerge—the theory of serendipitous creativity.
+----
+Highlight (Yellow) and Note | Location 1416
+The professors at MIT—some of the most innovative technologists in the world—wanted nothing to do with an
+open-office-style workspace. They instead demanded the ability to close themselves off.
+//so what? how does this prove anything? everyone else was wrong because some professors wanted
+special treatment?//
+----
+Highlight (Yellow) | Location 1425
+We can, therefore, still dismiss the depth-destroying open office concept without dismissing the innovation-producing theory of serendipitous creativity. The key is to maintain both in a hub-and-spoke-style arrangement:
+Expose yourself to ideas in hubs on a regular basis, but maintain a spoke in which to work deeply on what you
+encounter.
+----
+Highlight (Yellow) and Note | Location 1440
+the whiteboard effect. For some types of problems, working with someone else at the proverbial shared
+whiteboard can push you deeper than if you were working alone. The presence of the other party waiting for
+your next insight—be it someone physically in the same room or collaborating with you virtually—can shortcircuit
+the natural instinct to avoid depth.
+//hmmm..pairing works the same way. So maybe open space without pairing is too distracting to work.//
+----
+Highlight (Yellow) | Location 1444
+Indeed, their example indicates that for many types of work—especially when pursuing innovation—
+collaborative deep work can yield better results. This strategy, therefore, asks that you consider this option in
+contemplating how best to integrate depth into your professional life.
+----
+Highlight (Yellow) and Note | Location 1447
+First, distraction remains a destroyer of depth.
+//aha....and pairs are difficult to distract.//
+----
+Highlight (Yellow) | Location 1464
+I asked you how to do it, and you told me what I should do. I know what I need to do. I just don’t know how to
+do it.”
+----
+Highlight (Yellow) | Location 1477
+Discipline #1: Focus on the Wildly Important
+----
+Highlight (Yellow) | Location 1488
+Discipline #2: Act on the Lead Measures
+----
+Highlight (Yellow) | Location 1497
+For an individual focused on deep work, it’s easy to identify the relevant lead measure: time spent in a state of
+deep work dedicated toward your wildly important goal.
+----
+Highlight (Yellow) | Location 1502
+Discipline #3: Keep a Compelling Scoreboard
+----
+Highlight (Yellow) | Location 1513
+To maximize the motivation generated by this scoreboard, whenever I reached an important milestone in an
+academic paper (e.g., solving a key proof), I would circle the tally mark corresponding to the hour where I
+finished the result.* This served two purposes. First, it allowed me to connect, at a visceral level, accumulated
+deep work hours and tangible results. Second, it helped calibrate my expectations for how many hours of deep
+work were needed per result.
+----
+Highlight (Yellow) | Location 1517
+Discipline #4: Create a Cadence of Accountability
+----
+Highlight (Yellow) | Location 1524
+During my experiments with 4DX, I used a weekly review to look over my scoreboard to celebrate good weeks,
+help understand what led to bad weeks, and most important, figure out how to ensure a good score for the days
+ahead.
+----
+Highlight (Yellow) | Location 1558
+I want to suggest a more applicable but still quite powerful heuristic: At the end of the workday, shut down your
+consideration of work issues until the next morning
+----
+Highlight (Yellow) | Location 1565
+Reason #1: Downtime Aids Insights
+----
+Highlight (Yellow) | Location 1572
+Dijksterhuis’s team isolated this effect by giving subjects the information needed for a complex decision
+regarding a car purchase. Half the subjects were told to think through the information and then make the best
+decision. The other half were distracted by easy puzzles after they read the information, and were then put on the
+spot to make a decision without having had time to consciously deliberate. The distracted group ended up
+performing better.
+----
+Highlight (Yellow) | Location 1584
+The implication of this line of research is that providing your conscious brain time to rest enables your
+unconscious mind to take a shift sorting through your most complex professional challenges. A shutdown habit,
+therefore, is not necessarily reducing the amount of time you’re engaged in productive work, but is instead
+diversifying the type of work you deploy.
+----
+Highlight (Yellow) | Location 1587
+Reason #2: Downtime Helps Recharge the Energy Needed to Work Deeply
+----
+Highlight (Yellow) | Location 1619
+Put another way, trying to squeeze a little more work out of your evenings might reduce your effectiveness the
+next day enough that you end up getting less done than if you had instead respected a shutdown.
+----
+Highlight (Yellow) | Location 1643
+to support your commitment to shutting down with a strict shutdown ritual that you use at the end of the
+workday to maximize the probability that you succeed. In more detail, this ritual should ensure that every
+incomplete task, goal, or project has been reviewed and that for each you have confirmed that either (1) you
+have a plan you trust for its completion, or (2) it’s captured in a place where it will be revisited when the time is
+right. The process should be an algorithm: a series of steps you always conduct, one after another. When you’re
+done, have a set phrase you say that indicates completion (to end my own ritual, I say, “Shutdown complete”).
+----
+Highlight (Yellow) | Location 1658
+the Zeigarnik effect. This effect, which is named for the experimental work of the early-twentieth-century
+psychologist Bluma Zeigarnik, describes the ability of incomplete tasks to dominate our attention.
+----
+Highlight (Yellow) | Location 1665
+In this study, the two researchers began by replicating the Zeigarnik effect in their subjects (in this case, the
+researchers assigned a task and then cruelly engineered interruptions), but then found that they could
+significantly reduce the effect’s impact by asking the subjects, soon after the interruption, to make a plan for
+how they would later complete the incomplete task. To quote the paper: “Committing to a specific plan for a
+goal may therefore not only facilitate attainment of the goal but may also free cognitive resources for other
+pursuits.”
+----
+Highlight (Yellow) | Location 1677
+Decades of work from multiple different subfields within psychology all point toward the conclusion that
+regularly resting your brain improves the quality of your deep work. When you work, work hard. When you’re
+done, be done.
+----
+Highlight (Yellow) | Location 1761
+The idea motivating this strategy is that the use of a distracting service does not, by itself, reduce your brain’s
+ability to focus. It’s instead the constant switching from low-stimuli/high-value activities to high-stimuli/lowvalue
+activities, at the slightest hint of boredom or cognitive challenge,
+----
+Highlight (Yellow) | Location 1807
+To summarize, to succeed with deep work you must rewire your brain to be comfortable resisting distracting
+stimuli. This doesn’t mean that you have to eliminate distracting behaviors; it’s sufficient that you instead
+eliminate the ability of such behaviors to hijack your attention.
+----
+Highlight (Yellow) | Location 1831
+In particular, identify a deep task (that is, something that requires deep work to complete) that’s high on your
+priority list. Estimate how long you’d normally put aside for an obligation of this type, then give yourself a hard
+deadline that drastically reduces this time.
+----
+Highlight (Yellow) | Location 1835
+At this point, there should be only one possible way to get the deep task done in time: working with great
+intensity—no e-mail breaks, no daydreaming, no Facebook browsing, no repeated trips to the coffee machine.
+----
+Highlight (Yellow) | Location 1839
+Remember, however, to always keep your self-imposed deadlines right at the edge of feasibility. You should be
+able to consistently beat the buzzer (or at least be close), but to do so should require teeth-gritting concentration.
+----
+Highlight (Yellow) | Location 1841
+The main motivation for this strategy is straightforward. Deep work requires levels of concentration well beyond
+where most knowledge workers are comfortable.
+----
+Highlight (Yellow) | Location 1859
+The goal of productive meditation is to take a period in which you’re occupied physically but not mentally—
+walking, jogging, driving, showering—and focus your attention on a single well-defined professional problem.
+Depending on your profession, this problem might be outlining an article, writing a talk, making progress on a
+proof, or attempting to sharpen a business strategy. As in mindfulness meditation, you must continue to bring
+your attention back to the problem at hand when it wanders or stalls.
+----
+Highlight (Yellow) | Location 1900
+This cycle of reviewing and storing variables, identifying and tackling the next-step question, then consolidating
+your gains is like an intense workout routine for your concentration ability.
+----
+Highlight (Yellow) and Note | Location 1923
+it was instead his quest to improve this memory that (incidentally) gave him the deep work edge needed to thrive
+academically.
+//leaping to conclusions again!//
+----
+Highlight (Yellow) | Location 2084
+I call it the craftsman approach to tool selection, a name that emphasizes that tools are ultimately aids to the
+larger goals of one’s craft. The Craftsman Approach to Tool Selection: Identify the core factors that determine
+success and happiness in your professional and personal life. Adopt a tool only if its positive impacts on these
+factors substantially outweigh its negative impacts.
+----
+Highlight (Yellow) | Location 2314
+But the logical foundation of his proposal, that you both should and can make deliberate use of your time outside
+work, remains relevant today—especially with respect to the goal of this rule, which is to reduce the impact of
+network tools on your ability to perform deep work.
+----
+Highlight (Yellow) | Location 2330
+Put more thought into your leisure time. In other words, this strategy suggests that when it comes to your
+relaxation, don’t default to whatever catches your attention at the moment, but instead dedicate some advance
+thinking to the question of how you want to spend your “day within a day.”
+----
+Highlight (Yellow) | Location 2333
+websites of the type mentioned previously thrive in a vacuum: If you haven’t given yourself something to do in a
+given moment, they’ll always beckon as an appealing option. If you instead fill this free time with something of
+more quality, their grip on your attention will loosen.
+----
+Highlight (Yellow) | Location 2350
+if you want to eliminate the addictive pull of entertainment sites on your time and attention, give your brain a
+quality alternative.
+----
+Highlight (Yellow) | Location 2442
+Down the left-hand side of the page, mark every other line with an hour of the day, covering the full set of hours
+you typically work. Now comes the important part: Divide the hours of your workday into blocks and assign
+activities to the blocks.
+----
+Highlight (Yellow) | Location 2459
+Your goal is not to stick to a given schedule at all costs; it’s instead to maintain, at all times, a thoughtful say in
+what you’re doing with your time going forward—even if these decisions are reworked again and again as the
+day unfolds.
+----
+Highlight (Yellow) | Location 2484
+Joseph’s critique is driven by the mistaken idea that the goal of a schedule is to force your behavior into a rigid
+plan. This type of scheduling, however, isn’t about constraint—it’s instead about thoughtfulness. It’s a simple
+habit that forces you to continually take a moment throughout your day and ask: “What makes sense for me to
+do with the time that remains?” It’s the habit of asking that returns results, not your unyielding fidelity to the
+answer.
+----
+Highlight (Yellow) | Location 2515
+How long would it take (in months) to train a smart recent college graduate with no specialized training in my
+field to complete this task?
+----
+Highlight (Yellow) | Location 2580
+because when considered in isolation, to say no to any one of these activities seems like you’re being lazy. By
+instead picking and sticking with a shallow-to-deep ratio, you can replace this guilt-driven unconditional
+acceptance with the more healthy habit of trying to get the most out of the time you put aside for shallow work
+----
+Highlight (Yellow) | Location 2682
+I call this approach a sender filter, as I’m asking my correspondents to filter themselves before attempting to
+contact me.
+----
+Highlight (Yellow) | Location 2721
+I will do a good deed for some random stranger if Antonio responds within 23 hours.
+----
+Highlight (Yellow) | Location 2742
+I suggest, therefore, that the right strategy when faced with a question of this type is to pause a moment before
+replying and take the time to answer the following key prompt: What is the project represented by this message,
+and what is the most efficient (in terms of messages generated) process for bringing this project to a successful
+conclusion?
+----
+Highlight (Yellow) | Location 2773
+Second, to steal terminology from David Allen, a good process-centric message immediately “closes the loop”
+with respect to the project at hand. When a project is initiated by an e-mail that you send or receive, it squats in
+your mental landscape—becoming something that’s “on your plate” in the sense that it has been brought to your
+attention and eventually needs to be addressed. This method closes this open loop as soon as it forms. By
+working through the whole process, adding to your task lists and calendar any relevant commitments on your
+part, and bringing the other party up to speed, your mind can reclaim the mental real estate
+----</pre>
+</div>
 <div title="DefaultTiddlers" creator="Steve" modifier="Steve" created="201301170300" changecount="1">
 <pre>[[TabTimeline]]</pre>
 </div>
@@ -3153,6 +3573,15 @@ WARNING:  Don't eliminate all the details - stay away from tautological
 
 Is your essence (of this test) domain or workflow?  Depends on the test.  Should we run/group these tests together?  Or maybe accept slower feedback on workflow tests.</pre>
 </div>
+<div title="Distributed Agile Tradeoffs" creator="Steve" modifier="Steve" created="201705051658" modified="201705051834" tags="#aab17" changecount="6">
+<pre>@jeffhoover
+@schmonz
+
+Chzy suggested a doc from pivotal about remote pairing - FIND IT
+https://schmonz.com/2017/05/05/aab-2017-best-team-anywhere/
+
+Scatterspoke</pre>
+</div>
 <div title="Docker For Fun and Profit" creator="Steve" modifier="Steve" created="201506131723" modified="201506151035" tags="#pghtechfest" changecount="4">
 <pre>Kel Cecil
 @praisechaos
@@ -3173,6 +3602,15 @@ containership.io - abstracts away the providers (digital ocean -&gt; aws)
 * Take someone's dotfiles for a spin
 
 Takeaway:  simply uses docker the way I use vagrant</pre>
+</div>
+<div title="Docs for Devs" creator="Steve" modifier="Steve" created="201703101623" modified="201703101800" tags="#confoo" changecount="2">
+<pre>Most asked questions follow a normal 
+Every page is page 1 - You need to tell users where they are because they come in from anywhere
+Give orders
+Write a unit test (make the user do something that verify they set it all up correctly).  
+If you can't check that it worked, it's not a task.
+What's next -&gt; add a pointer to the next step.  If you don't say anything they're not sure if they're done or not.  Reduce uncertainity.
+Get out of the way -&gt; People have other stuff to do.</pre>
 </div>
 <div title="Drones" creator="Steve" modifier="Steve" created="201308171457" modified="201308171502" tags="scrc13" changecount="3">
 <pre>AR Parrot Drone
@@ -3225,6 +3663,23 @@ Processes are used like Objects in the sense that you give them work and wait fo
 
 * iex pry</pre>
 </div>
+<div title="Elm and Elixir made for each other" creator="Steve" modifier="Steve" created="201705191739" modified="201705201306" tags="#selfconf17" changecount="4">
+<pre>@mudetroit
+https://github.com/mudetroit/elm-and-elixir-made-for-each-other
+
+
+!!! Undirectional data flows
+* Undirectional data flows push us towards time being a first class  //I don't get it//
+* No longer think about what a model is -&gt; just what it looks like afterwards
+* Moving towards streams
+
+!!! Time as a first class citizen
+* Pushes us to think about the system as a state machine in a moment of time.  
+* Think of all the bugs that have been caused because we obsess over the output of the state machine but aren't good at thinking about what the internals look like.
+* //Replay//
+
+</pre>
+</div>
 <div title="EmbeddedLinuxDistro" creator="Steve" modifier="Steve" created="201506101706" modified="201506101708" changecount="4">
 <pre>Eric Hankinson
 
@@ -3249,6 +3704,51 @@ zcat | pv | dd
 12 year old aaron (''find github account'') contributing to travis pulled in by first accepted pull request.
 
 github.com/rkh</pre>
+</div>
+<div title="Embrace the Suck" creator="Steve" modifier="Steve" created="201705192050" tags="#selfconf17" changecount="1">
+<pre>@medyyoulook
+Perseverance, Grit, Growth Mindset
+
+Embrace the Suck -&gt; There's stuff that's got to be done, it's not going away.  Putting if off doesn't make it any less sucky.
+The longer you procrastinate the harder it is to get started.  Acknowledge it sucks, get it over with.
+
+Zen horse metaphor:
+
+I'm on my zen horse I can do anything, little problems don't knock me off.  Xcode crashes, whatever.
+My horse ran away, can't find it
+Can see my horse, not there yet
+Not going to get back on today
+</pre>
+</div>
+<div title="Enterprise learning can be fun" creator="Steve" modifier="Steve" created="201703101903" tags="#confoo" changecount="1">
+<pre>@_toch
+
+!!! X-talk
+* 30 mins talk, 30 mins discussion - 1 night a month
+* Drawback: passive
+
+!!! Group Code Review
+* Homework - review this and send comments
+* Activity - discuss reviews
+* Drawback:  Too many languages
+
+!!! Code Retreat
+
+!!! Hands-on-workshop
+* Based on Junior questions
+* Drawbacks:  Takes a lot of time to build
+
+!!! Legacy Code Retreat
+* Used Gilded Rose Kata
+* Topics/Challenges
+** Fix a bug
+** Add a feature
+** Introduce DI
+** Extract Methods
+
+!!! Open Forum
+* Round table suggest topics
+* Top 3 discussed 20 mins each</pre>
 </div>
 <div title="Erlang, or How I Learned to Stop Worrying and Let Things Fail" creator="Steve" modifier="Steve" created="201601081957" modified="201601082132" tags="#codemash 2016" changecount="5">
 <pre>John Daily
@@ -3318,6 +3818,54 @@ worrydream.com/TheFutureOfProgramming - Must watch video
 * Look at database.yml
 * tools - simplecov, turbulence, etc
 * Installed DB from heroku (db:pull)
+</pre>
+</div>
+<div title="Expand Your Network" creator="Steve" modifier="Steve" created="201705041523" changecount="1">
+<pre>@crebma
+
+!!! Self Awareness
+* Who do you interact with?
+* Who do you follow on twitter?
+* Do the people you admire in the community all look the same?
+
+!!! Expand Your Network
+* Say hello to new people
+* Don't recruit out of homogenous network
+* Your job posting has &quot;Straight White Dude&quot; written on it
+* Care publicly when a public figure says something weird
+* HIre diversity consultant
+* Sponsors groups and conferences that promote diversity
+* Support continued learning - make it ok to not know something
+
+!!! Group awareness
+* Invite speakers that are under-represented
+* Make new people feel welcome
+* Have a good of code of conduct that you understand -&gt; shows you've thought about this and you care
+** Don't just copy/paste
+** Have a contact person/committee to help with code of conduct questions
+** Enforce the code
+* Reach out to local groups
+* Find speakers of different experience levels
+* Don't center social hours around alcohol
+** I don't feel comfortable being around a bunch of people drinking
+** Mocktails, 
+** Lower the barrier
+
+!!! Group Awareness in Your Conference
+* Have a code of conduct
+** Know it, Enforce it
+** geekfenimist.com
+* Reach out to local diverse groups for CFPs
+* Ask for recommendations of speakers to invite
+* CallbackWomen, Technically Speaking
+* Partner with organizations
+* Offer scholarships, free tickets, discount codes
+* Always give your speakers and volunteers free tickets
+* Cover travel expenses
+* Offer child care, closed captioning, signing, quiet room
+
+!!! Do Research
+* Don't rely on the one non-&quot;straight white dude&quot; to help you
 </pre>
 </div>
 <div title="Failing Abstract" creator="Steve" modifier="Steve" created="201401131809" modified="201401131810" changecount="2">
@@ -3662,6 +4210,99 @@ media queries
 
 Don't use inline styles, include media query last.</pre>
 </div>
+<div title="Greatness (video)" creator="Steve" modifier="Steve" created="201709061652" modified="201709061702" changecount="3">
+<pre>https://www.youtube.com/watch?v=OqmdLcyES_Q
+David Marquet
+Turn the Ship Around
+
+! Intent-based leadership
+
+&quot;Who's the Captain here?&quot;
+
+Don't give instructions - given intent
+Stop requesting permission - &quot;Captain I intend to submerge the ship&quot;
+Moves psychological ownership
+
+! Give control
+* Competence - Is it safe?
+* Clarity - Is it the right thing to do?
+
+&quot;Captain I intend to submerge the ship&quot;  - it is safe because....It is a good idea because
+
+I don't care how smart you are - 1 person thinking controlling 134 people can't beat 135 people thinking
+
+! Move the authority where the information is
+* The software programmer decides when to ship
+* The salesman closes the deal
+
+!! This is not chaos
+* They make decisions as if the CEO is standing behind them
+* Better decisions
+* Better execution speed (No delay)
+* Feel like they matter
+* They are thinking
+
+!! It will feel wrong
+* You have been programmed to take control
+* You need to give control and create leaders
+* Angry at yourself
+* Failure -&gt; Go back to the old ways
+
+!! You are creating an environment
+GREATNESS</pre>
+</div>
+<div title="Grow Skills, Grow Code" creator="Steve" modifier="Steve" created="201705041240" modified="201705041346" tags="#aab17" changecount="18">
+<pre>Andy Hunt
+@PragmaticAndy
+
+
+!!! Agile development
+* Agile development is supposed to be like the Borg.  We will adapt.  Resistance is futile.
+* Wrong words - sprint, marathon.  Development is an obstacle course.
+* The suck curve - it takes time.
+
+!!! Neuroplasticity
+Carla Dweck
+- self-modifying brain
+- if you think you can't increase intelligence, then you physically can't.  
+- growth vs fixed mindset
+
+!!! Pragmatic Learning Plan
+# Pick a place and time, What do you want to do next.
+** Smart mirror, elm front-end for finances
+# SMART goals
+# Diversify Topics
+** How do you decide when/how to diversify?
+** How to take ownership on problems (Extreme Ownership) - //Add to reading list//
+# Plan
+** Next action
+** Year goal
+** 5 years, __what will be different__
+# Rebalance
+** Schedule a re-planning session
+
+!!! Make it stick
+* Don't break the chain
+
+!!! Three Track Attack
+# Deliver - git stuff dun
+# Discover - experiment
+# Refine - fine-time and improve
+
+!!! Share the Secret Sauce
+* &quot;Good catches&quot; - willing to write down the near-misses if you can take it positively
+* What was the thing that made this good catch possible.  What popped in your head?
+
+!!! Shared traffic circle, see if can grab that slide.  Hans Monderman
+
+!!! Iteratoins
+* Can''t get it right the first time - don't waste time
+* Get it right the last time
+
+!!! Sign your work
+* Be proud of it
+</pre>
+</div>
 <div title="Grunt" creator="Steve" modifier="Steve" created="201310012321" modified="201310012321" tags="javascript" changecount="2">
 <pre>JS Task Runner (like Rake)
 * Joe Fiorini uses it  like guard to run tests
@@ -3711,10 +4352,275 @@ Get Data -&gt; Encode it -&gt; Transfer it
 basically anytime user input is directly executed as javascript (like &quot;hi Steve!&quot;)
 </pre>
 </div>
+<div title="High Performance via Psychological Safety" creator="Steve" modifier="Steve" created="201705041720" modified="201705041844" tags="#aab17" changecount="7">
+<pre>Modern Agile
+modernagile.org
+
+Heidi Helfand
+Joshua Kerievsky
+
+Secure - without fear or care
+
+!! Psychological Safety needs:
+Be yourself
+Make mistakes
+Take risks
+raise problems
+ask questions
+disagree
+
+Amy Edmunson - Teaming
+Fear of being seen as
+* ignorant, negative, disruptive, incompetent
+
+In Psychological Safety - Silence Kills
+
+!!! Have you changed your behavior to avoid being seen as ignorant, negative, disruptive, incompetent?
+* DoD meetings
+* When I want the meeting to end
+* When I think others want the conversation to end
+
+The leader's job is to drive out fear
+
+!!! The horsemen
+Criticism, Contempt, Defensiveness, Stonewalling
+What's your &quot;go to&quot;
+What shows up in your team?
+
+
+!!! Empathy Triangle
+- my view
+- their view (imagine it)
+- relationship view (why does this matter)
+
+!!! C.O.I.N
+* Context - Neutral 
+* Observation - Factual
+* Impact - How I felt
+* Next Time - How it could be better
+
+-Trying to integrate with an unknown part of the system
+- I was struggling and asked for help several times.  
+- I felt abandoned.  When I tried to soldier through independently, I found there were a number of bugs in the implementation.  Then I got angry.
+
+!! Psychological Safety in Meetings
+* Smarter, Faster, Better -&gt; Book list
+* Encourage everyone to contribute
+** Keep track of everyone who speaks - tick marks - easy way to see if it's safe for everyone to contribute
+** Individual / Pair / Group - breakout activities
+** Lean Coffee
+** Brainstorm / Stickies
+** Set-based design
+*** Each individual or small group solves the problem individually.  Then bring them all together to get &quot;best of breed&quot;
+* Listen to One Another
+** Level 1:  Focused on yourself
+** Level 2:  Focused on the other person
+** Level 3:  Focused on body language &amp; environment
+* Review/Repeat Other People's Points
+* Avoid Dominating or Interrupting
+** Facilitators can help
+** Give feedback privately
+* Be Caring, Curious, and Non-Judgemental
+** &quot;I'm curious.  Why do you think that?&quot;
+** Don't rush through the &quot;Groan Zone&quot;
+
+</pre>
+</div>
 <div title="Holiday LIght Fight" creator="Steve" modifier="Steve" created="201502181403" changecount="1">
 <pre>https://onedrive.live.com/?cid=59d41466dbc75b47&amp;id=59D41466DBC75B47%2141451&amp;ithint=folder,mp4&amp;authkey=!ANVrmMtni6D5uGk
 
 </pre>
+</div>
+<div title="How Does &quot;Complexity&quot; Change the Game?" creator="Steve" modifier="Steve" created="201705041412" modified="201705191353" tags="#aab17 #selfconf17" changecount="7">
+<pre>@geepawhill
+
+! self.conf
+
+!! Software Development Excellency
+
+The Flock and the 3 Flows
+* Valued Results - I show it to you, you tell me if you like it
+* Geek Joy - when we're in, we're all in
+* Courageous Curiosity - Ask real questions and get real answers
+
+!! Complex vs Non-complex
+
+Linear error factor - if you're a little wrong in the guess you're a little wrong in the result - this is a sign on non-complex system
+complex system - any error mean any result - can be off by an order of magnitude, or be completely impossible.
+
+Make small changes and then reset.  Start from zero.  Radically revise your approach.  Don't assume you can do the same thing twice.
+
+Every practice has to prove itself in every practice.  It has to be working in practice.
+
+
+!! Optimize for collaboration 
+* It backs us when you follow a change and revise methodology
+* Frequent Focused Direct Dialog
+
+1) Thinking outside your head
+* Power of expression forcing thinking
+2) Energy Balancing
+* Constant change is very draining
+* More peaks because our energy curves are not perfectly in sync
+3) Shock Absorption
+* When the thing we're centered on jerks around it's a shock to each individual
+* complexity exists in 100% deterministic systems (no randomness)
+* with collaboration, our relations cushion us when the center moves
+4) Domain Bridging for Ideas
+* Most ideas come from other domain
+* More people = More domains = more ideas
+* Insights per hour
+
+!! Activities
+* Coding to Target - I know what I want to do, I just need to execute
+* Coding to Experiment - Have an idea, need to feel out the solution
+
+!! Dependencies
+Help make things work - especially early on
+* Physical space
+* Permission - Mental space
+* Inception - Encourage alot early on.
+* Technique &amp; Practice - This isn't &quot;natural&quot;, real skills need practice
+* Voluntarism - you need to be deciding, teaching, or learning
+* Inclusion - invite everyone
+* Acceptance - no one can do all the things well.  Every strength is a weakness.  Every weakness is a strength.
+
+!! Is it working?
+Buzz, whiteboards churing, tight standups
+Not working:  forced engagement, conflict suppression, room elephants, long process discussions, 
+
+! aab17
+
+!! Software Development Excellency
+
+The Flock and the 3 Flows
+* Valued Results -&gt; Where are we going?
+* Geek Joy -&gt; How will we get there?
+* Courageous Curiosity -&gt; Where are we now?
+
+//Suspect All Systems//
+
+!! Complexity
+* The theory is rich, but very little practice
+
+
+!!! Three difficult ideas
+# Intricacy is Not Complexity
+* Lots and lots of parts = intricacy
+* Not complex -&gt; those parts are often predictable 
+* Running software in the browser is intricate, not complex
+* Complex things don't need lots of parts (they certainly can)
+* The parts have agency -&gt; I don't know how this works.  Not just a black box.  I do the same thing twice and get different results.  It's unpredictable.
+# The Predictability Knee
+* We think that estimates that are further out are a less accurate.  And the further out, the less accuracy.  It feels linear.
+* Predictability is actually a huge drop off.  There is a point where once you get far enough out, accuracy drops to zero.
+* I can't choose to be more accurate past the &quot;knee&quot;.  It's not possible.
+* The &quot;point of the knee&quot; is difficult to figure out.  The horizon.  
+* We don't know how long it will take to get from A to B.  What's worse:  We don't know if it's possible to get there.
+# Step Tree vs Step Sequence
+* We think if we break into 5 steps from A to B we'll fix it.
+* We can't get there in a linear fashion
+* We're mostly trying not to step away from to A
+* We don't know our &quot;new&quot; small destination is achievable either
+
+!!! Professional software development is all-in, all-the-time, all-around, compexity
+* Too many unpredictable agents/actors
+* Assume every practice has to justify itself
+* Change everything that doesn't work
+
+!!! Optimize for Collaboration
+* We have a constant need of ideas (ideas per hour)
+* More domains, more ideas, more people
+* We need people to give us stability (the problems are ever-changing)
+* We need Juice
+* Nobody can be on all the time
+* Accept peaks and valleys
+* Frequent Focused direct dialog (F2D2)</pre>
+</div>
+<div title="How and Why to have inclusive meetings" creator="Steve" modifier="Steve" created="201705202001" modified="201705202045" tags="#selfconf17" changecount="2">
+<pre>@catswetel
+
+Cool idea: a request stack...something goes on, something must come off.
+Diversity is being invited to the party, Inclusion is being invited to dance
+Watermelon project - green on the outside, red on the inside
+
+Tips: 
+* Introduce Participants
+** Point out why Sue needs to speak up - Glad you could make it Sue, you can tell us about the mainframe
+** A way to assign roles in the meeting
+
+* Schedule the meeting
+** You set the agenda
+** Can frame roles in the agenda
+** Create an enviroment for success
+
+* Set team agreements
+** Can we agree that no cell phones / laptops?
+** Chatham House Rule - You can share the stories but strip out the identifying information
+
+* 1- 5 exercise
+** Do a fist of five, I'm a 5 I can't handle silence, 1 I would rather than do anything but talk in front of a group
+** No 3's!
+
+* Lean Coffee  
+* End the meeting
+
+The Discipline of Noticing
+* Account of the event -&gt; Just make observations, no judgements (Don't account for)
+
+</pre>
+</div>
+<div title="How to Like People You Can't Stand" creator="Steve" modifier="Steve" created="201705201733" tags="#selfconf17" changecount="1">
+<pre>@onealexharms
+
+&quot;To speak up without fear&quot;
+&quot;Safety happens one person at a time.  It's an emergent process&quot;
+
+----
+Carl Rogers:  People have what they need inside of themselves and he can assist them with finding it.
+
+Conditions for Therapeutic Change:
+1. Congruence
+2. Empathy
+3. Consistent Fondness
+
+!!! Congruence
+How I see myself and how I want you to see me is aligned.
+No bullshit
+Align your values with who you are.  Do the work.
+
+!!! Empathy
+The ability to understand what someone else is feeling.
+Empathy can be learned.
+What needs might this person be trying to meet?
+
+Courageous Curiosity - What's going on inside this person?
+Joyful mistake making
+</pre>
+</div>
+<div title="How to Scratch an Itch" creator="Steve" modifier="Steve" created="201709022050" changecount="1">
+<pre>@searls
+http://blog.testdouble.com/posts/2016-12-01-a-creativity-talk
+Creative ideas stress me out -&gt; How will I find time to do them?
+
+Don't cede control of your happiness to someone else
+ 
+1. Inadequacy -&gt; People to imitate
+2. Indignation -&gt; Something to say
+3. Incompetence -&gt; Always have room to improve
+
+* Recognize when it's safe to make a mess
+* Find the smallest thing you can get caremad over
+* Working code can sell ideas
+* Ideas require no maintenance!
+* Popularity without purpose is toxic
+* No shame in &quot;hobby-grade&quot;
+* Selfish toy-apps can inspire
+* Not getting through?  Tweak your message
+* Criticism is easier than contribution
+* It's okay to build things for fun
+
+What thing bothers you -&gt; Reflect -&gt; Take those ideas and find an outlet</pre>
 </div>
 <div title="HowNetflixArchitectsForSurvival" creator="Steve" modifier="Steve" created="201401091459" modified="201401092041" tags="#codemash 2014" changecount="9">
 <pre>@jedberg
@@ -4077,6 +4983,29 @@ Open templates for requests using a resource from the context</pre>
 
 </pre>
 </div>
+<div title="I’m a woman in tech, and this is what I want in a company" creator="Steve" modifier="Steve" created="201706201129" modified="201706201131" changecount="9">
+<pre>https://code.likeagirl.io/i-am-a-woman-in-tech-and-this-is-what-i-want-in-a-company-f6177569a287
+
+!!! Don't talk, show
+
+* See another woman, ideally on the team.  Need to feel safe to ask questions, it is easier to ask a woman
+* Meet + chat with members from every team, see how awesome they are
+
+!!! Tell me how you're going to help me grow
+I won't ask for promotions, I want to know what the expectations are so that I know when I've leveled up and can move to the next thing
+
+!!! I should forget that I'm a minority, *but* be supported when I remember
+
+&lt;&lt;&lt;
+If I tell them I want more women to get into tech I want them to say “So what are you going to do about it?” and know that they will push and support me.
+&lt;&lt;&lt;
+
+!!! Help me fight my imposter syndrome
+
+&lt;&lt;&lt;
+A lot of people don’t like to brag or bring attention to their accomplishments, that’s why you need to do it for them. Seeing others be supportive of their team mates and brag about other’s accomplishments is a powerful thing. That is an environment you can’t fake, and everyone deserves to be a part of.
+&lt;&lt;&lt;</pre>
+</div>
 <div title="Java8" creator="Steve" modifier="Steve" created="201401092210" changecount="1">
 <pre>* Closures
 * Interface enhancements
@@ -4086,6 +5015,45 @@ shapes.forEach(s -&gt; {
   if(s.get Color() == RED)
     s.setColor(BLUE)
 }</pre>
+</div>
+<div title="Javascript Speech Recognition" creator="Steve" modifier="Steve" created="201703081842" modified="201703091608" tags="#confoo" changecount="2">
+<pre>@macdonst
+Anyyang - 2K great library
+github.com/macdonst
+</pre>
+</div>
+<div title="Leadership Starts With An Invitation" creator="Steve" modifier="Steve" created="201705051251" modified="201705051316" tags="#aab17" changecount="3">
+<pre>@docondev
+
+An invitation is not a command or order, it is request or enabler.  Encourage, not mandate.
+
+Both Lord-leader (Command and Control) and Servant-leader are extremes on a spectrum.  
+
+Servant Leadership is a poor model.  The 7 pillars tell us who a leader should be, but not what they should do.
+
+A leader can never answer the question:  &quot;Do I lead with moral authority?&quot;  It can only be given to you by every person you lead.  And it can be ripped away by a single misstep, a single betrayal.
+------------------------
+Let go of your expectations, let what *is* to emerge.
+
+----
+Host Leadership
+
+* Initiator - provides the spark
+* Inviter - invites others 
+** &quot;What sort of invitations do you send&quot;?
+* Space Creator - creates the &quot;right kind&quot; of space.  Sets up the rules for the interaction.
+* Gatekeeper - defines and protects the space.  Enforces the rules.
+** Reminding team agreements
+* Connector - puts people together.  Enable conversation.  Bridge the gaps.  The glue.
+* Co-participator - Be a member of the team.  Experience.
+
+
+
+
+
+
+
+</pre>
 </div>
 <div title="Leading Hackers &amp; Hacking Leaders" creator="Steve" modifier="Steve" created="201701132055" modified="201701132135" tags="#codemash 2017" changecount="2">
 <pre>@jonathanpopham
@@ -4161,6 +5129,14 @@ Hackathon every 2 months?
 How do we build slack?
 
 </pre>
+</div>
+<div title="Learning to Fail Fast at DNSimple" creator="Steve" modifier="Steve" created="201705072054" modified="201705072056" changecount="2">
+<pre>https://blog.dnsimple.com/2017/02/learning-to-fail-fast-at-dnsimple/
+
+* Fail as Fast as you deploy
+* Failing Fast helps avoid Sunk Cost Fallacy
+* Stop and figure out what you learned
+* Start over with knowledge to avoid failure areas</pre>
 </div>
 <div title="LegacyCodeRefactoringBlogPost" creator="Steve" modifier="Steve" created="201309221436" changecount="1">
 <pre>So I've tried to explain a phenomena to a few people lately and I keep falling flat.  I can only conclude I'm explaining it badly, or it's a solved problem that I haven't seen the solution for.
@@ -4487,6 +5463,41 @@ The delta between a prediction and the observed outcome is the &quot;amount&quot
 * What is your very next experiment?
 * How will you measure it?</pre>
 </div>
+<div title="Mob Programming for Continuous Learning" creator="Steve" modifier="Steve" created="201705041849" modified="201705041945" tags="#aab17" changecount="5">
+<pre>@mdclement
+blog.softwareontheside.com
+
+Mob Programming where three people were researching and would swap into navigator after doing some research.
+
+Added more people - &gt; too crowded!  Tried to add a remote &quot;viewing&quot; station.  Didn't go well.
+
+!!! Discoveries
+* Physical Space is very important
+* Bought a keyboard for every developer
+* Strong pair typing -&gt; For an idea to go from your head into the computer, it MUST go through someone else's hands
+* Start with intent, Move to location, detail -&gt; &quot;hey type this&quot;.  Imagine doing voice command with a brilliant AI, somethings will be easy, others will need lots of hand-holding.
+* Mobbing Timer -&gt; Can I use this for pomodoros?
+* The hard work is when you're not at the keyboard.  That's when you have to think.  So you need to keep the off-keyboard time short.
+* No standups
+* Resilient -&gt; vacations, sick time, bus factor, no big deals
+* Focused on working on the right thing - more sensitive to waste from side tasks
+
+!!! Downsides
+* Less worktime flexibility
+* Looks funny from the outside
+* Product management.....PM didn't want to participate in the mob
+
+!!! Workshop
+One navigator many pairs
+One navigator, many mobs
+** Table navigator is the buffer between the room navigator and the table driver
+
+github.com/willemlarsen/mobprogrammingrpg - Gives more roles for the mobbers, since it's not clear what they're supposed to be doing
+
+It's fun!
+
+</pre>
+</div>
 <div title="Mobile Content Delivery" creator="Steve" modifier="Steve" created="201403121833" modified="201403121840" changecount="3">
 <pre>* LTE network latency is ~50 ms
 
@@ -4664,6 +5675,13 @@ Made the case:  Here's our &quot;contractor&quot; spend year to year
 Fund a product roadmap instead - &quot;Eternal funding&quot; for a &quot;product line&quot;
 Justification:  &quot;We always need stuff&quot;</pre>
 </div>
+<div title="On Human Rights and Human Wrongs" creator="Steve" modifier="Steve" created="201705201330" tags="#selfconf17" changecount="1">
+<pre>humanutility.org
+
+I was a hacker who gave a damn
+We just mechanical turk'd everything together to make a difference.  
+This doesn't require a ton of engineering effort.</pre>
+</div>
 <div title="One Practical Alternative to Estimates" creator="Steve" modifier="Steve" created="201405121004" modified="201405121020" tags="estimates" changecount="7">
 <pre>http://www.jbrains.ca/permalink/one-practical-alternative-to-estimates
 
@@ -4728,6 +5746,75 @@ Figure out:
 * After stopping the constant tending the issues blew up again.
 
 </pre>
+</div>
+<div title="Optimizing Change Through Constraint Based Experiment Selection" creator="Steve" modifier="Steve" created="201705052009" modified="201705052052" tags="#aab17" changecount="5">
+<pre>@mattbarcomb
+Catherine Swetel 
+
+!!! Experiment Outline
+
+We believe that by doing [action / countermeasure]
+For
+Will achieve [measurable outcome]
+And when it succeeds/fails we will [recovery strategy]
+
+
+We should try ____ because _____
+What process / condition are we trying to change?
+How often does the condition occur?
+Who will be affected?
+
+!!! Measurable Outcome
+* Must be falsifiable
+
+!!! Experiments:  Create and Destroy
+(create meaningful experiments, destroy the ones that aren't)
+* (I tuned out)
+* Consider the impossible
+* Small
+* Impactful
+* Keep it succinct -&gt; Look for a short summary we can share
+
+!!! Pitfalls of Experiment Design
+* We want to reward experiments that validate hypotheses
+* Information Value 
+
+!! How to choose experiments
+
+!!! Theory of Constraints
+* Prefer non-local optimization
+* Mechanic systems are linear (people are systems are messy webs)
+* Seeing local suboptimization in a mechansitc system is easy, it's very visible
+
+!!! Social Systems
+* Wildly entangled
+* Multiple simultaneous goals
+* Need to collaboratively make visual
+
+!!! Measurement
+* It might be ok to be fuzzy.  Quantifiable, but maybe hard to measure.
+* Prove better happened
+* Measure connected things -&gt; are these changes a result of the experiment?
+* Use local optimizations to sense - create gravity wells.  If the team suddenly gets blocked, that creates tension and shows the problem is somewhere else.
+
+!!! Optimizing For Change
+* Alignment over opportunism
+* Simplify - Amplify - Modify - Try
+* Set enabling constraints
+
+!!! Find Change Partners
+* Innovators, Early Adopters, Early Majority, Late Majority, Laggards
+
+!!! Interest over Impact
+Ideally you'd do things that are both, never do things that are neither
+
+!! Pitfalls of Experiment Selection
+!!! Misalignment
+!!! Bad Planning
+- Great experiment, don't have the things we need
+!!! Risk analysis
+- Is the experiment taking someone else's stuff
+- How long until we feel the failure</pre>
 </div>
 <div title="Packer" creator="Steve" modifier="Steve" created="201309210238" changecount="1">
 <pre>Creates images for multiple providers (VM softwares) from a single template.
@@ -5063,6 +6150,22 @@ Load a url, parse the response, subscribe to a resource.
 
 </pre>
 </div>
+<div title="Remote Change of Success" creator="Steve" modifier="Steve" created="201703101802" modified="201703101847" tags="#confoo" changecount="5">
+<pre>@vmbrasseur
+
+https://archive.org/details/confoo2017-remote
+https://www.zotero.org/groups/remote__distributed_teams/items
+
+&quot;The people that have to be micromanaged need that attention whether they're in the office or not.&quot; @vmbrasseur
+Incredibly rich cultures are possible without colocation.  Look at any online community.
+
+Blah - document more so remote can keep up. Ain't doc'd ain't done.
+
+If there are people who cannot work remote because of their position.  You could potentially make it less about the job and more about the tasks they have to do.  If there are certain tasks that must be done &quot;in office&quot; then make that clear, but can you say that other tasks could be done from home.
+
+
+</pre>
+</div>
 <div title="Remote pairing" creator="Steve" modifier="Steve" created="201306292332" modified="201401231500" changecount="7">
 <pre>Zander on setting up a VPS:  http://www.civet.ws/2013/06/dont-fear-pair-programming-a-guide-to-starting/
 
@@ -5366,6 +6469,39 @@ Asset pipeline - Stefon
 
 </pre>
 </div>
+<div title="Self-improving software" creator="Steve" modifier="Steve" created="201703091959" modified="201703092039" tags="#confoo" changecount="5">
+<pre>@bahmutov - Gleb Bahmutov PhD
+slides.com/bahmutov
+
+Red flags
+* Build time &gt; 15s
+* Can't umit test a feature
+
+Software as car assembly:
+1. built separately, tested separately, has sku number, shipped to car factory, assembled
+12 factor
+
+Single report per app
+
+Relying on human supplied semver is like relying on code comments. - @bahmutov
+
+Relying on human supplied semver is like relying on code comments. @bahmutov -  I'll continue trashing semver tomorrow morning at 10 :laughing: #confoo
+
+Automate dependency upgrade
+* run unit tests
+* update dependencies
+* run tests
+* if tests fail, revert
+
+https://github.com/bahmutov/next-update
+(manual version of greenkeeper)
+
+next-update-stats
+semantic-release-cli
+dont-break
+
+</pre>
+</div>
 <div title="Sequential Design" creator="Steve" modifier="Steve" created="201501091440" tags="#codemash" changecount="1">
 <pre>Brad Colbow
 bradcolbow.com/codemash.pdf
@@ -5405,6 +6541,49 @@ Simple Rule:  Do the expected in an unexpected way
 * Wireframes - capture features but don't capture interactions
 
 Found the first few days of the project were the most important</pre>
+</div>
+<div title="Sharing Secrets in a Container World" creator="Steve" modifier="Steve" created="201703081852" modified="201703091608" tags="#confoo" changecount="7">
+<pre>@christainheimes
+
+Secrets:  small, required, radioactive
+
+Best practices:
+Encrypted at rest
+Encrypted in transit
+Audit log
+Access Control (single container should not have access to all the secrets)
+Identiy - container must be known and addressable so you can assign roles to it
+Rollover/Renewal
+Least Amount of Privieges
+(Don't use orchestration to send secrets)
+
+!!! Don't
+Use ENV variables to pass secrets (some config will have a plaintext version)
+
+** Kubernets secrets
+*** wouldn't use it, no encryption or access control lists
+
+** Square KeyWhiz 
+*** Focused on PKI and LDAP
+
+Secrets and LIE-abilities - blog post.
+
+
+!!! Common design problem
+* either ENV or file system (even TMPFS)
+
+* Vulnerable
+** Accidental backup
+** Directory traversal attack
+** Debug tools 
+** Other means
+
+!!! Don't put secrets in the container - Let the application request a secret
+
+! NOW WHAT?
+Use unix sockets as auth mechanism - //I guess//
+
+</pre>
 </div>
 <div title="SiteSubtitle" creator="Steve" modifier="Steve" created="201301261658" changecount="1">
 <pre>steve's web notebook</pre>
@@ -5893,6 +7072,15 @@ simone went out and opened PRs for all open source projects to enable easy API v
 
 </pre>
 </div>
+<div title="The Power of Secrets" creator="Steve" modifier="Steve" created="201705191658" tags="#selfconf17" changecount="1">
+<pre>@geekygirlsarah
+
+Vulnerability helps us build connections.
+
+Empathetic teams are powerful.
+
+</pre>
+</div>
 <div title="The correct ordering of the 4 Elements of Simple Design" creator="Steve" modifier="Steve" created="201410011732" modified="201502081347" changecount="3">
 <pre>J.B http://blog.thecodewhisperer.com/2013/12/07/putting-an-age-old-battle-to-rest/
 
@@ -5926,6 +7114,23 @@ Remove duplication -&gt; structures emerge -&gt; structures need names -&gt; imp
 Or you can start with improving names and end up in the same place.
 
 I would probably think about this more as starting with an abstraction (make the change easy) vs removing duplication (make the easy change).</pre>
+</div>
+<div title="The infinite hows" creator="Steve" modifier="Steve" created="201706210136" modified="201706211452" changecount="8">
+<pre>https://www.oreilly.com/ideas/the-infinite-hows
+
+Criticism of 5 whys.  //Why?// is the wrong question because //why?// usually leads to //who?//  Then the focus, even if it is positive, is on how to improve a person, as opposed to improving the system.
+&quot;Well what you should have done....&quot;
+Human error is a simple and satisfying explanation for everything.
+
+Asking //why?// leads towards looking at failures as linear consequences.  The world isn't that simple.  Our preference is certainly to reject the complex because it's harder to think about.
+Asking //how?// invites looking at the context.
+
+Looking at //why?// often leads to a &quot;this was wrong&quot; sort of answer.  But it's only wrong in hindsight.  At the time it seemed perfectly reasonable.  And we lose sight of that once we decide it's ''BAD''.  The only logical way for our brains to move is towards prevention.
+
+When we ask //how?// we're inviting stories/a narrative.  When we ask //why?// we're inviting excuses.
+//Why?// -&gt; Who is responsible?  //How?// -&gt; What is responsible?
+
+''DESCRIBE'' vs ''EXPLAIN''</pre>
 </div>
 <div title="TheCaseForNovices" creator="Steve" modifier="Steve" created="201301170220" modified="201301170242" changecount="6">
 <pre>!!! Why novices?
@@ -6295,6 +7500,46 @@ In Tree Context:  Tree.Trunk -&gt; Translator -&gt; Animal.Leg  (Not Elephant.Tr
 !! Where to start?
 * Start with scenarios that worry the domain experts the most.  They'll want to talk about them and help you model them to mitigate that risk.
 * Don't strive for perfect language.  Cut off theorizing at some point and experiment.  Use the language and see where it falls short.</pre>
+</div>
+<div title="Under Pressure" creator="Steve" modifier="Steve" created="201705042007" modified="201705042043" tags="#aab17" changecount="4">
+<pre>@toddkaufman
+
+Stakeholders say add more people, PMs suggest working more hours instead, Devs decide to write fewer tests instead.
+
+Does adding resources to a project that is already late speed it up? - Nope.  Why not?
+# Ramp up
+# Communication
+# Separation of work
+# Integration
+# Dysfunction
+
+Dysfunction is amplified when you have bigger teams.  Adding people to a dysfunctional software environment makes it even *more* inept.
+
+Nobody in the history of software development has come in at 1/4 of their original estimate!
+
+#noestimates - track cycle time - it's real data!
+Quick sizing - just small and large.
+
+#noestimates -&gt; Now the PMs are stakeholders are stressed out.  They have no knobs to turn!  This gets turned on the developers.
+
+Software quality is how easily and safely we can change a codebase.
+
+Left with only this data $150K estimate, they're going to go with it.
+We need estimation to help stakeholders make decisions.
+
+Team Level Cycle Time, BUT Changing Teams means Unpredictable Estimates
+
+Stakeholders don't trust that developers will give a reasonably accurate estimates.  Developers don't trust that stakeholders won't beat them with those estimates.
+
+!! How to go faster?
+# Remove negativity and waste
+# Focus less on stress, more on why
+# Be intentional
+# Make debt visible
+# Pair more
+
+Change the conversation to how predictable we are instead of how fast we are.
+</pre>
 </div>
 <div title="Upgrading Junior Developers" creator="Steve" modifier="Steve" created="201506131508" modified="201506131718" tags="#pghtechfest" changecount="3">
 <pre>Christopher Houdeshell
