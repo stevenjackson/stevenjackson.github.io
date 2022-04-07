@@ -1,0 +1,1 @@
+"Intended cultural norms evaporate as deadlines approach" - Mike Jansen

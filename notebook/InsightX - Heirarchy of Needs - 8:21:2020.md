@@ -1,0 +1,2 @@
+@joel
+Rather than a Heirarchy of Needs, but maybe it's more of a constellation.  And people that think alike might cluster around a particular need, but that doesn't mean there aren't other clusters out there.
